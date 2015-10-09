@@ -1,0 +1,10 @@
+PODS:
+  - Console (1.0.2)
+
+DEPENDENCIES:
+  - Console (~> 1.0)
+
+SPEC CHECKSUMS:
+  Console: 359ce373cce56764f7d36625ada9459c2c523a60
+
+COCOAPODS: 0.38.2
