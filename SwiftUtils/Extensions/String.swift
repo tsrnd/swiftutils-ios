@@ -34,25 +34,23 @@ extension String {
   }
   
   // Regex
-  func matches (pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
-    
-    if let regex = regex(pattern, ignoreCase: ignoreCase) {
-      //  Using map to prevent a possible bug in the compiler
+  func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
+    if let regex = SwiftUtils.regex(pattern, ignoreCase: ignoreCase) {
       return regex.matchesInString(self, options: [], range: NSMakeRange(0, length)).map { $0 }
     }
     return nil
   }
   
-  func containsMatch (pattern: String, ignoreCase: Bool = false) -> Bool? {
-    if let regex = regex(pattern, ignoreCase: ignoreCase) {
+  func contains(pattern: String, ignoreCase: Bool = false) -> Bool? {
+    if let regex = SwiftUtils.regex(pattern, ignoreCase: ignoreCase) {
       let range = NSMakeRange(0, self.characters.count)
       return regex.firstMatchInString(self, options: [], range: range) != nil
     }
     return nil
   }
   
-  func replaceMatches(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
-    if let regex = regex(pattern, ignoreCase: ignoreCase) {
+  func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
+    if let regex = SwiftUtils.regex(pattern, ignoreCase: ignoreCase) {
       let range = NSMakeRange(0, self.characters.count)
       return regex.stringByReplacingMatchesInString(self, options: [], range: range, withTemplate: replacementString)
     }
