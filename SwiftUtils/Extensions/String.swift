@@ -35,14 +35,14 @@ extension String {
   
   // Regex
   func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
-    if let regex = SwiftUtils.regex(pattern, ignoreCase: ignoreCase) {
+    if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
       return regex.matchesInString(self, options: [], range: NSMakeRange(0, length)).map { $0 }
     }
     return nil
   }
   
   func contains(pattern: String, ignoreCase: Bool = false) -> Bool? {
-    if let regex = SwiftUtils.regex(pattern, ignoreCase: ignoreCase) {
+    if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
       let range = NSMakeRange(0, self.characters.count)
       return regex.firstMatchInString(self, options: [], range: range) != nil
     }
@@ -50,7 +50,7 @@ extension String {
   }
   
   func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
-    if let regex = SwiftUtils.regex(pattern, ignoreCase: ignoreCase) {
+    if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
       let range = NSMakeRange(0, self.characters.count)
       return regex.stringByReplacingMatchesInString(self, options: [], range: range, withTemplate: replacementString)
     }

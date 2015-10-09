@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.ios.deployment_target = '8.0'  
   s.ios.frameworks = 'Foundation', 'UIKit'
-  s.source_files = 'SwiftUtils/Classes/*.swift', 'SwiftUtils/Extensions/*.swift'
+  s.source_files = 'SwiftUtils/*.swift', 'SwiftUtils/Classes/*.swift', 'SwiftUtils/Extensions/*.swift'
 end

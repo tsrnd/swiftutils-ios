@@ -10,19 +10,3 @@ import UIKit
 
 public typealias JSObject = [String : AnyObject]
 public typealias JSArray = [JSObject]
-
-internal class SwiftUtils {
-  internal static func regex(pattern: String, ignoreCase: Bool = false) -> NSRegularExpression? {
-    var options = NSRegularExpressionOptions.DotMatchesLineSeparators.rawValue
-    if ignoreCase {
-      options = NSRegularExpressionOptions.CaseInsensitive.rawValue | options
-    }
-    let regex: NSRegularExpression?
-    do {
-      regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions(rawValue: options))
-    } catch {
-      return nil
-    }
-    return regex
-  }
-}

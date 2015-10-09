@@ -29,6 +29,7 @@
 		EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5ED4011BC65E51004763CE /* SequenceType.swift */; settings = {ASSET_TAGS = (); }; };
 		EC5ED4041BC67917004763CE /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5ED4031BC67917004763CE /* Character.swift */; settings = {ASSET_TAGS = (); }; };
 		EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5F74431BC6CF5700727AFE /* CGGeometry.swift */; settings = {ASSET_TAGS = (); }; };
+		EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F615E1BC7837F00201EBF /* Regex.swift */; settings = {ASSET_TAGS = (); }; };
 		ECD6E3581BC770BA00AC951F /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6E3571BC770BA00AC951F /* Range.swift */; settings = {ASSET_TAGS = (); }; };
 		ECD9E6E41BC245BA001F8738 /* SwiftUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD9E6E31BC245BA001F8738 /* SwiftUtils.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		EC5ED4011BC65E51004763CE /* SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceType.swift; sourceTree = "<group>"; };
 		EC5ED4031BC67917004763CE /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		EC5F74431BC6CF5700727AFE /* CGGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGGeometry.swift; sourceTree = "<group>"; };
+		EC8F615E1BC7837F00201EBF /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		ECD6E3571BC770BA00AC951F /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD9E6DD1BC24428001F8738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				EC524A471BC5186B00DE1986 /* UIView.swift */,
 				EC15C13B1BC57D28006FF24D /* UIViewController.swift */,
 				ECD6E3571BC770BA00AC951F /* Range.swift */,
+				EC8F615E1BC7837F00201EBF /* Regex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				EC524A3A1BC5179500DE1986 /* Array.swift in Sources */,
 				EC5ED3F91BC61501004763CE /* Bool.swift in Sources */,
 				EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */,
+				EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */,
 				EC524A401BC517DA00DE1986 /* Float.swift in Sources */,
 				EC524A3E1BC517CC00DE1986 /* Int.swift in Sources */,
 				EC524A371BC5178500DE1986 /* FloatTableView.swift in Sources */,
