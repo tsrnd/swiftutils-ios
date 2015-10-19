@@ -13,4 +13,8 @@ extension Bool {
     self = !self
     return self
   }
+  
+  public var intValue: Int {
+    return self ? 1 : 0
+  }
 }

@@ -16,7 +16,7 @@ extension Array {
     }
   }
   
-  public func shuffled() -> [Element] {
+  public var shuffled: [Element] {
     var array = self
     array.shuffle()
     return array

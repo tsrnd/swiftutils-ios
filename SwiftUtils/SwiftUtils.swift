@@ -7,6 +7,3 @@
 //
 
 import UIKit
-
-public typealias JSObject = [String : AnyObject]
-public typealias JSArray = [JSObject]

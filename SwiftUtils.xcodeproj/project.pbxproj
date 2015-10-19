@@ -27,7 +27,6 @@
 		EC524A481BC5186B00DE1986 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A471BC5186B00DE1986 /* UIView.swift */; settings = {ASSET_TAGS = (); }; };
 		EC5ED3F91BC61501004763CE /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5ED3F81BC61501004763CE /* Bool.swift */; settings = {ASSET_TAGS = (); }; };
 		EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5ED4011BC65E51004763CE /* SequenceType.swift */; settings = {ASSET_TAGS = (); }; };
-		EC5ED4041BC67917004763CE /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5ED4031BC67917004763CE /* Character.swift */; settings = {ASSET_TAGS = (); }; };
 		EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5F74431BC6CF5700727AFE /* CGGeometry.swift */; settings = {ASSET_TAGS = (); }; };
 		EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F615E1BC7837F00201EBF /* Regex.swift */; settings = {ASSET_TAGS = (); }; };
 		ECD6E3581BC770BA00AC951F /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6E3571BC770BA00AC951F /* Range.swift */; settings = {ASSET_TAGS = (); }; };
@@ -57,7 +56,6 @@
 		EC524A471BC5186B00DE1986 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		EC5ED3F81BC61501004763CE /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		EC5ED4011BC65E51004763CE /* SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceType.swift; sourceTree = "<group>"; };
-		EC5ED4031BC67917004763CE /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		EC5F74431BC6CF5700727AFE /* CGGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGGeometry.swift; sourceTree = "<group>"; };
 		EC8F615E1BC7837F00201EBF /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		ECD6E3571BC770BA00AC951F /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				EC524A391BC5179500DE1986 /* Array.swift */,
 				EC5ED3F81BC61501004763CE /* Bool.swift */,
 				EC5F74431BC6CF5700727AFE /* CGGeometry.swift */,
-				EC5ED4031BC67917004763CE /* Character.swift */,
 				EC524A3B1BC517AF00DE1986 /* Dictionary.swift */,
 				EC524A411BC517E100DE1986 /* Double.swift */,
 				EC524A3F1BC517DA00DE1986 /* Float.swift */,
@@ -287,7 +284,6 @@
 				ECD6E3581BC770BA00AC951F /* Range.swift in Sources */,
 				EC524A461BC5181C00DE1986 /* NSDate.swift in Sources */,
 				EC15C13C1BC57D28006FF24D /* UIViewController.swift in Sources */,
-				EC5ED4041BC67917004763CE /* Character.swift in Sources */,
 				EC524A3A1BC5179500DE1986 /* Array.swift in Sources */,
 				EC5ED3F91BC61501004763CE /* Bool.swift in Sources */,
 				EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */,

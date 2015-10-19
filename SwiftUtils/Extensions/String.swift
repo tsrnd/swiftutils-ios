@@ -96,6 +96,10 @@ extension String {
     return result
   }
   
+  public var intValue: Int {
+    return (self as NSString).integerValue
+  }
+  
   public var doubleValue: Double {
     return (self as NSString).doubleValue
   }
@@ -144,6 +148,22 @@ extension String {
   }
 }
 
+// MARK: Character
+extension Character {
+  public var intValue: Int {
+    return (String(self) as NSString).integerValue
+  }
+}
+
+// MARK: NSMutableAttributedString
+extension NSMutableAttributedString {
+  public func appendString(string: String, attributes: [String : AnyObject]) {
+    let attStr = NSAttributedString(string: string, attributes: attributes)
+    appendAttributedString(attStr)
+  }
+}
+
+// MARK: NSMutableParagraphStyle
 extension NSMutableParagraphStyle {
   public static func defaultStyle() -> NSMutableParagraphStyle! {
     let style = NSMutableParagraphStyle()
