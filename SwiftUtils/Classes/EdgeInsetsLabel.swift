@@ -9,7 +9,7 @@
 import UIKit
 
 public class EdgeInsetsLabel: UILabel {  
-  var edgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+  public var edgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
   
   override public func textRectForBounds(bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
     var rect = edgeInsets.inset(bounds)

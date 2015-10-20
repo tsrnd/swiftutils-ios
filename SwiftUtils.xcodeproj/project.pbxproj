@@ -16,7 +16,7 @@
 		EC15C1461BC580A3006FF24D /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C1451BC580A3006FF24D /* GCD.swift */; settings = {ASSET_TAGS = (); }; };
 		EC15C1481BC5815C006FF24D /* UIGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C1471BC5815C006FF24D /* UIGeometry.swift */; settings = {ASSET_TAGS = (); }; };
 		EC524A371BC5178500DE1986 /* FloatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A341BC5178500DE1986 /* FloatTableView.swift */; settings = {ASSET_TAGS = (); }; };
-		EC524A381BC5178500DE1986 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A351BC5178500DE1986 /* PaddingLabel.swift */; settings = {ASSET_TAGS = (); }; };
+		EC524A381BC5178500DE1986 /* EdgeInsetsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A351BC5178500DE1986 /* EdgeInsetsLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		EC524A3A1BC5179500DE1986 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A391BC5179500DE1986 /* Array.swift */; settings = {ASSET_TAGS = (); }; };
 		EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A3B1BC517AF00DE1986 /* Dictionary.swift */; settings = {ASSET_TAGS = (); }; };
 		EC524A3E1BC517CC00DE1986 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A3D1BC517CC00DE1986 /* Int.swift */; settings = {ASSET_TAGS = (); }; };
@@ -44,7 +44,7 @@
 		EC15C1451BC580A3006FF24D /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		EC15C1471BC5815C006FF24D /* UIGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGeometry.swift; sourceTree = "<group>"; };
 		EC524A341BC5178500DE1986 /* FloatTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatTableView.swift; sourceTree = "<group>"; };
-		EC524A351BC5178500DE1986 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		EC524A351BC5178500DE1986 /* EdgeInsetsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeInsetsLabel.swift; sourceTree = "<group>"; };
 		EC524A391BC5179500DE1986 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		EC524A3B1BC517AF00DE1986 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		EC524A3D1BC517CC00DE1986 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				EC524A341BC5178500DE1986 /* FloatTableView.swift */,
-				EC524A351BC5178500DE1986 /* PaddingLabel.swift */,
+				EC524A351BC5178500DE1986 /* EdgeInsetsLabel.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -269,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC15C1401BC57DC0006FF24D /* NSURL.swift in Sources */,
-				EC524A381BC5178500DE1986 /* PaddingLabel.swift in Sources */,
+				EC524A381BC5178500DE1986 /* EdgeInsetsLabel.swift in Sources */,
 				EC15C13E1BC57D42006FF24D /* UIColor.swift in Sources */,
 				EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */,
 				EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */,
