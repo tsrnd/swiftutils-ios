@@ -30,6 +30,7 @@
 		EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5F74431BC6CF5700727AFE /* CGGeometry.swift */; settings = {ASSET_TAGS = (); }; };
 		EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F615E1BC7837F00201EBF /* Regex.swift */; settings = {ASSET_TAGS = (); }; };
 		ECD6E3581BC770BA00AC951F /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6E3571BC770BA00AC951F /* Range.swift */; settings = {ASSET_TAGS = (); }; };
+		F4053D021BD9EA85003FABA7 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4053D011BD9EA85003FABA7 /* Number.swift */; settings = {ASSET_TAGS = (); }; };
 		F494A1291BD99EF300B9B603 /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A1281BD99EF300B9B603 /* NSFileManager.swift */; settings = {ASSET_TAGS = (); }; };
 		F494A12B1BD9A69500B9B603 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12A1BD9A69500B9B603 /* UIImage.swift */; settings = {ASSET_TAGS = (); }; };
 		F494A12E1BD9A6EF00B9B603 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -63,6 +64,7 @@
 		ECD6E3571BC770BA00AC951F /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD9E6DD1BC24428001F8738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4053D011BD9EA85003FABA7 /* Number.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		F494A1281BD99EF300B9B603 /* NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager.swift; sourceTree = "<group>"; };
 		F494A12A1BD9A69500B9B603 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				EC15C1391BC57D10006FF24D /* UITableView.swift */,
 				EC524A471BC5186B00DE1986 /* UIView.swift */,
 				EC15C13B1BC57D28006FF24D /* UIViewController.swift */,
+				F4053D011BD9EA85003FABA7 /* Number.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				EC15C13E1BC57D42006FF24D /* UIColor.swift in Sources */,
 				EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */,
 				EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */,
+				F4053D021BD9EA85003FABA7 /* Number.swift in Sources */,
 				EC524A481BC5186B00DE1986 /* UIView.swift in Sources */,
 				EC15C1461BC580A3006FF24D /* GCD.swift in Sources */,
 				EC524A421BC517E100DE1986 /* Double.swift in Sources */,
