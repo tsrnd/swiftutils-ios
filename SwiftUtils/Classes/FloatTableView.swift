@@ -12,11 +12,11 @@ public class FloatTableView: UITableView {
   public var allowHeaderViewsToFloat: Bool = true
   public var allowFooterViewsToFloat: Bool = true
   
-  func allowsHeaderViewsToFloat() -> Bool {
+  public func allowsHeaderViewsToFloat() -> Bool {
     return allowHeaderViewsToFloat
   }
   
-  func allowsFooterViewsToFloat() -> Bool {
+  public func allowsFooterViewsToFloat() -> Bool {
     return allowFooterViewsToFloat
   }
 }

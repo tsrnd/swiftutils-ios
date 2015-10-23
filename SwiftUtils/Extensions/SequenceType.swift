@@ -18,7 +18,7 @@ extension SequenceType {
     }
   }
   
-  func contains<T: Equatable> (item: T) -> Bool {
+  public func contains<T: Equatable> (item: T) -> Bool {
     var generator =  self.generate()
     while let next = generator.next() {
       if let obj = next as? T where obj == item {

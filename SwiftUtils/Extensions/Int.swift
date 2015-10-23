@@ -17,11 +17,11 @@ extension Int {
     return (self % 2) == 1
   }
   
-  func clamp(range: Range<Int>) -> Int {
+  public func clamp(range: Range<Int>) -> Int {
     return clamp(range.startIndex, range.endIndex - 1)
   }
   
-  func clamp(min: Int, _ max: Int) -> Int {
+  public func clamp(min: Int, _ max: Int) -> Int {
     return Swift.max(min, Swift.min(max, self))
   }
   

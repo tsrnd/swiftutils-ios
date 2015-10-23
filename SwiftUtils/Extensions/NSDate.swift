@@ -33,6 +33,18 @@ extension NSTimeInterval {
       return "\(hh)h\(mm)m"
     }
   }
+  
+  public var clock: String {
+    var duration = Int(self)
+    let hour = duration / 3600
+    duration %= 3600
+    let mins = duration / 60
+    duration %= 60
+    let secs = duration
+    let suffix = String(format: "%@%d:%@%d", mins > 9 ? "" : "0", mins, secs > 9 ? "" : "0", secs)
+    let prefix = hour > 0 ? String(format: "%@%d:", hour > 9 ? "" : "0" , hour) : ""
+    return String(format: "%@%@", prefix, suffix)
+  }
 }
 
 extension NSDate {

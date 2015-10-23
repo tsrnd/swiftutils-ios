@@ -9,7 +9,7 @@
 import UIKit
 
 extension CGPoint {
-  var isZero: Bool {
+  public var isZero: Bool {
     return x == 0 && y == 0
   }
 }

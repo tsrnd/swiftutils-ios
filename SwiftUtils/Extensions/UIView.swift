@@ -13,12 +13,39 @@ public class IntrinsicContentView: UIView {
 }
 
 extension UIView {
-  public func resetSubviewsAutolayout() {
-    removeConstraints(constraints)
-    let subviews = self.subviews
+  public func clear() {
+    backgroundColor = UIColor.clearColor()
+    for (_, sub) in subviews.enumerate() {
+      sub.clear()
+    }
+  }
+  
+  public func setBorderWithColor(color: UIColor, width: CGFloat = 0.5) {
+    layer.borderColor = color.CGColor
+    layer.borderWidth = width
+  }
+  
+  public func setShadowWithColor(color: UIColor, offset: CGSize = CGSizeZero, opacity: Float = 1.0, radius: CGFloat = 3.0) {
+    layer.shadowColor = color.CGColor
+    layer.shadowOffset = offset
+    layer.shadowOpacity = opacity
+    layer.shadowRadius = radius
+    layer.shouldRasterize = true
+    layer.rasterizationScale = UIScreen.mainScreen().scale
+  }
+  
+  public func removeSubviewsConstraints() {
+    removeConstraints(constraints.filter({ (c: NSLayoutConstraint) -> Bool in
+      let first = c.firstItem as? UIView
+      let second = c.secondItem as? UIView
+      if (first == self && second == self) || (first == self && second == nil) || (first == nil && second == self) {
+          return false
+      }
+      return true
+    }))
     for sub in subviews {
       sub.translatesAutoresizingMaskIntoConstraints = false
-      sub.resetSubviewsAutolayout()
+      sub.removeAllConstraints()
     }
   }
   
@@ -28,16 +55,20 @@ extension UIView {
         return
       }
     }
+    var parent = superview
+    while parent != nil {
+      for (_, c) in parent!.constraints.enumerate() {
+        let first = c.firstItem as? UIView
+        let second = c.secondItem as? UIView
+        if first == self || second == self {
+          parent!.removeConstraint(c)
+        }
+      }
+      parent = parent!.superview
+    }
     removeConstraints(constraints)
     let subviews = self.subviews
-    for sub in subviews {
-      sub.removeAllConstraints()
-    }
-  }
-  
-  public func removeAllSubviewsConstraints() {
-    let subviews = self.subviews
-    for sub in subviews {
+    for (_, sub) in subviews.enumerate() {
       sub.removeAllConstraints()
     }
   }

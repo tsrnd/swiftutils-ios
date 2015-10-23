@@ -35,11 +35,11 @@ extension Dictionary {
     return mapped
   }
   
-  func has(key: Key) -> Bool {
+  public func has(key: Key) -> Bool {
     return indexForKey(key) != nil
   }
   
-  mutating func shift() -> (Key, Value?)? {
+  public mutating func shift() -> (Key, Value?)? {
     if let key = keys.first {
       return (key, removeValueForKey(key))
     }

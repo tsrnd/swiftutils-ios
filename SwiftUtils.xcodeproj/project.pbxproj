@@ -30,6 +30,9 @@
 		EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5F74431BC6CF5700727AFE /* CGGeometry.swift */; settings = {ASSET_TAGS = (); }; };
 		EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F615E1BC7837F00201EBF /* Regex.swift */; settings = {ASSET_TAGS = (); }; };
 		ECD6E3581BC770BA00AC951F /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6E3571BC770BA00AC951F /* Range.swift */; settings = {ASSET_TAGS = (); }; };
+		F494A1291BD99EF300B9B603 /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A1281BD99EF300B9B603 /* NSFileManager.swift */; settings = {ASSET_TAGS = (); }; };
+		F494A12B1BD9A69500B9B603 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12A1BD9A69500B9B603 /* UIImage.swift */; settings = {ASSET_TAGS = (); }; };
+		F494A12E1BD9A6EF00B9B603 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		ECD6E3571BC770BA00AC951F /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD9E6DD1BC24428001F8738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F494A1281BD99EF300B9B603 /* NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager.swift; sourceTree = "<group>"; };
+		F494A12A1BD9A69500B9B603 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,17 +110,20 @@
 				EC15C1451BC580A3006FF24D /* GCD.swift */,
 				EC524A3D1BC517CC00DE1986 /* Int.swift */,
 				EC524A451BC5181C00DE1986 /* NSDate.swift */,
+				F494A1281BD99EF300B9B603 /* NSFileManager.swift */,
 				EC15C13F1BC57DC0006FF24D /* NSURL.swift */,
+				ECD6E3571BC770BA00AC951F /* Range.swift */,
+				EC8F615E1BC7837F00201EBF /* Regex.swift */,
 				EC5ED4011BC65E51004763CE /* SequenceType.swift */,
 				EC524A431BC517EA00DE1986 /* String.swift */,
+				F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */,
 				EC15C13D1BC57D42006FF24D /* UIColor.swift */,
 				EC15C1471BC5815C006FF24D /* UIGeometry.swift */,
+				F494A12A1BD9A69500B9B603 /* UIImage.swift */,
 				EC15C1411BC57DE1006FF24D /* UILayoutPriority.swift */,
 				EC15C1391BC57D10006FF24D /* UITableView.swift */,
 				EC524A471BC5186B00DE1986 /* UIView.swift */,
 				EC15C13B1BC57D28006FF24D /* UIViewController.swift */,
-				ECD6E3571BC770BA00AC951F /* Range.swift */,
-				EC8F615E1BC7837F00201EBF /* Regex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC15C1401BC57DC0006FF24D /* NSURL.swift in Sources */,
+				F494A12E1BD9A6EF00B9B603 /* UICollectionView.swift in Sources */,
 				EC524A381BC5178500DE1986 /* EdgeInsetsLabel.swift in Sources */,
 				EC15C13E1BC57D42006FF24D /* UIColor.swift in Sources */,
 				EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */,
@@ -277,12 +287,14 @@
 				EC15C1461BC580A3006FF24D /* GCD.swift in Sources */,
 				EC524A421BC517E100DE1986 /* Double.swift in Sources */,
 				EC524A441BC517EA00DE1986 /* String.swift in Sources */,
+				F494A12B1BD9A69500B9B603 /* UIImage.swift in Sources */,
 				EC15C13A1BC57D10006FF24D /* UITableView.swift in Sources */,
 				ECD6E3581BC770BA00AC951F /* Range.swift in Sources */,
 				EC524A461BC5181C00DE1986 /* NSDate.swift in Sources */,
 				EC15C13C1BC57D28006FF24D /* UIViewController.swift in Sources */,
 				EC524A3A1BC5179500DE1986 /* Array.swift in Sources */,
 				EC5ED3F91BC61501004763CE /* Bool.swift in Sources */,
+				F494A1291BD99EF300B9B603 /* NSFileManager.swift in Sources */,
 				EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */,
 				EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */,
 				EC524A401BC517DA00DE1986 /* Float.swift in Sources */,

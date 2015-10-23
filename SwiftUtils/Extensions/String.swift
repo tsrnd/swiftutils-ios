@@ -34,14 +34,14 @@ extension String {
   }
   
   // Regex
-  func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
+  public func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
     if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
       return regex.matchesInString(self, options: [], range: NSMakeRange(0, length)).map { $0 }
     }
     return nil
   }
   
-  func contains(pattern: String, ignoreCase: Bool = false) -> Bool? {
+  public func contains(pattern: String, ignoreCase: Bool = false) -> Bool? {
     if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
       let range = NSMakeRange(0, self.characters.count)
       return regex.firstMatchInString(self, options: [], range: range) != nil
@@ -49,7 +49,7 @@ extension String {
     return nil
   }
   
-  func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
+  public func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
     if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
       let range = NSMakeRange(0, self.characters.count)
       return regex.stringByReplacingMatchesInString(self, options: [], range: range, withTemplate: replacementString)
@@ -57,7 +57,7 @@ extension String {
     return nil
   }
   
-  func insert(index: Int, _ string: String) -> String {
+  public func insert(index: Int, _ string: String) -> String {
     if index > length {
       return self + string
     } else if index < 0 {
@@ -66,21 +66,21 @@ extension String {
     return self[0..<index]! + string + self[index..<length]!
   }
   
-  func trimmedLeft (characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
+  public func trimmedLeft (characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
     if let range = rangeOfCharacterFromSet(set.invertedSet) {
       return self[range.startIndex..<endIndex]
     }
     return ""
   }
   
-  func trimmedRight (characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
+  public func trimmedRight (characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
     if let range = rangeOfCharacterFromSet(set.invertedSet, options: NSStringCompareOptions.BackwardsSearch) {
       return self[startIndex..<range.endIndex]
     }
     return ""
   }
   
-  func trimmed () -> String {
+  public func trimmed () -> String {
     return trimmedLeft().trimmedRight()
   }
   
@@ -122,6 +122,13 @@ extension String {
   
   public func appendPathComponent(str: String) -> String {
     return self + str + "/"
+  }
+  
+  public var host: String {
+    if let url = NSURL(string: self), host = url.host {
+      return host
+    }
+    return ""
   }
   
   public var localized: String {

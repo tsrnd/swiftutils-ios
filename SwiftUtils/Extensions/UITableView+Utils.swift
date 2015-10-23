@@ -1,31 +1,20 @@
 //
-//  UITableView.swift
-//  SwiftUtils
+//  UITableView+Utils.swift
+//  Zody
 //
-//  Created by DaoNV on 10/7/15.
-//  Copyright © 2015 Astraler Technology. All rights reserved.
+//  Created by DaoNV on 10/22/15.
+//  Copyright © 2015 Astraler Co., Ltd. All rights reserved.
 //
 
 import UIKit
 
 extension UITableView {
-  override public var delaysContentTouches: Bool {
-    didSet {
-      for view in subviews {
-        if let scroll = view as? UIScrollView {
-          scroll.delaysContentTouches = delaysContentTouches
-        }
-        break
-      }
-    }
-  }
-  
-  public func makeSeparatorInsetsZero() {
+  func makeSeparatorInsetsZero() {
     separatorInset = UIEdgeInsetsZero
     layoutMargins = UIEdgeInsetsZero
   }
   
-  public func registerCellNib(aClass: AnyClass) {
+  func registerCellNib(aClass: AnyClass) {
     if aClass.isSubclassOfClass(UITableViewCell.self) == false {
       return
     }
@@ -34,7 +23,7 @@ extension UITableView {
     registerNib(nib, forCellReuseIdentifier: name)
   }
   
-  public func registerCellClass(aClass: AnyClass) {
+  func registerCellClass(aClass: AnyClass) {
     if aClass.isSubclassOfClass(UITableViewCell.self) == false {
       return
     }
@@ -42,7 +31,7 @@ extension UITableView {
     registerClass(aClass, forCellReuseIdentifier: name)
   }
   
-  public func registerHeaderFooterNib(aClass: AnyClass) {
+  func registerHeaderFooterNib(aClass: AnyClass) {
     if aClass.isSubclassOfClass(UITableViewHeaderFooterView.self) == false {
       return
     }
@@ -51,7 +40,7 @@ extension UITableView {
     registerNib(nib, forHeaderFooterViewReuseIdentifier: name)
   }
   
-  public func registerHeaderFooterClass(aClass: AnyClass) {
+  func registerHeaderFooterClass(aClass: AnyClass) {
     if aClass.isSubclassOfClass(UITableViewHeaderFooterView.self) == false {
       return
     }
@@ -61,7 +50,7 @@ extension UITableView {
 }
 
 extension UITableViewCell {
-  public func makeSeparatorInsetsZero() {
+  func makeSeparatorInsetsZero() {
     separatorInset = UIEdgeInsetsZero
     layoutMargins = UIEdgeInsetsZero
   }
