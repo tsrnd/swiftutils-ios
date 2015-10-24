@@ -55,7 +55,7 @@ extension UITableView {
     return dequeueReusableCellWithIdentifier(String(aClass), forIndexPath: indexPath) as! T
   }
   
-  public func dequeueHeaderFooter<T: UITableViewCell>(aClass: T.Type) -> T {
+  public func dequeueHeaderFooter<T: UITableViewHeaderFooterView>(aClass: T.Type) -> T {
     return dequeueReusableHeaderFooterViewWithIdentifier(String(aClass)) as! T
   }
 }
