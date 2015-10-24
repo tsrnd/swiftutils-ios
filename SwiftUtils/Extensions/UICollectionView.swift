@@ -60,4 +60,16 @@ extension UICollectionView {
     let name = String(aClass)
     registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: name)
   }
+  
+  public func dequeueCell<T: UICollectionViewCell>(aClass: T, forIndexPath indexPath: NSIndexPath) -> T {
+    return dequeueReusableCellWithReuseIdentifier(String(aClass), forIndexPath: indexPath) as! T
+  }
+  
+  public func dequeueHeader<T: UICollectionReusableView>(aClass: T, forIndexPath indexPath: NSIndexPath) -> T {
+    return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as! T
+  }
+  
+  public func dequeueFooter<T: UICollectionReusableView>(aClass: T, forIndexPath indexPath: NSIndexPath) -> T {
+    return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as! T
+  }
 }
