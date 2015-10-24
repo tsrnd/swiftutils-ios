@@ -47,15 +47,15 @@ extension UITableView {
     registerClass(aClass, forHeaderFooterViewReuseIdentifier: name)
   }
   
-  public func dequeueCell<T>(aClass: T) -> T {
+  public func dequeueCell<T: UITableViewCell>(aClass: T.Type) -> T {
     return dequeueReusableCellWithIdentifier(String(aClass)) as! T
   }
   
-  public func dequeueCell<T>(aClass: T, forIndexPath indexPath: NSIndexPath) -> T {
+  public func dequeueCell<T: UITableViewCell>(aClass: T.Type, forIndexPath indexPath: NSIndexPath) -> T {
     return dequeueReusableCellWithIdentifier(String(aClass), forIndexPath: indexPath) as! T
   }
   
-  public func dequeueHeaderFooter<T>(aClass: T) -> T {
+  public func dequeueHeaderFooter<T: UITableViewCell>(aClass: T.Type) -> T {
     return dequeueReusableHeaderFooterViewWithIdentifier(String(aClass)) as! T
   }
 }
