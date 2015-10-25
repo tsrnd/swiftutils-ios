@@ -20,4 +20,18 @@ extension UIColor {
   public convenience init(w: CGFloat, a: CGFloat = 1) {
     self.init(white: w, alpha: a)
   }
+  
+  public func image(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
+    let ctx = UIGraphicsGetCurrentContext()
+    setFill()
+    CGContextFillPath(ctx)
+    let img = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return img
+  }
+}
+
+public func ==(lhs: UIColor, rhs: UIColor) -> Bool {
+  return lhs.isEqual(rhs)
 }
