@@ -32,3 +32,13 @@ extension Array {
     return mapped
   }
 }
+
+extension Array where Element: Equatable {
+  public mutating func remove(t: Element) -> Bool {
+    if let i = indexOf(t) {
+      removeAtIndex(i)
+      return true
+    }
+    return false
+  }
+}

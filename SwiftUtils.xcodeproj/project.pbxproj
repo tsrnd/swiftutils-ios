@@ -114,6 +114,7 @@
 				EC524A451BC5181C00DE1986 /* NSDate.swift */,
 				F494A1281BD99EF300B9B603 /* NSFileManager.swift */,
 				EC15C13F1BC57DC0006FF24D /* NSURL.swift */,
+				F4053D011BD9EA85003FABA7 /* Number.swift */,
 				ECD6E3571BC770BA00AC951F /* Range.swift */,
 				EC8F615E1BC7837F00201EBF /* Regex.swift */,
 				EC5ED4011BC65E51004763CE /* SequenceType.swift */,
@@ -126,7 +127,6 @@
 				EC15C1391BC57D10006FF24D /* UITableView.swift */,
 				EC524A471BC5186B00DE1986 /* UIView.swift */,
 				EC15C13B1BC57D28006FF24D /* UIViewController.swift */,
-				F4053D011BD9EA85003FABA7 /* Number.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
