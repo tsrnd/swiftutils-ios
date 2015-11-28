@@ -12,12 +12,6 @@ extension SequenceType {
   
   typealias Element = Self.Generator.Element
   
-  public func enumerate(block: (Element) -> Void) {
-    for (_, e) in enumerate() {
-      block(e)
-    }
-  }
-  
   public func contains<T: Equatable> (item: T) -> Bool {
     var generator =  self.generate()
     while let next = generator.next() {

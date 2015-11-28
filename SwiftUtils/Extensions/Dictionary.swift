@@ -19,10 +19,10 @@ extension Dictionary {
   
   public mutating func updateValues(dic: [Key : Value]?) {
     if let dic = dic {
-      dic.enumerate({ (e) -> Void in
-        self[e.0] = e.1
-      })
-    }    
+      for (key, value) in dic {
+        self[key] = value
+      }
+    }
   }
   
   public func map<U, V>(trans: Element -> (U, V)?) -> [U : V] {

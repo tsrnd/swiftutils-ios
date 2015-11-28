@@ -267,15 +267,11 @@ extension HTTPStatus: CustomStringConvertible {
 }
 
 extension NSError {
-  public convenience init(status: HTTPStatus, msg: String) {
+  public convenience init(status: HTTPStatus, msg: String! = nil) {
     let info = NSBundle.mainBundle().infoDictionary!
     let domain = info[kCFBundleIdentifierKey as String] as! String
-    let userInfo: [String : String] = [NSLocalizedDescriptionKey : msg]
+    let userInfo: [String : String] = [NSLocalizedDescriptionKey : msg ?? status.description]
     self.init(domain: domain, code: status.code, userInfo: userInfo)
-  }
-  
-  public var msg: String {
-    return ""
   }
 }
 

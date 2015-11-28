@@ -57,7 +57,7 @@ extension UIView {
     }
     var parent = superview
     while parent != nil {
-      for (_, c) in parent!.constraints.enumerate() {
+      for c in parent!.constraints {
         let first = c.firstItem as? UIView
         let second = c.secondItem as? UIView
         if first == self || second == self {

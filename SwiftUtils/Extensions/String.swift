@@ -121,11 +121,31 @@ extension String {
   }
   
   public func appendPathComponent(str: String) -> String {
-    return self + str + "/"
+    let s = (self as NSString).stringByAppendingPathComponent(str)
+    if s.hasSuffix("/") {
+      return s
+    }
+    return s + "/"
+  }
+  
+  public var pathComponents: [String] {
+    return (self as NSString).pathComponents
+  }
+  
+  public var lastPathComponent: String {
+    return (self as NSString).lastPathComponent
+  }
+  
+  public var pathExtension: String {
+    return (self as NSString).pathExtension
+  }
+  
+  public var url: NSURL? {
+    return NSURL(string: self)!
   }
   
   public var host: String {
-    if let url = NSURL(string: self), host = url.host {
+    if let url = url, host = url.host {
       return host
     }
     return ""
