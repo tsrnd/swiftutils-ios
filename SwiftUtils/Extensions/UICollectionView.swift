@@ -9,35 +9,35 @@
 import UIKit
 
 extension UICollectionView {
-  public func registerCellNib(aClass: AnyClass) {
+  public func registerCellNib<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
     registerNib(nib, forCellWithReuseIdentifier: name)
   }
   
-  public func registerCellClass(aClass: AnyClass) {
+  public func registerCellClass<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     registerClass(aClass, forCellWithReuseIdentifier: name)
   }
   
-  public func registerHeaderNib(aClass: AnyClass) {
+  public func registerHeaderNib<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
     registerNib(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: name)
   }
   
-  public func registerHeaderClass(aClass: AnyClass) {
+  public func registerHeaderClass<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: name)
   }
   
-  public func registerFooterNib(aClass: AnyClass) {
+  public func registerFooterNib<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
     registerNib(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: name)
   }
   
-  public func registerFooterClass(aClass: AnyClass) {
+  public func registerFooterClass<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: name)
   }
