@@ -8,10 +8,6 @@
 
 import UIKit
 
-public enum MathError: ErrorType {
-  case DivisionByZero
-}
-
 // MARK: CGPoint
 extension CGPoint {
   public var isZero: Bool {
@@ -94,7 +90,7 @@ public func -(a: CGPoint, b: CGPoint) -> CGPoint {
 }
 
 public func -(a: CGPoint, s: CGSize) -> CGPoint {
-  return CGPoint(x: a.x - s.w, y: a.y - s.h)
+  return CGPoint(x: a.x - s.width, y: a.y - s.height)
 }
 
 public func -(a: CGPoint, v: CGVector) -> CGPoint {
@@ -115,19 +111,13 @@ public func *(a: CGPoint, k: CGFloat) -> CGPoint {
   return CGPoint(x: a.x * k, y: a.y * k)
 }
 
-public func /=(inout a: CGPoint, k: CGFloat) throws -> CGPoint {
-  guard k != 0 else {
-    throw MathError.DivisionByZero
-  }
+public func /=(inout a: CGPoint, k: CGFloat) -> CGPoint {
   a.x /= k
   a.y /= k
   return a
 }
 
-public func /(a: CGPoint, k: CGFloat) throws -> CGPoint {
-  guard k != 0 else {
-    throw MathError.DivisionByZero
-  }
+public func /(a: CGPoint, k: CGFloat) -> CGPoint {
   return CGPoint(x: a.x / k, y: a.y / k)
 }
 
@@ -157,28 +147,28 @@ extension CGSize {
 }
 
 public func +=(inout s: CGSize, t: CGSize) -> CGSize {
-  s.w += t.w
-  s.h += t.h
+  s.width += t.width
+  s.height += t.height
   return s
 }
 
 public func +(s: CGSize, t: CGSize) -> CGSize {
-  return CGSize(width: s.w + t.w, height: s.h + t.h)
+  return CGSize(width: s.width + t.width, height: s.height + t.height)
 }
 
 public func -=(inout s: CGSize, t: CGSize) -> CGSize {
-  s.w -= t.w
-  s.h -= t.h
+  s.width -= t.width
+  s.height -= t.height
   return s
 }
 
 public func -(s: CGSize, t: CGSize) -> CGSize {
-  return CGSize(width: s.w - t.w, height: s.h - t.h)
+  return CGSize(width: s.width - t.width, height: s.height - t.height)
 }
 
 public func *=(inout s: CGSize, k: CGFloat) -> CGSize {
-  s.w *= k
-  s.h *= k
+  s.width *= k
+  s.height *= k
   return s
 }
 
@@ -186,19 +176,13 @@ public func *(size: CGSize, k: CGFloat) -> CGSize {
   return CGSize(width: size.width * k, height: size.height * k)
 }
 
-public func /=(inout size: CGSize, k: CGFloat) throws -> CGSize {
-  guard k != 0 else {
-    throw MathError.DivisionByZero
-  }
+public func /=(inout size: CGSize, k: CGFloat) -> CGSize {
   size.width /= k
   size.height /= k
   return size
 }
 
-public func /(size: CGSize, k: CGFloat) throws -> CGSize {
-  guard k != 0 else {
-    throw MathError.DivisionByZero
-  }
+public func /(size: CGSize, k: CGFloat) -> CGSize {
   return CGSize(width: size.width / k, height: size.height / k)
 }
 
@@ -261,17 +245,11 @@ public func *(u: CGVector, k: CGFloat) -> CGVector {
   return CGVector(dx: u.dx * k, dy: u.dy * k)
 }
 
-public func /(u: CGVector, k: CGFloat) throws -> CGVector {
-  guard k != 0 else {
-    throw MathError.DivisionByZero
-  }
+public func /(u: CGVector, k: CGFloat) -> CGVector {
   return CGVector(dx: u.dx / k, dy: u.dy / k)
 }
 
-public func /=(inout u: CGVector, k: CGFloat) throws -> CGVector {
-  guard k != 0 else {
-    throw MathError.DivisionByZero
-  }
+public func /=(inout u: CGVector, k: CGFloat) -> CGVector {
   u.dx /= k
   u.dy /= k
   return u

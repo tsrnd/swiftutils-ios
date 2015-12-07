@@ -203,7 +203,7 @@
 		ECD9E6CF1BC24428001F8738 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Astraler Technology";
 				TargetAttributes = {
