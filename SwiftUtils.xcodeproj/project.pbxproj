@@ -33,6 +33,7 @@
 		F494A1291BD99EF300B9B603 /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A1281BD99EF300B9B603 /* NSFileManager.swift */; };
 		F494A12B1BD9A69500B9B603 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12A1BD9A69500B9B603 /* UIImage.swift */; };
 		F494A12E1BD9A6EF00B9B603 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */; };
+		F4FAB1ED1C15CBB7008C80D3 /* NSLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		F494A1281BD99EF300B9B603 /* NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager.swift; sourceTree = "<group>"; };
 		F494A12A1BD9A69500B9B603 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				EC15C1391BC57D10006FF24D /* UITableView.swift */,
 				EC524A471BC5186B00DE1986 /* UIView.swift */,
 				EC15C13B1BC57D28006FF24D /* UIViewController.swift */,
+				F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */,
 				EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */,
 				EC524A481BC5186B00DE1986 /* UIView.swift in Sources */,
+				F4FAB1ED1C15CBB7008C80D3 /* NSLock.swift in Sources */,
 				EC15C1461BC580A3006FF24D /* GCD.swift in Sources */,
 				EC524A421BC517E100DE1986 /* Double.swift in Sources */,
 				EC524A441BC517EA00DE1986 /* String.swift in Sources */,
