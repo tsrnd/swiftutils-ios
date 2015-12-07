@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name   = 'SwiftUtils'
-  s.version  = '1.0.17'
+  s.version  = '1.0.18'
   s.license  = 'MIT'
   s.summary  = 'SwiftUtils'
   s.homepage = 'https://github.com/zendobk/SwiftUtils'

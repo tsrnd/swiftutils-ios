@@ -31,13 +31,13 @@ extension UICollectionView {
     registerClass(aClass, forCellWithReuseIdentifier: name)
   }
   
-  public func registerNib<T: UICollectionReusableView>(aClass: T.Type, type: SectionType = .Header) {
+  public func registerNib<T: UICollectionReusableView>(aClass: T.Type, type: SectionType) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
     registerNib(nib, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
   }
   
-  public func registerClass<T: UICollectionReusableView>(aClass: T.Type, type: SectionType = .Header) {
+  public func registerClass<T: UICollectionReusableView>(aClass: T.Type, type: SectionType) {
     let name = String(aClass)
     registerClass(aClass, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
   }
@@ -46,7 +46,7 @@ extension UICollectionView {
     return dequeueReusableCellWithReuseIdentifier(String(aClass), forIndexPath: indexPath) as! T
   }
   
-  public func dequeue<T: UICollectionReusableView>(aClass: T.Type, type: SectionType = .Header, forIndexPath indexPath: NSIndexPath) -> T {
+  public func dequeue<T: UICollectionReusableView>(aClass: T.Type, type: SectionType, forIndexPath indexPath: NSIndexPath) -> T {
     return dequeueReusableSupplementaryViewOfKind(type.kind, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as! T
   }
 }
