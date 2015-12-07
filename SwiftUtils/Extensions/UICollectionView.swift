@@ -9,48 +9,44 @@
 import UIKit
 
 extension UICollectionView {
-  public func registerCellNib<T: UICollectionViewCell>(aClass: T.Type) {
+  public enum SectionType {
+    case Header
+    case Footer
+    var kind: String {
+      switch self {
+      case .Header: return UICollectionElementKindSectionHeader
+      case .Footer: return UICollectionElementKindSectionFooter
+      }
+    }
+  }
+  
+  public func registerNib<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
     registerNib(nib, forCellWithReuseIdentifier: name)
   }
   
-  public func registerCellClass<T: UICollectionViewCell>(aClass: T.Type) {
+  public func registerClass<T: UICollectionViewCell>(aClass: T.Type) {
     let name = String(aClass)
     registerClass(aClass, forCellWithReuseIdentifier: name)
   }
   
-  public func registerHeaderNib<T: UICollectionViewCell>(aClass: T.Type) {
+  public func registerNib<T: UICollectionReusableView>(aClass: T.Type, type: SectionType = .Header) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
-    registerNib(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: name)
+    registerNib(nib, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
   }
   
-  public func registerHeaderClass<T: UICollectionViewCell>(aClass: T.Type) {
+  public func registerClass<T: UICollectionReusableView>(aClass: T.Type, type: SectionType = .Header) {
     let name = String(aClass)
-    registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: name)
+    registerClass(aClass, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
   }
   
-  public func registerFooterNib<T: UICollectionViewCell>(aClass: T.Type) {
-    let name = String(aClass)
-    let nib = UINib(nibName: name, bundle: nil)
-    registerNib(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: name)
-  }
-  
-  public func registerFooterClass<T: UICollectionViewCell>(aClass: T.Type) {
-    let name = String(aClass)
-    registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: name)
-  }
-  
-  public func dequeueCell<T: UICollectionViewCell>(aClass: T.Type, forIndexPath indexPath: NSIndexPath) -> T {
+  public func dequeue<T: UICollectionViewCell>(aClass: T.Type, forIndexPath indexPath: NSIndexPath) -> T {
     return dequeueReusableCellWithReuseIdentifier(String(aClass), forIndexPath: indexPath) as! T
   }
   
-  public func dequeueHeader<T: UICollectionReusableView>(aClass: T.Type, forIndexPath indexPath: NSIndexPath) -> T {
-    return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as! T
-  }
-  
-  public func dequeueFooter<T: UICollectionReusableView>(aClass: T.Type, forIndexPath indexPath: NSIndexPath) -> T {
-    return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as! T
+  public func dequeue<T: UICollectionReusableView>(aClass: T.Type, type: SectionType = .Header, forIndexPath indexPath: NSIndexPath) -> T {
+    return dequeueReusableSupplementaryViewOfKind(type.kind, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as! T
   }
 }
