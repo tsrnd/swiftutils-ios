@@ -83,8 +83,9 @@ extension String {
 extension NSDate {
   public static var zero: NSDate {
     let comps = NSDateComponents(year: 0,month: 1, day: 1)
+    comps.timeZone = NSTimeZone.utcTimeZone()
     let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-    calendar.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+    calendar.timeZone = NSTimeZone.utcTimeZone()
     return calendar.dateFromComponents(comps)!
   }
   
