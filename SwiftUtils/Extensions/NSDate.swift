@@ -73,10 +73,8 @@ extension NSTimeInterval {
 }
 
 extension String {
-  public static func toDate(str: String, format: String, localized: Bool) -> NSDate? {
-    let fmt = NSDateFormatter.fromFormat(format)
-    fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.utcTimeZone()
-    return fmt.dateFromString(str)
+  public func toDate(format: String, localized: Bool) -> NSDate {
+    return NSDate(str: self, format: format, localized: localized)
   }
 }
 

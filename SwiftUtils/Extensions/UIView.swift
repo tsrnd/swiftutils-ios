@@ -12,6 +12,7 @@ public class IntrinsicContentView: UIView {
   public var intrinsicContentSizeEnabled = true
 }
 
+// MARK: Appearance
 extension UIView {
   public func clear() {
     backgroundColor = UIColor.clearColor()
@@ -20,12 +21,41 @@ extension UIView {
     }
   }
   
-  public func setBorderWithColor(color: UIColor, width: CGFloat = 0.5) {
+  public func border(color color: UIColor, width: CGFloat = 0.5) {
     layer.borderColor = color.CGColor
     layer.borderWidth = width
   }
   
-  public func setShadowWithColor(color: UIColor, offset: CGSize = CGSizeZero, opacity: Float = 1.0, radius: CGFloat = 3.0) {
+  public enum BorderPostition {
+    case Top
+    case Left
+    case Bottom
+    case Right
+  }
+  
+  public func border(pos: BorderPostition, color: UIColor = UIColor.blackColor(), width: CGFloat = 0.5, insets: UIEdgeInsets = UIEdgeInsetsZero) {
+    let rect: CGRect = {
+      switch pos {
+      case .Top:    return CGRectMake(0, 0, frame.width, width)
+      case .Left:   return CGRectMake(0, 0, width, frame.height)
+      case .Bottom: return CGRectMake(0, frame.height - width, frame.width, width)
+      case .Right:  return CGRectMake(frame.width - width, 0, width, frame.height)
+      }
+    }()
+    let border = UIView(frame: rect)
+    border.backgroundColor = color
+    border.autoresizingMask = {
+      switch pos {
+      case .Top:    return [.FlexibleWidth, .FlexibleBottomMargin]
+      case .Left:   return [.FlexibleHeight, .FlexibleRightMargin]
+      case .Bottom: return [.FlexibleWidth, .FlexibleTopMargin]
+      case .Right:  return [.FlexibleHeight, .FlexibleLeftMargin]
+      }
+    }()
+    addSubview(border)
+  }
+  
+  public func shadow(color color: UIColor, offset: CGSize = CGSizeZero, opacity: Float = 1.0, radius: CGFloat = 3.0) {
     layer.shadowColor = color.CGColor
     layer.shadowOffset = offset
     layer.shadowOpacity = opacity
@@ -33,13 +63,16 @@ extension UIView {
     layer.shouldRasterize = true
     layer.rasterizationScale = UIScreen.mainScreen().scale
   }
-  
+}
+
+// MARK: Layout
+extension UIView {
   public func removeSubviewsConstraints() {
     removeConstraints(constraints.filter({ (c: NSLayoutConstraint) -> Bool in
       let first = c.firstItem as? UIView
       let second = c.secondItem as? UIView
       if (first == self && second == self) || (first == self && second == nil) || (first == nil && second == self) {
-          return false
+        return false
       }
       return true
     }))
@@ -71,37 +104,5 @@ extension UIView {
     for (_, sub) in subviews.enumerate() {
       sub.removeAllConstraints()
     }
-  }
-  
-  public func addTopBorderWithColor(color: UIColor, lineWidth: CGFloat = 0.5, insets: UIEdgeInsets = UIEdgeInsetsZero) {
-    let rect = CGRectMake(0, 0, frame.size.width, lineWidth)
-    let border = UIView(frame: rect)
-    border.backgroundColor = color
-    border.autoresizingMask = ([.FlexibleWidth, .FlexibleBottomMargin])
-    addSubview(border)
-  }
-  
-  public func addBottomBorderWithColor(color: UIColor, lineWidth: CGFloat = 0.5, insets: UIEdgeInsets = UIEdgeInsetsZero) {
-    let rect = CGRectMake(0, frame.size.height - lineWidth, frame.size.width, lineWidth)
-    let border = UIView(frame: rect)
-    border.backgroundColor = color
-    border.autoresizingMask = ([.FlexibleWidth, .FlexibleTopMargin])
-    addSubview(border)
-  }
-  
-  public func addLeftBorderWithColor(color: UIColor, lineWidth: CGFloat = 0.5, insets: UIEdgeInsets = UIEdgeInsetsZero) {
-    let rect = CGRectMake(0, 0, lineWidth, frame.size.height)
-    let border = UIView(frame: rect)
-    border.backgroundColor = color
-    border.autoresizingMask = ([.FlexibleHeight, .FlexibleRightMargin])
-    addSubview(border)
-  }
-  
-  public func addRightBorderWithColor(color: UIColor, lineWidth: CGFloat = 0.5, insets: UIEdgeInsets = UIEdgeInsetsZero) {
-    let rect = CGRectMake(frame.size.width - lineWidth, 0, lineWidth, frame.size.height)
-    let border = UIView(frame: rect)
-    border.backgroundColor = color
-    border.autoresizingMask = ([.FlexibleHeight, .FlexibleLeftMargin])
-    addSubview(border)
   }
 }
