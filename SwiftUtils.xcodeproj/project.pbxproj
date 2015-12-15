@@ -32,6 +32,7 @@
 		F494A1291BD99EF300B9B603 /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A1281BD99EF300B9B603 /* NSFileManager.swift */; };
 		F494A12B1BD9A69500B9B603 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12A1BD9A69500B9B603 /* UIImage.swift */; };
 		F494A12E1BD9A6EF00B9B603 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */; };
+		F4BF386D1C1FC122003340BD /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF386C1C1FC122003340BD /* UIAlertController.swift */; };
 		F4FAB1ED1C15CBB7008C80D3 /* NSLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		F494A1281BD99EF300B9B603 /* NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager.swift; sourceTree = "<group>"; };
 		F494A12A1BD9A69500B9B603 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		F4BF386C1C1FC122003340BD /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 		EC524A361BC5178500DE1986 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F4BF386C1C1FC122003340BD /* UIAlertController.swift */,
 				EC524A391BC5179500DE1986 /* Array.swift */,
 				EC5ED3F81BC61501004763CE /* Bool.swift */,
 				EC5F74431BC6CF5700727AFE /* CGGeometry.swift */,
@@ -248,6 +251,7 @@
 				EC524A3A1BC5179500DE1986 /* Array.swift in Sources */,
 				EC5ED3F91BC61501004763CE /* Bool.swift in Sources */,
 				F494A1291BD99EF300B9B603 /* NSFileManager.swift in Sources */,
+				F4BF386D1C1FC122003340BD /* UIAlertController.swift in Sources */,
 				EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */,
 				EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */,
 				EC524A401BC517DA00DE1986 /* Float.swift in Sources */,
