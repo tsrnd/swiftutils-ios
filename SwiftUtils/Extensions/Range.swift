@@ -9,7 +9,7 @@
 import UIKit
 
 extension Range {
-  static func random (from: Int, to: Int) -> Range<Int> {
+  public static func random(from: Int, to: Int) -> Range<Int> {
     let lowerBound = Int.random(min: from, max: to)
     let upperBound = Int.random(min: lowerBound, max: to)
     return lowerBound...upperBound

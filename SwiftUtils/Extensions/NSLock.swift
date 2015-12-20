@@ -9,7 +9,7 @@
 import UIKit
 
 extension NSLock {
-  func sync(block: () -> Void) {
+  public func sync(block: () -> Void) {
     let locked = tryLock()
     block()
     if locked {

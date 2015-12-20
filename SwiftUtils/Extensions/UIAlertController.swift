@@ -30,11 +30,11 @@ class AlertController: UIAlertController {
     window = nil
   }
   
-  func present() {
+  public func present() {
     window.rootViewController?.presentViewController(self, animated: true, completion: nil)
   }
   
-  func dismiss(completion: (() -> Void)? = nil) {
+  public func dismiss(completion: (() -> Void)? = nil) {
     dismissViewControllerAnimated(true, completion: completion)
   }
 }
