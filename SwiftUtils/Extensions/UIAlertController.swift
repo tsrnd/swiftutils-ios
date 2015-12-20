@@ -15,7 +15,7 @@ let kAppName: String = {
   return display ?? name ?? "ALERT"
 }()
 
-class AlertController: UIAlertController {
+public class AlertController: UIAlertController {
   var window: UIWindow! = {
     let window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window.windowLevel = UIWindowLevelAlert + 1
@@ -24,7 +24,7 @@ class AlertController: UIAlertController {
     return window
   }()
   
-  override func viewDidDisappear(animated: Bool) {
+  override public func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
     window.hidden = true
     window = nil
