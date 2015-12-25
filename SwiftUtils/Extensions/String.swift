@@ -151,7 +151,11 @@ extension String {
     return ""
   }
   
-  public func localized(comment: String = "") -> String {
+  public var localized: String {
+    return NSLocalizedString(self, comment: "")
+  }
+  
+  public func localized(comment: String) -> String {
     return NSLocalizedString(self, comment: comment)
   }
   
