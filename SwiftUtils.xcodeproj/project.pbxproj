@@ -191,7 +191,7 @@
 		ECD9E6CF1BC24428001F8738 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Astraler Technology";
 				TargetAttributes = {
@@ -206,6 +206,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				vi,
+				Base,
 			);
 			mainGroup = ECD9E6CE1BC24428001F8738;
 			productRefGroup = ECD9E6D91BC24428001F8738 /* Products */;

@@ -16,11 +16,12 @@ let kAppName: String = {
 }()
 
 public class AlertController: UIAlertController {
-  var window: UIWindow! = {
+  lazy var window: UIWindow! = {
     let window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window.windowLevel = UIWindowLevelAlert + 1
     window.rootViewController = UIViewController()
     window.makeKeyAndVisible()
+    window.hidden = true
     return window
   }()
   
@@ -30,8 +31,13 @@ public class AlertController: UIAlertController {
     window = nil
   }
   
-  public func present() {
-    window.rootViewController?.presentViewController(self, animated: true, completion: nil)
+  public func present(from from: UIViewController? = nil) {
+    if let from = from {
+      from.presentViewController(self, animated: true, completion: nil)
+    } else {
+      window.hidden = false
+      window.rootViewController?.presentViewController(self, animated: true, completion: nil)
+    }
   }
   
   public func dismiss(completion: (() -> Void)? = nil) {
@@ -39,26 +45,26 @@ public class AlertController: UIAlertController {
   }
 }
 
-public func alert(title title: String? = kAppName, msg: String, handler:(() -> Void)? = nil) -> UIAlertController {
-  let alert = AlertController(title: title?.localized, message: msg.localized, preferredStyle: UIAlertControllerStyle.Alert)
-  let ok = UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Cancel) { (action) -> Void in
+public func alert(title title: String? = kAppName, msg: String, from vc: UIViewController? = nil, handler:(() -> Void)? = nil) -> UIAlertController {
+  let alert = AlertController(title: title?.localized(), message: msg.localized(), preferredStyle: UIAlertControllerStyle.Alert)
+  let ok = UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.Cancel) { (action) -> Void in
     if let handler = handler {
       handler()
     }
   }
   alert.addAction(ok)
-  alert.present()
+  alert.present(from: vc)
   return alert
 }
 
-public func alert(error: NSError, handler:(() -> Void)? = nil) -> UIAlertController {
-  let alert = AlertController(title: kAppName.localized, message: error.localizedDescription.localized, preferredStyle: UIAlertControllerStyle.Alert)
-  let ok = UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Cancel) { (action) -> Void in
+public func alert(error: NSError, from vc: UIViewController? = nil, handler:(() -> Void)? = nil) -> UIAlertController {
+  let alert = AlertController(title: kAppName.localized(), message: error.localizedDescription.localized(), preferredStyle: UIAlertControllerStyle.Alert)
+  let ok = UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.Cancel) { (action) -> Void in
     if let handler = handler {
       handler()
     }
   }
   alert.addAction(ok)
-  alert.present()
+  alert.present(from: vc)
   return alert
 }

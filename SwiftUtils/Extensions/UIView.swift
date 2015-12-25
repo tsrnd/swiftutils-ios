@@ -68,9 +68,9 @@ extension UIView {
 // MARK: Layout
 extension UIView {
   public func removeSubviewsConstraints() {
-    removeConstraints(constraints.filter({ (c: NSLayoutConstraint) -> Bool in
-      let first = c.firstItem as? UIView
-      let second = c.secondItem as? UIView
+    removeConstraints(constraints.filter({ (constraint: NSLayoutConstraint) -> Bool in
+      let first = constraint.firstItem as? UIView
+      let second = constraint.secondItem as? UIView
       if (first == self && second == self) || (first == self && second == nil) || (first == nil && second == self) {
         return false
       }
@@ -90,11 +90,11 @@ extension UIView {
     }
     var parent = superview
     while parent != nil {
-      for c in parent!.constraints {
-        let first = c.firstItem as? UIView
-        let second = c.secondItem as? UIView
+      for constraint in parent!.constraints {
+        let first = constraint.firstItem as? UIView
+        let second = constraint.secondItem as? UIView
         if first == self || second == self {
-          parent!.removeConstraint(c)
+          parent!.removeConstraint(constraint)
         }
       }
       parent = parent!.superview
