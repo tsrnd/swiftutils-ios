@@ -46,8 +46,8 @@ public class AlertController: UIAlertController {
 }
 
 public func alert(title title: String? = kAppName, msg: String, from vc: UIViewController? = nil, handler:(() -> Void)? = nil) -> UIAlertController {
-  let alert = AlertController(title: title?.localized(), message: msg.localized(), preferredStyle: UIAlertControllerStyle.Alert)
-  let ok = UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.Cancel) { (action) -> Void in
+  let alert = AlertController(title: title?.localized, message: msg.localized, preferredStyle: UIAlertControllerStyle.Alert)
+  let ok = UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Cancel) { (action) -> Void in
     if let handler = handler {
       handler()
     }
@@ -58,8 +58,8 @@ public func alert(title title: String? = kAppName, msg: String, from vc: UIViewC
 }
 
 public func alert(error: NSError, from vc: UIViewController? = nil, handler:(() -> Void)? = nil) -> UIAlertController {
-  let alert = AlertController(title: kAppName.localized(), message: error.localizedDescription.localized(), preferredStyle: UIAlertControllerStyle.Alert)
-  let ok = UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.Cancel) { (action) -> Void in
+  let alert = AlertController(title: kAppName.localized, message: error.localizedDescription.localized, preferredStyle: UIAlertControllerStyle.Alert)
+  let ok = UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Cancel) { (action) -> Void in
     if let handler = handler {
       handler()
     }
