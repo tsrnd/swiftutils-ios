@@ -39,11 +39,11 @@ extension Double {
     return ((rand / Double(RAND_MAX)) * diff) + min
   }
   
-  public func distance(precision: Int = -1) -> String { // precision < 0: Auto
+  public func distance(precision: Int = -1, m: String = "m", km: String = "km") -> String { // precision < 0: Auto
     var num = self
-    var unit = "m"
+    var unit = m
     if num > 1000.0 {
-      unit = "km"
+      unit = km
       num /= 1000.0
     }
     if precision == -1 {

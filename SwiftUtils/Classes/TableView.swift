@@ -1,5 +1,5 @@
 //
-//  FloatTableView.swift
+//  TableView.swift
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/5/15.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class FloatTableView: UITableView {
-  public var allowHeaderViewsToFloat: Bool = true
-  public var allowFooterViewsToFloat: Bool = true
+public class TableView: UITableView {
+  public var allowHeaderViewsToFloat: Bool = false
+  public var allowFooterViewsToFloat: Bool = false
   
   public func allowsHeaderViewsToFloat() -> Bool {
     return allowHeaderViewsToFloat

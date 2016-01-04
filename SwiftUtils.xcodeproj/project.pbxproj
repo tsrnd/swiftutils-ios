@@ -14,8 +14,8 @@
 		EC15C1421BC57DE1006FF24D /* UILayoutPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C1411BC57DE1006FF24D /* UILayoutPriority.swift */; };
 		EC15C1461BC580A3006FF24D /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C1451BC580A3006FF24D /* GCD.swift */; };
 		EC15C1481BC5815C006FF24D /* UIGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C1471BC5815C006FF24D /* UIGeometry.swift */; };
-		EC524A371BC5178500DE1986 /* FloatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A341BC5178500DE1986 /* FloatTableView.swift */; };
-		EC524A381BC5178500DE1986 /* EdgeInsetsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A351BC5178500DE1986 /* EdgeInsetsLabel.swift */; };
+		EC524A371BC5178500DE1986 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A341BC5178500DE1986 /* TableView.swift */; };
+		EC524A381BC5178500DE1986 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A351BC5178500DE1986 /* Label.swift */; };
 		EC524A3A1BC5179500DE1986 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A391BC5179500DE1986 /* Array.swift */; };
 		EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A3B1BC517AF00DE1986 /* Dictionary.swift */; };
 		EC524A3E1BC517CC00DE1986 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524A3D1BC517CC00DE1986 /* Int.swift */; };
@@ -29,9 +29,12 @@
 		EC5F74441BC6CF5700727AFE /* CGGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5F74431BC6CF5700727AFE /* CGGeometry.swift */; };
 		EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F615E1BC7837F00201EBF /* Regex.swift */; };
 		ECD6E3581BC770BA00AC951F /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6E3571BC770BA00AC951F /* Range.swift */; };
+		F473C4DA1C3399F6007CE3B0 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F473C4D91C3399F6007CE3B0 /* NSData.swift */; };
+		F473C4DC1C339A92007CE3B0 /* SwiftUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F473C4DB1C339A92007CE3B0 /* SwiftUtils.swift */; };
 		F494A1291BD99EF300B9B603 /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A1281BD99EF300B9B603 /* NSFileManager.swift */; };
 		F494A12B1BD9A69500B9B603 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12A1BD9A69500B9B603 /* UIImage.swift */; };
 		F494A12E1BD9A6EF00B9B603 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */; };
+		F4ACC0C51C352B4F00C5C11F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ACC0C41C352B4F00C5C11F /* ViewController.swift */; };
 		F4BF386D1C1FC122003340BD /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF386C1C1FC122003340BD /* UIAlertController.swift */; };
 		F4FAB1ED1C15CBB7008C80D3 /* NSLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */; };
 /* End PBXBuildFile section */
@@ -44,8 +47,8 @@
 		EC15C1411BC57DE1006FF24D /* UILayoutPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILayoutPriority.swift; sourceTree = "<group>"; };
 		EC15C1451BC580A3006FF24D /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		EC15C1471BC5815C006FF24D /* UIGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGeometry.swift; sourceTree = "<group>"; };
-		EC524A341BC5178500DE1986 /* FloatTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatTableView.swift; sourceTree = "<group>"; };
-		EC524A351BC5178500DE1986 /* EdgeInsetsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeInsetsLabel.swift; sourceTree = "<group>"; };
+		EC524A341BC5178500DE1986 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		EC524A351BC5178500DE1986 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		EC524A391BC5179500DE1986 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		EC524A3B1BC517AF00DE1986 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		EC524A3D1BC517CC00DE1986 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
@@ -61,9 +64,12 @@
 		ECD6E3571BC770BA00AC951F /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD9E6DD1BC24428001F8738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F473C4D91C3399F6007CE3B0 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
+		F473C4DB1C339A92007CE3B0 /* SwiftUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUtils.swift; sourceTree = "<group>"; };
 		F494A1281BD99EF300B9B603 /* NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager.swift; sourceTree = "<group>"; };
 		F494A12A1BD9A69500B9B603 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F494A12C1BD9A6EF00B9B603 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		F4ACC0C41C352B4F00C5C11F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4BF386C1C1FC122003340BD /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,8 +88,9 @@
 		EC524A331BC5178500DE1986 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				EC524A341BC5178500DE1986 /* FloatTableView.swift */,
-				EC524A351BC5178500DE1986 /* EdgeInsetsLabel.swift */,
+				EC524A341BC5178500DE1986 /* TableView.swift */,
+				EC524A351BC5178500DE1986 /* Label.swift */,
+				F4ACC0C41C352B4F00C5C11F /* ViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -116,6 +123,8 @@
 				EC524A471BC5186B00DE1986 /* UIView.swift */,
 				EC15C13B1BC57D28006FF24D /* UIViewController.swift */,
 				F4FAB1EC1C15CBB7008C80D3 /* NSLock.swift */,
+				F473C4D91C3399F6007CE3B0 /* NSData.swift */,
+				F473C4DB1C339A92007CE3B0 /* SwiftUtils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -234,9 +243,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4ACC0C51C352B4F00C5C11F /* ViewController.swift in Sources */,
 				EC15C1401BC57DC0006FF24D /* NSURL.swift in Sources */,
 				F494A12E1BD9A6EF00B9B603 /* UICollectionView.swift in Sources */,
-				EC524A381BC5178500DE1986 /* EdgeInsetsLabel.swift in Sources */,
+				EC524A381BC5178500DE1986 /* Label.swift in Sources */,
 				EC15C13E1BC57D42006FF24D /* UIColor.swift in Sources */,
 				EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */,
 				EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */,
@@ -245,6 +255,7 @@
 				EC15C1461BC580A3006FF24D /* GCD.swift in Sources */,
 				EC524A421BC517E100DE1986 /* Double.swift in Sources */,
 				EC524A441BC517EA00DE1986 /* String.swift in Sources */,
+				F473C4DC1C339A92007CE3B0 /* SwiftUtils.swift in Sources */,
 				F494A12B1BD9A69500B9B603 /* UIImage.swift in Sources */,
 				EC15C13A1BC57D10006FF24D /* UITableView.swift in Sources */,
 				ECD6E3581BC770BA00AC951F /* Range.swift in Sources */,
@@ -258,8 +269,9 @@
 				EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */,
 				EC524A401BC517DA00DE1986 /* Float.swift in Sources */,
 				EC524A3E1BC517CC00DE1986 /* Int.swift in Sources */,
-				EC524A371BC5178500DE1986 /* FloatTableView.swift in Sources */,
+				EC524A371BC5178500DE1986 /* TableView.swift in Sources */,
 				EC15C1421BC57DE1006FF24D /* UILayoutPriority.swift in Sources */,
+				F473C4DA1C3399F6007CE3B0 /* NSData.swift in Sources */,
 				EC15C1481BC5815C006FF24D /* UIGeometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

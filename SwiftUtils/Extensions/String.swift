@@ -14,23 +14,38 @@ extension String {
     self.init(name)
   }
   
-  public subscript (i: Int) -> Character? {
-    if i < 0 || i > self.length - 1 {
+  public subscript (index: Int) -> Character? {
+    let range = startIndex.advancedBy(index)
+    if range < startIndex || range > endIndex {
       return nil
     }
-    return self[self.startIndex.advancedBy(i)]
+    return self[range]
   }
   
-  subscript (range: Range<Int>) -> String? {
-    if range.startIndex < 0 || range.endIndex > self.length {
+  public subscript (index: Int) -> String? {
+    let range = startIndex.advancedBy(index)
+    if let char: Character = self[range] {
+      return String(char)
+    }
+    return nil
+  }
+  
+  public subscript (range: Range<Int>) -> String? {
+    let start = startIndex.advancedBy(range.startIndex)
+    let end = startIndex.advancedBy(range.endIndex)
+    if start < startIndex || end > endIndex {
       return nil
     }
-    let range = Range(start: startIndex.advancedBy(range.startIndex), end: startIndex.advancedBy(range.endIndex))
+    let range = Range(start: start, end: end)
     return self[range]
   }
   
   public var length: Int {
     return self.characters.count
+  }
+  
+  public var capitalized: String {
+    return capitalizedString
   }
   
   // Regex

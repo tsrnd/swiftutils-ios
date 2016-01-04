@@ -103,59 +103,53 @@ extension NSDate {
     return fmt.stringFromDate(self)
   }
   
-  public func timeAgo(info: [String : String]? = nil) -> String {
-    var titles: [String : String] = [
-      "year" : " year",
-      "month" : " month",
-      "week" : " week",
-      "day" : "d",
-      "hour" : "h",
-      "minute" : "m",
-      "yesterday" : "yesterday",
-      "now" : "now"
-    ]
-    titles.updateValues(info)
+  public func timeAgo() -> String {
     let units: NSCalendarUnit = [.Day, .WeekOfYear, .Month, .Year]
     let options = NSCalendarOptions()
     let now = NSDate()
     if timeIntervalSinceDate(now) > 0 {
       return ""
     }
-    // if `date` is before "now" (i.e. in the past) then the components will be positive
+
     let comps = NSCalendar.currentCalendar().components(units, fromDate: self, toDate: NSDate(), options: options)
     if comps.year > 0 {
-      let s = comps.year == 1 ? "" : "s"
-      return "\(comps.year)year\(s) ago"
+      let plural = comps.year == 1
+      let str = plural ? String(format: "%zd years".localized, comps.year) : String(format: "%zd year".localized, comps.year)
+      return String(format: "%@ ago".localized, str)
     }
     else if comps.month > 0 {
-      let s = comps.month == 1 ? "" : "s"
-      return "\(comps.month)month\(s) ago"
+      let plural = comps.month == 1
+      let str = plural ? String(format: "%zd months".localized, comps.month) : String(format: "%zd month".localized, comps.month)
+      return String(format: "%@ ago".localized, str)
     }
     else if (comps.weekOfYear > 0) {
-      let s = comps.weekOfYear == 1 ? "" : "s"
-      return "\(comps.weekOfYear)week\(s) ago"
+      let plural = comps.weekOfYear == 1
+      let str = plural ? String(format: "%zd weeks".localized, comps.weekOfYear) : String(format: "%zd week".localized, comps.weekOfYear)
+      return String(format: "%@ ago".localized, str)
     }
     else if (comps.day > 0) {
       if comps.day > 1 {
-        let s = comps.day == 1 ? "" : "s"
-        return "\(comps.day)d\(s) ago"
+        let str = String(format: "%zd days".localized, comps.day)
+        return String(format: "%@ ago".localized, str)
       }
       else {
-        return "yesterday"
+        return "yesterday".localized
       }
     }
     else {
       if comps.hour > 0 {
-        let s = comps.hour == 1 ? "" : "s"
-        return "\(comps.hour)h\(s) ago"
+        let plural = comps.hour == 1
+        let str = plural ? String(format: "%zd hours".localized, comps.hour) : String(format: "%zd hour".localized, comps.hour)
+        return String(format: "%@ ago".localized, str)
       }
       else {
         if comps.minute > 0 {
-          let s = comps.minute == 1 ? "" : "s"
-          return "\(comps.minute)m\(s) ago"
+          let plural = comps.minute == 1
+          let str = plural ? String(format: "%zd minutes".localized, comps.minute) : String(format: "%zd minute".localized, comps.minute)
+          return String(format: "%@ ago".localized, str)
         }
         else {
-          return "now"
+          return "now".localized
         }
       }
     }

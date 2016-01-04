@@ -1,5 +1,5 @@
 //
-//  PaddingLabel.swift
+//  Label.swift
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/5/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class EdgeInsetsLabel: UILabel {  
+public class Label: UILabel {
   public var edgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
   
   override public func textRectForBounds(bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {

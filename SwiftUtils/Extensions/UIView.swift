@@ -12,6 +12,12 @@ public class IntrinsicContentView: UIView {
   public var intrinsicContentSizeEnabled = true
 }
 
+extension UIView {
+  public static var nib: UINib {
+    return UINib(nibName: String(self), bundle: nil)
+  }
+}
+
 // MARK: Appearance
 extension UIView {
   public func clear() {
