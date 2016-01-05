@@ -104,7 +104,7 @@ extension NSDate {
   }
   
   public func timeAgo() -> String {
-    let units: NSCalendarUnit = [.Day, .WeekOfYear, .Month, .Year]
+    let units: NSCalendarUnit = [.Day, .WeekOfYear, .Month, .Year, .Hour, .Minute, .Second]
     let options = NSCalendarOptions()
     let now = NSDate()
     if timeIntervalSinceDate(now) > 0 {

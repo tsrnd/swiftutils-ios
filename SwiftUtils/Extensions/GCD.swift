@@ -3,7 +3,7 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/7/15.
-//  Copyright © 2015 Astraler Technology. All rights reserved.
+//  Copyright © 2015 Apple Inc. All rights reserved.
 //
 
 import Foundation
