@@ -9,27 +9,15 @@
 import UIKit
 
 public class AlertController: UIAlertController {
-  lazy var window: UIWindow! = {
-    let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    window.windowLevel = UIWindowLevelAlert + 1
-    window.rootViewController = UIViewController()
-    window.makeKeyAndVisible()
-    window.hidden = true
-    return window
-  }()
-  
-  override public func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-    window.hidden = true
-    window = nil
-  }
-  
   public func present(from from: UIViewController? = nil) {
     if let from = from {
-      from.presentViewController(self, animated: true, completion: nil)
-    } else {
-      window.hidden = false
-      window.rootViewController?.presentViewController(self, animated: true, completion: nil)
+      if from.presentedViewController == nil {
+        from.presentViewController(self, animated: true, completion: nil)
+      }
+    } else if let root = UIApplication.sharedApplication().delegate?.window??.rootViewController {
+      if root.presentedViewController == nil {
+        root.presentViewController(self, animated: true, completion: nil)
+      }
     }
   }
   
