@@ -12,11 +12,11 @@ public class DateFormat {
   /** yyyy-MM-dd HH:mm:ss */
   public static var DateTime24          = "yyyy-MM-dd HH:mm:ss"
   /** yyyy-MM-dd HH:mm:ss Z*/
-  public static var DateTime24Z        = "yyyy-MM-dd HH:mm:ss Z"
+  public static var DateTime24Z         = "yyyy-MM-dd HH:mm:ss Z"
   /** yyyy-MM-dd hh:mm:ss a */
   public static var DateTime12          = "yyyy-MM-dd hh:mm:ss a"
   /** yyyy-MM-dd hh:mm:ss a Z*/
-  public static var DateTime12Z        = "yyyy-MM-dd hh:mm:ss a Z"
+  public static var DateTime12Z         = "yyyy-MM-dd hh:mm:ss a Z"
   /** yyyy-MM-dd HH:mm */
   public static var DateTime24NoSec     = "yyyy-MM-dd HH:mm"
   /** yyyy-MM-dd hh:mm a */

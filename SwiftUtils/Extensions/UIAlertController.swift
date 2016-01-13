@@ -11,11 +11,11 @@ import UIKit
 public class AlertController: UIAlertController {
   public func present(from from: UIViewController? = nil) {
     if let from = from {
-      if from.presentedViewController == nil {
+      if from.isViewLoaded() && from.presentedViewController == nil {
         from.presentViewController(self, animated: true, completion: nil)
       }
     } else if let root = UIApplication.sharedApplication().delegate?.window??.rootViewController {
-      if root.presentedViewController == nil {
+      if root.isViewLoaded() && root.presentedViewController == nil {
         root.presentViewController(self, animated: true, completion: nil)
       }
     }
