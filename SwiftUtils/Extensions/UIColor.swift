@@ -9,16 +9,12 @@
 import UIKit
 
 extension UIColor {
-  public convenience init(r: Int, g: Int, b: Int, a: CGFloat = 1) {
-    let red   = max(0, min(CGFloat(r) / 255, 1))
-    let green = max(0, min(CGFloat(g) / 255, 1))
-    let blue  = max(0, min(CGFloat(b) / 255, 1))
-    let alpha = max(0, min(a, 1))
-    self.init(red: red, green: green, blue: blue, alpha: alpha)
-  }
-  
-  public convenience init(w: CGFloat, a: CGFloat = 1) {
-    self.init(white: w, alpha: a)
+  public class func RGB(red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor {
+    let red   = max(0.0, min(CGFloat(red) / 255.0, 1.0))
+    let green = max(0.0, min(CGFloat(green) / 255.0, 1.0))
+    let blue  = max(0.0, min(CGFloat(blue) / 255.0, 1.0))
+    let alpha = max(0.0, min(alpha, 1.0))
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
   }
   
   public func image(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {

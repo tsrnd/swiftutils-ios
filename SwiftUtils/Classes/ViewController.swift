@@ -33,19 +33,19 @@ public class ViewController: UIViewController {
   
   var viewWillAppearAnimated = true
   var viewDidAppearAnimated = false
-  var isViewAppear = false
+  public private(set) var isViewAppeared = false
   
   override init(nibName: String?, bundle: NSBundle?) {
     super.init(nibName: nibName, bundle: bundle)
-    _init()
+    setup()
   }
 
   public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    _init()
+    setup()
   }
   
-  func _init() {
+  public func setup() {
     automaticallyAdjustsScrollViewInsets = false
   }
   
@@ -59,12 +59,12 @@ public class ViewController: UIViewController {
   public override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
     viewDidAppearAnimated = animated
-    isViewAppear = true
+    isViewAppeared = true
   }
   
   public override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
-    isViewAppear = false
+    isViewAppeared = false
   }
   
   public override func prefersStatusBarHidden() -> Bool {
