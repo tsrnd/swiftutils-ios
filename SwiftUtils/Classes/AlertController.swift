@@ -74,7 +74,7 @@ public func Alert(
   ) -> AlertController
 {
   let alert = AlertController(
-    title: kAppName.localized,
+    title: NSBundle.mainBundle().name.localized,
     message: error.localizedDescription.localized,
     preferredStyle: .Alert
   )

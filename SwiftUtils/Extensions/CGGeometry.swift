@@ -269,14 +269,6 @@ extension CGRect {
     return origin.y
   }
   
-  public var w: CGFloat {
-    return size.width
-  }
-  
-  public var h: CGFloat {
-    return size.height
-  }
-  
   public var mid: CGPoint {
     return CGPoint(x: midX, y: midY)
   }

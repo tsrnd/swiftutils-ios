@@ -9,31 +9,8 @@
 import UIKit
 
 public class ViewController: UIViewController {
-  public var statusBarHidden = false {
-    didSet {
-      setNeedsStatusBarAppearanceUpdate()
-    }
-  }
-  
-  public var statusBarStyle = UIStatusBarStyle.Default {
-    didSet {
-      setNeedsStatusBarAppearanceUpdate()
-    }
-  }
-  
-  public var statusBarUpdateAnimation = UIStatusBarAnimation.None
-  
-  public var naviBarHidden = false {
-    didSet {
-      setNeedsStatusBarAppearanceUpdate()
-    }
-  }
-  
-  public var naviBarStyle = UIBarStyle.Default
-  
-  var viewWillAppearAnimated = true
-  var viewDidAppearAnimated = false
-  public private(set) var isViewAppeared = false
+  public private(set) var isViewDidAppear = false
+  public private(set) var isViewFirstAppear = false
   
   override init(nibName: String?, bundle: NSBundle?) {
     super.init(nibName: nibName, bundle: bundle)
@@ -49,37 +26,25 @@ public class ViewController: UIViewController {
     automaticallyAdjustsScrollViewInsets = false
   }
   
-  public override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    viewWillAppearAnimated = animated
-    setNeedsStatusBarAppearanceUpdate()
-    navigationController?.setNavigationBarHidden(naviBarHidden, animated: animated)
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+    isViewFirstAppear = true
   }
   
   public override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-    viewDidAppearAnimated = animated
-    isViewAppeared = true
+    isViewDidAppear = true
+    dispatch_async(dispatch_get_main_queue()) { [weak self] in
+      self?.isViewFirstAppear = false
+    }
   }
   
   public override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
-    isViewAppeared = false
-  }
-  
-  public override func prefersStatusBarHidden() -> Bool {
-    return statusBarHidden
-  }
-  
-  public override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return statusBarStyle
-  }
-  
-  public override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-    if viewWillAppearAnimated {
-      return statusBarUpdateAnimation
-    } else {
-      return .None
-    }
+    isViewDidAppear = false
   }
 }

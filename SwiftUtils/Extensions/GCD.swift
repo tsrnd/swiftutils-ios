@@ -8,22 +8,26 @@
 
 import Foundation
 
-public func dp_main(block: dispatch_block_t?) {
+public func dp_main(wait: Bool = true, block: dispatch_block_t?) {
   if let block = block {
-    if NSThread.isMainThread() {
-      block()
+    if wait {
+      if NSThread.isMainThread() {
+        block()
+      } else {
+        dispatch_sync(dispatch_get_main_queue(), block)
+      }
     } else {
-      dispatch_sync(dispatch_get_main_queue(), block)
+      dispatch_async(dispatch_get_main_queue(), block)
     }
   }
 }
 
-public func dp_background(block: dispatch_block_t?) {
+public func dp_background(wait: Bool = false, block: dispatch_block_t?) {
   if let block = block {
-    if NSThread.isMainThread() {
-      block()
+    if wait {
+      dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
     } else {
-      dispatch_sync(dispatch_get_main_queue(), block)
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
     }
   }
 }

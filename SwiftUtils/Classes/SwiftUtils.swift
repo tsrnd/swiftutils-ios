@@ -11,20 +11,30 @@ import UIKit
 public typealias JSObject = [String : AnyObject]
 public typealias JSArray = [JSObject]
 
-public let iPhone4 = (UIScreen.mainScreen().bounds.size.height == 480)
-public let iPhone5 = (UIScreen.mainScreen().bounds.size.height == 568)
-public let iPhone6 = (UIScreen.mainScreen().bounds.size.height == 667)
-public let iPhone6s = (UIScreen.mainScreen().bounds.size.height == 1104)
-
-public let kCFBundleDisplayName = "kCFBundleDisplayName"
-public let kCFBundleName = "CFBundleName"
-
-public var kAppName: String = {
-  let info = NSBundle.mainBundle().infoDictionary!
-  let display = info[kCFBundleDisplayName] as? String
-  let name = info[kCFBundleName] as! String
-  return display ?? name
-}()
-
-public class SwiftUtils {
+public enum DeviceType: Int {
+  case iPhone4
+  case iPhone5
+  case iPhone6
+  case iPhone6p
+  case iPad
+  
+  var size: CGSize {
+    switch self {
+    case .iPhone4:  return CGSize(width: 320, height: 480)
+    case .iPhone5:  return CGSize(width: 320, height: 568)
+    case .iPhone6:  return CGSize(width: 375, height: 667)
+    case .iPhone6p: return CGSize(width: 414, height: 736)
+    case .iPad:     return CGSize(width: 768, height: 1024)
+    }
+  }
 }
+
+public let kScreenSize = UIScreen.mainScreen().bounds.size
+
+public let iPhone = (UIDevice.currentDevice().userInterfaceIdiom == .Phone)
+public let iPad = (UIDevice.currentDevice().userInterfaceIdiom == .Pad)
+
+public let iPhone4    = (iPhone && DeviceType.iPhone4.size  == kScreenSize)
+public let iPhone5    = (iPhone && DeviceType.iPhone5.size  == kScreenSize)
+public let iPhone6    = (iPhone && DeviceType.iPhone6.size  == kScreenSize)
+public let iPhone6s   = (iPhone && DeviceType.iPhone6p.size == kScreenSize)
