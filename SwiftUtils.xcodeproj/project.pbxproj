@@ -32,6 +32,7 @@
 		EC8F615F1BC7837F00201EBF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F615E1BC7837F00201EBF /* Regex.swift */; };
 		ECA6D5D81C83E68E00A3D848 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA6D5D71C83E68E00A3D848 /* Tests.swift */; };
 		ECA6D5DA1C83E68E00A3D848 /* SwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */; };
+		ECA6D5E11C83E89B00A3D848 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA6D5E01C83E89B00A3D848 /* ArrayTests.swift */; };
 		ECD6E3581BC770BA00AC951F /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6E3571BC770BA00AC951F /* Range.swift */; };
 		ECE0A4DB1C81836C00DB4758 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0A4DA1C81836C00DB4758 /* NSBundle.swift */; };
 		F473C4DA1C3399F6007CE3B0 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F473C4D91C3399F6007CE3B0 /* NSData.swift */; };
@@ -79,6 +80,7 @@
 		ECA6D5D51C83E68E00A3D848 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA6D5D71C83E68E00A3D848 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		ECA6D5D91C83E68E00A3D848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECA6D5E01C83E89B00A3D848 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		ECD6E3571BC770BA00AC951F /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD9E6DD1BC24428001F8738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				ECA6D5D71C83E68E00A3D848 /* Tests.swift */,
 				ECA6D5D91C83E68E00A3D848 /* Info.plist */,
+				ECA6D5E01C83E89B00A3D848 /* ArrayTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA6D5D81C83E68E00A3D848 /* Tests.swift in Sources */,
+				ECA6D5E11C83E89B00A3D848 /* ArrayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +522,7 @@
 				ECA6D5DE1C83E68E00A3D848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ECD9E6D21BC24428001F8738 /* Build configuration list for PBXProject "SwiftUtils" */ = {
 			isa = XCConfigurationList;
