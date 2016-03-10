@@ -25,7 +25,7 @@ extension Dictionary {
     }
   }
   
-  public func map<U, V>(trans: Element -> (U, V)?) -> [U : V] {
+  public func map<U, V>(@noescape trans: Element -> (U, V)?) -> [U : V] {
     var mapped = [U : V]()
     forEach { (e) -> () in
       if let e = trans(e) {

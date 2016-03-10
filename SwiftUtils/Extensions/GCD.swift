@@ -40,7 +40,7 @@ public func dp_after(seconds: Double, block: dispatch_block_t?) {
   }
 }
 
-public func wait(block: () -> Bool) {
+public func wait(@noescape block: () -> Bool) {
   while !block() && NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture()) {}
 }
 

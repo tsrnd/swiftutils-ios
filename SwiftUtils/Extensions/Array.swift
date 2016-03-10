@@ -22,7 +22,7 @@ extension Array {
     return array
   }
   
-  public func map<T>(trans: Element -> T?) -> [T] {
+  public func map<T>(@noescape trans: Element -> T?) -> [T] {
     var mapped = [T]()
     forEach { (e) -> () in
       if let e = trans(e) {

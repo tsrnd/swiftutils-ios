@@ -9,6 +9,12 @@
 import UIKit
 
 extension Int {
+  public func loop(@noescape block: () -> Void) {
+    for _ in 0..<self {
+      block()
+    }
+  }
+    
   public var isEven: Bool {
     return (self % 2) == 0
   }
