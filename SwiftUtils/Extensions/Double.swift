@@ -12,38 +12,38 @@ extension Double {
   public var abs: Double {
     return Foundation.fabs(self)
   }
-  
+
   public var sqrt: Double {
     return Foundation.sqrt(self)
   }
-  
+
   public var floor: Double {
     return Foundation.floor(self)
   }
-  
+
   public var ceil: Double {
     return Foundation.ceil(self)
   }
-  
+
   public var round: Double {
     return Foundation.round(self)
   }
-  
+
   public func clamp(min: Double, _ max: Double) -> Double {
     return Swift.max(min, Swift.min(max, self))
   }
-  
+
   public static func random(min min: Double = 0, max: Double) -> Double {
-    let diff = max - min;
+    let diff = max - min
     let rand = Double(arc4random() % (UInt32(RAND_MAX) + 1))
     return ((rand / Double(RAND_MAX)) * diff) + min
   }
-  
-  public func distance(precision: Int = -1, m: String = "m", km: String = "km") -> String { // precision < 0: Auto
+
+  public func distance(precision: Int = -1, meter: String = "m", kilometer: String = "km") -> String { // precision < 0: Auto
     var num = self
-    var unit = m
+    var unit = meter
     if num > 1000.0 {
-      unit = km
+      unit = kilometer
       num /= 1000.0
     }
     if precision == -1 {

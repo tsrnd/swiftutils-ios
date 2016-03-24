@@ -15,18 +15,16 @@ public let kCFBundleShortVersionKey = "CFBundleShortVersionString"
 extension NSBundle {
   public var name: String {
     let info = infoDictionary!
-    let display = info[kCFBundleDisplayNameKey] as? String
-    let name = info[kCFBundleNameKey] as! String
-    return display ?? name
+    return info[kCFBundleDisplayNameKey] as? String ?? info[kCFBundleNameKey] as? String ?? ""
   }
-  
+
   public var version: String {
     let info = infoDictionary!
-    return info[kCFBundleVersionKey as String] as! String
+    return info[kCFBundleVersionKey as String] as? String ?? ""
   }
-  
+
   public var build: String {
     let info = infoDictionary!
-    return info[kCFBundleShortVersionKey] as! String
+    return info[kCFBundleShortVersionKey] as? String ?? ""
   }
 }

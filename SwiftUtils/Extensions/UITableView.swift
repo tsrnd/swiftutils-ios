@@ -19,40 +19,40 @@ extension UITableView {
       }
     }
   }
-  
+
   public func setSeparatorInsets(insets: UIEdgeInsets) {
     separatorInset = insets
     layoutMargins = insets
   }
-  
+
   public func registerNib<T: UITableViewCell>(aClass: T.Type) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
     registerNib(nib, forCellReuseIdentifier: name)
   }
-  
+
   public func registerClass<T: UITableViewCell>(aClass: T.Type) {
     let name = String(aClass)
     registerClass(aClass, forCellReuseIdentifier: name)
   }
-  
+
   public func registerNib<T: UITableViewHeaderFooterView>(aClass: T.Type) {
     let name = String(aClass)
     let nib = UINib(nibName: name, bundle: nil)
     registerNib(nib, forHeaderFooterViewReuseIdentifier: name)
   }
-  
+
   public func registerClass<T: UITableViewHeaderFooterView>(aClass: T.Type) {
     let name = String(aClass)
     registerClass(aClass, forHeaderFooterViewReuseIdentifier: name)
   }
-  
-  public func dequeue<T: UITableViewCell>(aClass: T.Type) -> T {
-    return dequeueReusableCellWithIdentifier(String(aClass)) as! T
+
+  public func dequeue<T: UITableViewCell>(aClass: T.Type) -> T! {
+    return dequeueReusableCellWithIdentifier(String(aClass)) as? T
   }
-  
-  public func dequeue<T: UITableViewHeaderFooterView>(aClass: T.Type) -> T {
-    return dequeueReusableHeaderFooterViewWithIdentifier(String(aClass)) as! T
+
+  public func dequeue<T: UITableViewHeaderFooterView>(aClass: T.Type) -> T! {
+    return dequeueReusableHeaderFooterViewWithIdentifier(String(aClass)) as? T
   }
 }
 

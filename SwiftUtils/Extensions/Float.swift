@@ -34,7 +34,7 @@ extension Float {
   }
   
   public static func random(min min: Float = 0, max: Float) -> Float {
-    let diff = max - min;
+    let diff = max - min
     let rand = Float(arc4random() % (UInt32(RAND_MAX) + 1))
     return ((rand / Float(RAND_MAX)) * diff) + min
   }

@@ -67,7 +67,7 @@ extension NSTimeInterval {
     duration %= 60
     let secs = duration
     let suffix = String(format: "%@%d:%@%d", mins > 9 ? "" : "0", mins, secs > 9 ? "" : "0", secs)
-    let prefix = hour > 0 ? String(format: "%@%d:", hour > 9 ? "" : "0" , hour) : ""
+    let prefix = hour > 0 ? String(format: "%@%d:", hour > 9 ? "" : "0", hour) : ""
     return String(format: "%@%@", prefix, suffix)
   }
 }
@@ -80,7 +80,7 @@ extension String {
 
 extension NSDate {
   public static var zero: NSDate {
-    let comps = NSDateComponents(year: 0,month: 1, day: 1)
+    let comps = NSDateComponents(year: 0, month: 1, day: 1)
     comps.timeZone = NSTimeZone.utcTimeZone()
     let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
     calendar.timeZone = NSTimeZone.utcTimeZone()
@@ -116,39 +116,32 @@ extension NSDate {
       let plural = comps.year == 1
       let str = plural ? String(format: "%zd years".localized, comps.year) : String(format: "%zd year".localized, comps.year)
       return String(format: "%@ ago".localized, str)
-    }
-    else if comps.month > 0 {
+    } else if comps.month > 0 {
       let plural = comps.month == 1
       let str = plural ? String(format: "%zd months".localized, comps.month) : String(format: "%zd month".localized, comps.month)
       return String(format: "%@ ago".localized, str)
-    }
-    else if (comps.weekOfYear > 0) {
+    } else if comps.weekOfYear > 0 {
       let plural = comps.weekOfYear == 1
       let str = plural ? String(format: "%zd weeks".localized, comps.weekOfYear) : String(format: "%zd week".localized, comps.weekOfYear)
       return String(format: "%@ ago".localized, str)
-    }
-    else if (comps.day > 0) {
+    } else if comps.day > 0 {
       if comps.day > 1 {
         let str = String(format: "%zd days".localized, comps.day)
         return String(format: "%@ ago".localized, str)
-      }
-      else {
+      } else {
         return "yesterday".localized
       }
-    }
-    else {
+    } else {
       if comps.hour > 0 {
         let plural = comps.hour == 1
         let str = plural ? String(format: "%zd hours".localized, comps.hour) : String(format: "%zd hour".localized, comps.hour)
         return String(format: "%@ ago".localized, str)
-      }
-      else {
+      } else {
         if comps.minute > 0 {
           let plural = comps.minute == 1
           let str = plural ? String(format: "%zd minutes".localized, comps.minute) : String(format: "%zd minute".localized, comps.minute)
           return String(format: "%@ ago".localized, str)
-        }
-        else {
+        } else {
           return "now".localized
         }
       }

@@ -27,8 +27,8 @@ extension Dictionary {
   
   public func map<U, V>(@noescape trans: Element -> (U, V)?) -> [U : V] {
     var mapped = [U : V]()
-    forEach { (e) -> () in
-      if let e = trans(e) {
+    forEach { (ele) -> () in
+      if let e = trans(ele) {
         mapped[e.0] = e.1
       }
     }

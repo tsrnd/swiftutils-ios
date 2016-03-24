@@ -8,33 +8,37 @@
 
 import UIKit
 
-public typealias JSObject = [String : AnyObject]
+public typealias JSObject = [String: AnyObject]
 public typealias JSArray = [JSObject]
 
 public enum DeviceType: Int {
-  case iPhone4
-  case iPhone5
-  case iPhone6
-  case iPhone6p
-  case iPad
-  
+  case Phone4
+  case Phone5
+  case Phone6
+  case Phone6p
+  case Pad
+
   var size: CGSize {
     switch self {
-    case .iPhone4:  return CGSize(width: 320, height: 480)
-    case .iPhone5:  return CGSize(width: 320, height: 568)
-    case .iPhone6:  return CGSize(width: 375, height: 667)
-    case .iPhone6p: return CGSize(width: 414, height: 736)
-    case .iPad:     return CGSize(width: 768, height: 1024)
+    case .Phone4: return CGSize(width: 320, height: 480)
+    case .Phone5: return CGSize(width: 320, height: 568)
+    case .Phone6: return CGSize(width: 375, height: 667)
+    case .Phone6p: return CGSize(width: 414, height: 736)
+    case .Pad: return CGSize(width: 768, height: 1024)
     }
   }
 }
 
 public let kScreenSize = UIScreen.mainScreen().bounds.size
 
-public let iPhone = (UIDevice.currentDevice().userInterfaceIdiom == .Phone)
-public let iPad = (UIDevice.currentDevice().userInterfaceIdiom == .Pad)
+public let isPhone = (UIDevice.currentDevice().userInterfaceIdiom == .Phone)
+public let isPad = (UIDevice.currentDevice().userInterfaceIdiom == .Pad)
 
-public let iPhone4    = (iPhone && DeviceType.iPhone4.size  == kScreenSize)
-public let iPhone5    = (iPhone && DeviceType.iPhone5.size  == kScreenSize)
-public let iPhone6    = (iPhone && DeviceType.iPhone6.size  == kScreenSize)
-public let iPhone6s   = (iPhone && DeviceType.iPhone6p.size == kScreenSize)
+public let isPhone4 = (isPhone && DeviceType.Phone4.size == kScreenSize)
+public let isPhone5 = (isPhone && DeviceType.Phone5.size == kScreenSize)
+public let isPhone6 = (isPhone && DeviceType.Phone6.size == kScreenSize)
+public let isPhone6p = (isPhone && DeviceType.Phone6p.size == kScreenSize)
+
+public func loadNib<T: UIView>(aClass: T.Type) -> T? {
+  return NSBundle.mainBundle().loadNibNamed(String(T), owner: nil, options: nil).first as? T
+}

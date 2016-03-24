@@ -15,17 +15,17 @@ extension Array {
       swap(&self[i], &self[j])
     }
   }
-  
+
   public var shuffled: [Element] {
     var array = self
     array.shuffle()
     return array
   }
-  
+
   public func map<T>(@noescape trans: Element -> T?) -> [T] {
     var mapped = [T]()
-    forEach { (e) -> () in
-      if let e = trans(e) {
+    forEach { (ele) -> () in
+      if let e = trans(ele) {
         mapped.append(e)
       }
     }
@@ -34,8 +34,8 @@ extension Array {
 }
 
 extension Array where Element: Equatable {
-  public mutating func remove(t: Element) -> Bool {
-    if let i = indexOf(t) {
+  public mutating func remove(ele: Element) -> Bool {
+    if let i = indexOf(ele) {
       removeAtIndex(i)
       return true
     }

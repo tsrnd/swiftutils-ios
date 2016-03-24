@@ -10,7 +10,7 @@ import Foundation
 
 extension NSRegularExpression {
   public static func regex(pattern: String, ignoreCase: Bool = false) -> NSRegularExpression? {
-    let options: NSRegularExpressionOptions = ignoreCase ? [.CaseInsensitive] : []
+    let options: NSRegularExpressionOptions = ignoreCase ? [.CaseInsensitive]: []
     var regex: NSRegularExpression?
     do {
       regex = try NSRegularExpression(pattern: pattern, options: options)

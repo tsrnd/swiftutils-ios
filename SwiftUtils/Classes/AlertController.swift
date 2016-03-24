@@ -15,16 +15,16 @@ public class AlertController: UIAlertController {
     case High
     case Require
   }
-  
+
   public var level = AlertLevel.Normal
-  
+
   public func addAction(title: String?, style: UIAlertActionStyle = UIAlertActionStyle.Default, handler: (() -> Void)? = nil) {
     let actionHandler: ((UIAlertAction) -> Void)? = handler != nil ? { (action: UIAlertAction) -> Void in
       handler?()
-    } : nil
+    }: nil
     addAction(UIAlertAction(title: title, style: style, handler: actionHandler))
   }
-  
+
   public func present(from from: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
     if let from = from where from.isViewLoaded() {
       if let vc = from.presentedViewController {
@@ -41,7 +41,7 @@ public class AlertController: UIAlertController {
       present(from: root, animated: animated, completion: completion)
     }
   }
-  
+
   public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
     dismissViewControllerAnimated(animated, completion: completion)
   }
@@ -70,9 +70,8 @@ public func <= (lhs: AlertController.AlertLevel, rhs: AlertController.AlertLevel
 public func Alert(
   error: NSError,
   level: AlertController.AlertLevel = .Normal,
-  handler:(() -> Void)? = nil
-  ) -> AlertController
-{
+  handler: (() -> Void)? = nil
+) -> AlertController {
   let alert = AlertController(
     title: NSBundle.mainBundle().name.localized,
     message: error.localizedDescription.localized,

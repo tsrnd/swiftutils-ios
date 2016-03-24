@@ -15,110 +15,110 @@ extension CGPoint {
   }
 }
 
-public prefix func -(a: CGPoint) -> CGPoint {
-  return CGPoint(x: -a.x, y: -a.y)
+public prefix func - (point: CGPoint) -> CGPoint {
+  return CGPoint(x: -point.x, y: -point.y)
 }
 
-public func ==(a: CGPoint, b: CGPoint) -> Bool {
-  return a.x == b.x && a.y == b.y
+public func == (lhs: CGPoint, rhs: CGPoint) -> Bool {
+  return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
-public func +=(inout a: CGPoint, b: CGPoint) -> CGPoint {
-  a.x += b.x
-  a.y += b.y
-  return a
+public func += (inout lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+  lhs.x += rhs.x
+  lhs.y += rhs.y
+  return lhs
 }
 
-public func +=(inout a: CGPoint, s: CGSize) -> CGPoint {
-  a.x += s.w
-  a.y += s.h
-  return a
+public func += (inout lhs: CGPoint, rhs: CGSize) -> CGPoint {
+  lhs.x += rhs.width
+  lhs.y += rhs.height
+  return lhs
 }
 
-public func +=(inout a: CGPoint, v: CGVector) -> CGPoint {
-  a.x += v.dx
-  a.y += v.dy
-  return a
+public func += (inout lhs: CGPoint, rhs: CGVector) -> CGPoint {
+  lhs.x += rhs.dx
+  lhs.y += rhs.dy
+  return lhs
 }
 
-public func +=(inout a: CGPoint, k: CGFloat) -> CGPoint {
-  a.x += k
-  a.y += k
-  return a
+public func += (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  lhs.x += rhs
+  lhs.y += rhs
+  return lhs
 }
 
-public func +(a: CGPoint, b: CGPoint) -> CGPoint {
-  return CGPoint(x: a.x + b.x, y: a.y + b.y)
+public func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+  return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
 
-public func +(a: CGPoint, s: CGSize) -> CGPoint {
-  return CGPoint(x: a.x + s.w, y: a.y + s.h)
+public func + (lhs: CGPoint, rhs: CGSize) -> CGPoint {
+  return CGPoint(x: lhs.x + rhs.width, y: lhs.y + rhs.height)
 }
 
-public func +(a: CGPoint, v: CGVector) -> CGPoint {
-  return CGPoint(x: a.x + v.dx, y: a.y + v.dy)
+public func + (lhs: CGPoint, rhs: CGVector) -> CGPoint {
+  return CGPoint(x: lhs.x + rhs.dx, y: lhs.y + rhs.dy)
 }
 
-public func +(a: CGPoint, k: CGFloat) -> CGPoint {
-  return CGPoint(x: a.x + k, y: a.y + k)
+public func + (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  return CGPoint(x: lhs.x + rhs, y: lhs.y + rhs)
 }
 
-public func -=(inout a: CGPoint, b: CGPoint) -> CGPoint {
-  a.x -= b.x
-  a.y -= b.y
-  return a
+public func -= (inout lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+  lhs.x -= rhs.x
+  lhs.y -= rhs.y
+  return lhs
 }
 
-public func -=(inout a: CGPoint, s: CGSize) -> CGPoint {
-  return CGPoint(x: a.x - s.w, y: a.y - s.h)
+public func -= (inout lhs: CGPoint, rhs: CGSize) -> CGPoint {
+  return CGPoint(x: lhs.x - rhs.width, y: lhs.y - rhs.height)
 }
 
-public func -=(inout a: CGPoint, k: CGVector) -> CGPoint {
-  a.x -= k.dx
-  a.y -= k.dy
-  return a
+public func -= (inout lhs: CGPoint, rhs: CGVector) -> CGPoint {
+  lhs.x -= rhs.dx
+  lhs.y -= rhs.dy
+  return lhs
 }
 
-public func -=(inout a: CGPoint, k: CGFloat) -> CGPoint {
-  a.x -= k
-  a.y -= k
-  return a
+public func -= (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  lhs.x -= rhs
+  lhs.y -= rhs
+  return lhs
 }
 
-public func -(a: CGPoint, b: CGPoint) -> CGPoint {
-  return CGPoint(x: a.x - b.x, y: a.y - b.y)
+public func - (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+  return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
 }
 
-public func -(a: CGPoint, s: CGSize) -> CGPoint {
-  return CGPoint(x: a.x - s.width, y: a.y - s.height)
+public func - (lhs: CGPoint, rhs: CGSize) -> CGPoint {
+  return CGPoint(x: lhs.x - rhs.width, y: lhs.y - rhs.height)
 }
 
-public func -(a: CGPoint, v: CGVector) -> CGPoint {
-  return CGPoint(x: a.x - v.dx, y: a.y - v.dy)
+public func - (lhs: CGPoint, rhs: CGVector) -> CGPoint {
+  return CGPoint(x: lhs.x - rhs.dx, y: lhs.y - rhs.dy)
 }
 
-public func -(a: CGPoint, k: CGFloat) -> CGPoint {
-  return CGPoint(x: a.x - k, y: a.y - k)
+public func - (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  return CGPoint(x: lhs.x - rhs, y: lhs.y - rhs)
 }
 
-public func *=(inout a: CGPoint, k: CGFloat) -> CGPoint {
-  a.x *= k
-  a.y *= k
-  return a
+public func *= (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  lhs.x *= rhs
+  lhs.y *= rhs
+  return lhs
 }
 
-public func *(a: CGPoint, k: CGFloat) -> CGPoint {
-  return CGPoint(x: a.x * k, y: a.y * k)
+public func * (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  return CGPoint(x: lhs.x * rhs, y: lhs.y * rhs)
 }
 
-public func /=(inout a: CGPoint, k: CGFloat) -> CGPoint {
-  a.x /= k
-  a.y /= k
-  return a
+public func /= (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  lhs.x /= rhs
+  lhs.y /= rhs
+  return lhs
 }
 
-public func /(a: CGPoint, k: CGFloat) -> CGPoint {
-  return CGPoint(x: a.x / k, y: a.y / k)
+public func / (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+  return CGPoint(x: lhs.x / rhs, y: lhs.y / rhs)
 }
 
 // MARK: CGSize
@@ -126,204 +126,156 @@ extension CGSize {
   init(size: CGFloat) {
     self.init(width: size, height: size)
   }
-  
-  public var w: CGFloat {
-    set {
-      width = newValue
-    }
-    get {
-      return width
-    }    
-  }
-  
-  public var h: CGFloat {
-    set {
-      height = newValue
-    }
-    get {
-      return height
-    }
-  }
-  
+
   public var isZero: Bool {
     return width <= 0 || height <= 0
   }
 }
 
-public func +=(inout s: CGSize, t: CGSize) -> CGSize {
-  s.width += t.width
-  s.height += t.height
-  return s
+public func += (inout lhs: CGSize, rhs: CGSize) -> CGSize {
+  lhs.width += rhs.width
+  lhs.height += rhs.height
+  return lhs
 }
 
-public func +(s: CGSize, t: CGSize) -> CGSize {
-  return CGSize(width: s.width + t.width, height: s.height + t.height)
+public func + (lhs: CGSize, rhs: CGSize) -> CGSize {
+  return CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
 }
 
-public func -=(inout s: CGSize, t: CGSize) -> CGSize {
-  s.width -= t.width
-  s.height -= t.height
-  return s
+public func -= (inout lhs: CGSize, rhs: CGSize) -> CGSize {
+  lhs.width -= rhs.width
+  lhs.height -= rhs.height
+  return lhs
 }
 
-public func -(s: CGSize, t: CGSize) -> CGSize {
-  return CGSize(width: s.width - t.width, height: s.height - t.height)
+public func - (lhs: CGSize, rhs: CGSize) -> CGSize {
+  return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
 }
 
-public func *=(inout s: CGSize, k: CGFloat) -> CGSize {
-  s.width *= k
-  s.height *= k
-  return s
+public func *= (inout lhs: CGSize, rhs: CGFloat) -> CGSize {
+  lhs.width *= rhs
+  lhs.height *= rhs
+  return lhs
 }
 
-public func *(size: CGSize, k: CGFloat) -> CGSize {
-  return CGSize(width: size.width * k, height: size.height * k)
+public func * (lhs: CGSize, rhs: CGFloat) -> CGSize {
+  return CGSize(width: lhs.width * rhs, height: lhs.height * rhs)
 }
 
-public func /=(inout size: CGSize, k: CGFloat) -> CGSize {
-  size.width /= k
-  size.height /= k
-  return size
+public func /= (inout lhs: CGSize, rhs: CGFloat) -> CGSize {
+  lhs.width /= rhs
+  lhs.height /= rhs
+  return lhs
 }
 
-public func /(size: CGSize, k: CGFloat) -> CGSize {
-  return CGSize(width: size.width / k, height: size.height / k)
+public func / (lhs: CGSize, rhs: CGFloat) -> CGSize {
+  return CGSize(width: lhs.width / rhs, height: lhs.height / rhs)
 }
 
 // MARK: CGVector
 extension CGVector {
-  public init(x: CGFloat, y: CGFloat) {
-    self.init(dx: x, dy: y)
-  }
-  
-  public var x: CGFloat {
-    set {
-      dx = newValue
-    }
-    get {
-      return dx
-    }
-  }
-  
-  public var y: CGFloat {
-    set {
-      dy = newValue
-    }
-    get {
-      return dy
-    }
-  }
-  
   public var isZero: Bool {
     return dx == 0 && dy == 0
   }
 }
 
-public prefix func -(u: CGVector) -> CGVector {
-  return CGVector(dx: -u.dx, dy: -u.dy)
+public prefix func - (lhs: CGVector) -> CGVector {
+  return CGVector(dx: -lhs.dx, dy: -lhs.dy)
 }
 
-public func ==(u: CGVector, v: CGVector) -> Bool {
-  return u.dx == v.dx && u.dy == v.dy
+public func == (lhs: CGVector, rhs: CGVector) -> Bool {
+  return lhs.dx == rhs.dx && lhs.dy == rhs.dy
 }
 
-public func +(u: CGVector, v: CGVector) -> CGVector {
-  return CGVector(dx: u.dx + v.dx, dy: u.dy + v.dy)
+public func + (lhs: CGVector, rhs: CGVector) -> CGVector {
+  return CGVector(dx: lhs.dx + rhs.dx, dy: lhs.dy + rhs.dy)
 }
 
-public func +=(inout u: CGVector, v: CGVector) -> CGVector {
-  u.dx += v.dx
-  u.dy += v.dy
-  return u
+public func += (inout lhs: CGVector, rhs: CGVector) -> CGVector {
+  lhs.dx += rhs.dx
+  lhs.dy += rhs.dy
+  return lhs
 }
 
-public func -(u: CGVector, v: CGVector) -> CGVector {
-  return CGVector(dx: u.dx - v.dx, dy: u.dy - v.dy)
+public func - (lhs: CGVector, rhs: CGVector) -> CGVector {
+  return CGVector(dx: lhs.dx - rhs.dx, dy: lhs.dy - rhs.dy)
 }
 
-public func *(u: CGVector, v: CGVector) -> CGFloat {
-  return u.dx * v.dy + u.dy * v.dx
+public func * (lhs: CGVector, rhs: CGVector) -> CGFloat {
+  return lhs.dx * rhs.dy + lhs.dy * rhs.dx
 }
 
-public func *(u: CGVector, k: CGFloat) -> CGVector {
-  return CGVector(dx: u.dx * k, dy: u.dy * k)
+public func * (lhs: CGVector, rhs: CGFloat) -> CGVector {
+  return CGVector(dx: lhs.dx * rhs, dy: lhs.dy * rhs)
 }
 
-public func /(u: CGVector, k: CGFloat) -> CGVector {
-  return CGVector(dx: u.dx / k, dy: u.dy / k)
+public func / (lhs: CGVector, rhs: CGFloat) -> CGVector {
+  return CGVector(dx: lhs.dx / rhs, dy: lhs.dy / rhs)
 }
 
-public func /=(inout u: CGVector, k: CGFloat) -> CGVector {
-  u.dx /= k
-  u.dy /= k
-  return u
+public func /= (inout lhs: CGVector, rhs: CGFloat) -> CGVector {
+  lhs.dx /= rhs
+  lhs.dy /= rhs
+  return lhs
 }
 
 // MARK: CGRect
 extension CGRect {
-  public var x: CGFloat {
-    return origin.x
-  }
-  
-  public var y: CGFloat {
-    return origin.y
-  }
-  
   public var mid: CGPoint {
     return CGPoint(x: midX, y: midY)
   }
-  
+
   public var topLeft: CGPoint {
     return CGPoint(x: minX, y: minY)
   }
-  
+
   public var topCenter: CGPoint {
     return CGPoint(x: midX, y: minY)
   }
-  
+
   public var topRight: CGPoint {
     return CGPoint(x: maxX, y: minY)
   }
-  
+
   public var bottomLeft: CGPoint {
     return CGPoint(x: minX, y: maxY)
   }
-  
+
   public var bottomCenter: CGPoint {
     return CGPoint(x: midX, y: maxY)
   }
-  
+
   public var bottomRight: CGPoint {
     return CGPoint(x: maxX, y: maxY)
   }
 }
 
-public func +(r: CGRect, p: CGPoint) -> CGRect {
-  let b = CGPoint(x: r.origin.x + p.x, y: r.origin.y + p.y)
-  return CGRect(origin: b, size: r.size)
+public func + (lhs: CGRect, rhs: CGPoint) -> CGRect {
+  let b = CGPoint(x: lhs.origin.x + rhs.x, y: lhs.origin.y + rhs.y)
+  return CGRect(origin: b, size: lhs.size)
 }
 
-public func +(r: CGRect, v: CGVector) -> CGRect {
-  let b = CGPoint(x: r.origin.x + v.dx, y: r.origin.y + v.dy)
-  return CGRect(origin: b, size: r.size)
+public func + (lhs: CGRect, rhs: CGVector) -> CGRect {
+  let b = CGPoint(x: lhs.origin.x + rhs.dx, y: lhs.origin.y + rhs.dy)
+  return CGRect(origin: b, size: lhs.size)
 }
 
-public func +(r: CGRect, s: CGSize) -> CGRect {
-  let s = CGSize(width: r.size.width + s.width, height: r.size.height + s.height)
-  return CGRect(origin: r.origin, size: s)
+public func + (lhs: CGRect, rhs: CGSize) -> CGRect {
+  let s = CGSize(width: lhs.size.width + rhs.width, height: lhs.size.height + rhs.height)
+  return CGRect(origin: lhs.origin, size: s)
 }
 
-public func -(r: CGRect, p: CGPoint) -> CGRect {
-  let b = CGPoint(x: r.origin.x - p.x, y: r.origin.y - p.y)
-  return CGRect(origin: b, size: r.size)
+public func - (lhs: CGRect, rhs: CGPoint) -> CGRect {
+  let b = CGPoint(x: lhs.origin.x - rhs.x, y: lhs.origin.y - rhs.y)
+  return CGRect(origin: b, size: lhs.size)
 }
 
-public func -(r: CGRect, v: CGVector) -> CGRect {
-  let b = CGPoint(x: r.origin.x - v.dx, y: r.origin.y - v.dy)
-  return CGRect(origin: b, size: r.size)
+public func - (lhs: CGRect, rhs: CGVector) -> CGRect {
+  let b = CGPoint(x: lhs.origin.x - rhs.dx, y: lhs.origin.y - rhs.dy)
+  return CGRect(origin: b, size: lhs.size)
 }
 
-public func -(r: CGRect, s: CGSize) -> CGRect {
-  let s = CGSize(width: r.size.width - s.width, height: r.size.height - s.height)
-  return CGRect(origin: r.origin, size: s)
+public func - (lhs: CGRect, rhs: CGSize) -> CGRect {
+  let s = CGSize(width: lhs.size.width - rhs.width, height: lhs.size.height - rhs.height)
+  return CGRect(origin: lhs.origin, size: s)
 }

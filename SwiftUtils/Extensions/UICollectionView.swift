@@ -42,11 +42,11 @@ extension UICollectionView {
     registerClass(aClass, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
   }
   
-  public func dequeue<T: UICollectionViewCell>(aClass: T.Type, forIndexPath indexPath: NSIndexPath) -> T {
-    return dequeueReusableCellWithReuseIdentifier(String(aClass), forIndexPath: indexPath) as! T
+  public func dequeue<T: UICollectionViewCell>(aClass: T.Type, forIndexPath indexPath: NSIndexPath) -> T! {
+    return dequeueReusableCellWithReuseIdentifier(String(aClass), forIndexPath: indexPath) as? T
   }
   
-  public func dequeue<T: UICollectionReusableView>(aClass: T.Type, type: SectionType, forIndexPath indexPath: NSIndexPath) -> T {
-    return dequeueReusableSupplementaryViewOfKind(type.kind, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as! T
+  public func dequeue<T: UICollectionReusableView>(aClass: T.Type, type: SectionType, forIndexPath indexPath: NSIndexPath) -> T! {
+    return dequeueReusableSupplementaryViewOfKind(type.kind, withReuseIdentifier: String(aClass), forIndexPath: indexPath) as? T
   }
 }

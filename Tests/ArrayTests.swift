@@ -12,7 +12,7 @@ import XCTest
 class ArrayTests: XCTestCase {
   let origin: [Int] = {
     var numbers = [Int]()
-    for i in 0...100000 {
+    for i in 0 ... 100000 {
       numbers.append(i)
     }
     return numbers
@@ -21,19 +21,19 @@ class ArrayTests: XCTestCase {
     super.setUp()
     // Put setup code here. This method is called before the invocation of each test method in the class.
   }
-  
+
   override func tearDown() {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     super.tearDown()
   }
-  
+
   func testShuffled() {
     var shuffled: [Int]!
     self.measureBlock { () -> Void in
       shuffled = self.origin.shuffled
     }
-    let test = { (a: Int, b: Int) -> Bool in
-      return a < b
+    let test = { (lhs: Int, rhs: Int) -> Bool in
+      return lhs < rhs
     }
     XCTAssertEqual(shuffled.sort(test), origin.sort(test), "sorted shuffled should equal to sorted origin")
   }
