@@ -18,7 +18,7 @@ public enum DeviceType: Int {
   case Phone6p
   case Pad
 
-  var size: CGSize {
+  public var size: CGSize {
     switch self {
     case .Phone4: return CGSize(width: 320, height: 480)
     case .Phone5: return CGSize(width: 320, height: 568)
@@ -39,6 +39,6 @@ public let isPhone5 = (isPhone && DeviceType.Phone5.size == kScreenSize)
 public let isPhone6 = (isPhone && DeviceType.Phone6.size == kScreenSize)
 public let isPhone6p = (isPhone && DeviceType.Phone6p.size == kScreenSize)
 
-public func loadNib<T: UIView>(aClass: T.Type) -> T? {
+public func loadNib<T: UIView>(aClass: T.Type) -> T! {
   return NSBundle.mainBundle().loadNibNamed(String(T), owner: nil, options: nil).first as? T
 }
