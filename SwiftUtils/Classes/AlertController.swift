@@ -80,3 +80,29 @@ public func Alert(
   alert.addAction("OK".localized, style: .Cancel, handler: handler)
   return alert
 }
+
+public func AlertWithOK(
+    title: String,
+    message: String,
+    level: AlertController.AlertLevel = .Normal,
+    handler:(() -> Void)? = nil
+    ) -> AlertController {
+    let alert = AlertController(title: title.localized, message: message.localized, preferredStyle: .Alert)
+    
+    alert.addAction("OK".localized, style: .Cancel, handler: handler)
+    return alert
+}
+
+public func AlertWithOkAndCancel(
+    title: String,
+    message: String,
+    level: AlertController.AlertLevel = .Normal,
+    handler:(() -> Void)? = nil
+    ) -> AlertController {
+    let alert = AlertController(title: title.localized, message: message.localized, preferredStyle: .Alert)
+    
+    alert.addAction("OK".localized, style: .Default, handler: handler)
+    alert.addAction("Cancel".localized, style: .Cancel, handler: nil)
+    
+    return alert
+}
