@@ -97,12 +97,13 @@ public func AlertWithOkAndCancel(
     title: String,
     message: String,
     level: AlertController.AlertLevel = .Normal,
-    handler:(() -> Void)? = nil
+    OkHandler:(() -> Void)? = nil,
+    CancelHandler:(() -> Void)? = nil
     ) -> AlertController {
     let alert = AlertController(title: title.localized, message: message.localized, preferredStyle: .Alert)
     
-    alert.addAction("OK".localized, style: .Default, handler: handler)
-    alert.addAction("Cancel".localized, style: .Cancel, handler: nil)
+    alert.addAction("OK".localized, style: .Default, handler: OkHandler)
+    alert.addAction("Cancel".localized, style: .Cancel, handler: CancelHandler)
     
     return alert
 }

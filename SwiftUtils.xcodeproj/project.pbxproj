@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D365F1331CB61BE00067C1C4 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D365F1311CB61BE00067C1C4 /* UILabel.swift */; };
-		D365F1341CB61BE00067C1C4 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D365F1321CB61BE00067C1C4 /* UIBarButtonItem.swift */; };
 		EC15C13A1BC57D10006FF24D /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C1391BC57D10006FF24D /* UITableView.swift */; };
 		EC15C13C1BC57D28006FF24D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C13B1BC57D28006FF24D /* UIViewController.swift */; };
 		EC15C13E1BC57D42006FF24D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC15C13D1BC57D42006FF24D /* UIColor.swift */; };
@@ -56,8 +54,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D365F1311CB61BE00067C1C4 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		D365F1321CB61BE00067C1C4 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		EC15C1391BC57D10006FF24D /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		EC15C13B1BC57D28006FF24D /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		EC15C13D1BC57D42006FF24D /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -131,8 +127,6 @@
 		EC524A361BC5178500DE1986 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D365F1311CB61BE00067C1C4 /* UILabel.swift */,
-				D365F1321CB61BE00067C1C4 /* UIBarButtonItem.swift */,
 				EC524A391BC5179500DE1986 /* Array.swift */,
 				EC5ED3F81BC61501004763CE /* Bool.swift */,
 				EC5F74431BC6CF5700727AFE /* CGGeometry.swift */,
@@ -351,8 +345,6 @@
 				EC524A381BC5178500DE1986 /* Label.swift in Sources */,
 				EC8084131C7AE9C800D2E8DB /* AlertController.swift in Sources */,
 				EC15C13E1BC57D42006FF24D /* UIColor.swift in Sources */,
-				D365F1331CB61BE00067C1C4 /* UILabel.swift in Sources */,
-				D365F1341CB61BE00067C1C4 /* UIBarButtonItem.swift in Sources */,
 				EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */,
 				EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */,
 				EC524A481BC5186B00DE1986 /* UIView.swift in Sources */,
