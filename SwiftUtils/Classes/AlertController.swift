@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class AlertController: UIAlertController {
-  public enum AlertLevel: Int {
-    case Low
-    case Normal
-    case High
-    case Require
-  }
+public enum AlertLevel: Int {
+  case Low
+  case Normal
+  case High
+  case Require
+}
 
+public class AlertController: UIAlertController {
   public var level = AlertLevel.Normal
 
   public func addAction(title: String?, style: UIAlertActionStyle = UIAlertActionStyle.Default, handler: (() -> Void)? = nil) {
@@ -29,11 +29,15 @@ public class AlertController: UIAlertController {
     if let from = from where from.isViewLoaded() {
       if let vc = from.presentedViewController {
         if let vc = vc as? AlertController {
-          if level <= vc.level {
-            return
+          if level > vc.level {
+            vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
+              self.present(from: from, animated: animated, completion: completion)
+            })
           }
-        } else if level <= .Normal {
-          return
+        } else if level >= .Normal {
+          vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
+            self.present(from: from, animated: animated, completion: completion)
+          })
         }
       }
       from.presentViewController(self, animated: animated, completion: completion)
@@ -47,36 +51,36 @@ public class AlertController: UIAlertController {
   }
 }
 
-public func == (lhs: AlertController.AlertLevel, rhs: AlertController.AlertLevel) -> Bool {
+public func == (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
   return lhs.rawValue == rhs.rawValue
 }
 
-public func > (lhs: AlertController.AlertLevel, rhs: AlertController.AlertLevel) -> Bool {
+public func > (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
   return lhs.rawValue > rhs.rawValue
 }
 
-public func >= (lhs: AlertController.AlertLevel, rhs: AlertController.AlertLevel) -> Bool {
+public func >= (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
   return lhs.rawValue >= rhs.rawValue
 }
 
-public func < (lhs: AlertController.AlertLevel, rhs: AlertController.AlertLevel) -> Bool {
+public func < (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
   return lhs.rawValue < rhs.rawValue
 }
 
-public func <= (lhs: AlertController.AlertLevel, rhs: AlertController.AlertLevel) -> Bool {
+public func <= (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
   return lhs.rawValue <= rhs.rawValue
 }
 
-public func Alert(
+public func alertError(
   error: NSError,
-  level: AlertController.AlertLevel = .Normal,
+  level: AlertLevel = .Normal,
   handler: (() -> Void)? = nil
-) -> AlertController {
-  let alert = AlertController(
-    title: NSBundle.mainBundle().name.localized,
-    message: error.localizedDescription.localized,
-    preferredStyle: .Alert
-  )
-  alert.addAction("OK".localized, style: .Cancel, handler: handler)
-  return alert
+  ) -> AlertController {
+    let alert = AlertController(
+      title: NSBundle.mainBundle().name.localized,
+      message: error.localizedDescription.localized,
+      preferredStyle: .Alert
+    )
+    alert.addAction("OK".localized, style: .Cancel, handler: handler)
+    return alert
 }
