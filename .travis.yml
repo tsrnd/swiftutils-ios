@@ -4,6 +4,7 @@ cache:
   - cocoapods
 env:
   global:
+  - PROJECT="SwiftUtils.xcodeproj"
   - SCHEME="SwiftUtils"
   - SDK="iphonesimulator9.2"
   matrix:
@@ -12,12 +13,11 @@ env:
 before_install:
   - set -o pipefail
   - gem install xcpretty
-  - pod install
 script:
   # test Debug
-  - xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration Debug build test | xcpretty -c
+  - xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration Debug build test | xcpretty -c
   # test Release
-  - xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration ReleaseTest build test | xcpretty -c
+  - xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration ReleaseTest build test | xcpretty -c
   # pod lint if needs
   - if [ $POD_LINT == "YES" ]; then pod lib lint --quick; fi
 notifications:
