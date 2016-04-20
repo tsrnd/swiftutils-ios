@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSData {
-  public var json: AnyObject? {
+  public func toJSON() -> AnyObject? {
     do {
       return try NSJSONSerialization.JSONObjectWithData(self, options: NSJSONReadingOptions.AllowFragments)
     } catch {
@@ -17,7 +17,7 @@ extension NSData {
     }
   }
   
-  public func string(encoding: NSStringEncoding = NSUTF8StringEncoding) -> String? {
+  public func toString(encoding: NSStringEncoding = NSUTF8StringEncoding) -> String? {
     return String(data: self, encoding: encoding)
   }
 }

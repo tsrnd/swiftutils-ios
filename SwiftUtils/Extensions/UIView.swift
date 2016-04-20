@@ -22,7 +22,7 @@ extension UIView {
 extension UIView {
   public func clear() {
     backgroundColor = UIColor.clearColor()
-    for (_, sub) in subviews.enumerate() {
+    for sub in subviews {
       sub.clear()
     }
   }
@@ -107,7 +107,7 @@ extension UIView {
     }
     removeConstraints(constraints)
     let subviews = self.subviews
-    for (_, sub) in subviews.enumerate() {
+    for sub in subviews {
       sub.removeAllConstraints()
     }
   }

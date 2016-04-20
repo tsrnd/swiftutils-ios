@@ -95,9 +95,25 @@ extension String {
     }
     return ""
   }
-
-  public func trimmed() -> String {
-    return trimmedLeft().trimmedRight()
+  
+  public func trimmedLeftCJK() -> String {
+    var text = self
+    while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
+      text = text.substringFromIndex(text.startIndex.advancedBy(1))
+    }
+    return text
+  }
+  
+  public func trimmedRightCJK() -> String {
+    var text = self
+    while text.characters.last == Character("\n") || text.characters.last == Character(" ") {
+      text = text.substringToIndex(text.endIndex.advancedBy(-1))
+    }
+    return text
+  }
+  
+  public func trimmedCJK() -> String {
+    return trimmedLeftCJK().trimmedRightCJK()
   }
 
   public static func random(var length len: Int = 0, charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {

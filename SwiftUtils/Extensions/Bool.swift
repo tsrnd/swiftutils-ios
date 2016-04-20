@@ -17,4 +17,8 @@ extension Bool {
   public var intValue: Int {
     return self ? 1 : 0
   }
+  
+  public func toString() -> String {
+    return self ? "true" : "false"
+  }
 }

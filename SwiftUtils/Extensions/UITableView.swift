@@ -24,6 +24,24 @@ extension UITableView {
     separatorInset = insets
     layoutMargins = insets
   }
+  
+  public func scrollsToBottom(animated: Bool) {
+    let section = numberOfSections - 1
+    let row = numberOfRowsInSection(section) - 1
+    if section < 0 || row < 0 {
+      return
+    }
+    let path = NSIndexPath(forRow: row, inSection: section)
+    let offset = contentOffset.y
+    scrollToRowAtIndexPath(path, atScrollPosition: .Top, animated: animated)
+    let delay = (animated ? 0.2 : 0.0) * Double(NSEC_PER_SEC)
+    let t = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+    dispatch_after(t, dispatch_get_main_queue(), { () -> Void in
+      if self.contentOffset.y != offset {
+        self.scrollsToBottom(false)
+      }
+    })
+  }
 
   public func registerNib<T: UITableViewCell>(aClass: T.Type) {
     let name = String(aClass)
