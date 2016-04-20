@@ -1,5 +1,10 @@
-# SwiftUtils
+[![Build Status](https://travis-ci.org/zendobk/SwiftUtils.svg?branch=master)](https://travis-ci.org/zendobk/SwiftUtils)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/RealmS.svg)](https://img.shields.io/cocoapods/v/RealmS.svg)
+[![Platform](https://img.shields.io/cocoapods/p/RealmS.svg?style=flat)](http://cocoadocs.org/docsets/RealmS)
+[![Coverage Status](https://codecov.io/github/zendobk/SwiftUtils/coverage.svg?branch=master)](https://codecov.io/github/zendobk/SwiftUtils?branch=master)
 
+[SwiftUtils](https://github.com/zendobk/SwiftUtils)
+============
 
 ## Requirements
 
