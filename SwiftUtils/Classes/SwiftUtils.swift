@@ -20,11 +20,11 @@ public enum DeviceType: Int {
 
   public var size: CGSize {
     switch self {
-    case .Phone4: return CGSize(width: 320, height: 480)
-    case .Phone5: return CGSize(width: 320, height: 568)
-    case .Phone6: return CGSize(width: 375, height: 667)
-    case .Phone6p: return CGSize(width: 414, height: 736)
-    case .Pad: return CGSize(width: 768, height: 1024)
+    case .Phone4:   return CGSize(width: 320, height: 480)
+    case .Phone5:   return CGSize(width: 320, height: 568)
+    case .Phone6:   return CGSize(width: 375, height: 667)
+    case .Phone6p:  return CGSize(width: 414, height: 736)
+    case .Pad:      return CGSize(width: 768, height: 1024)
     }
   }
 }

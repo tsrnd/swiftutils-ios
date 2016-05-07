@@ -24,8 +24,8 @@ extension Array {
 
   public func map<T>(@noescape trans: Element -> T?) -> [T] {
     var mapped = [T]()
-    forEach { (ele) -> () in
-      if let e = trans(ele) {
+    for e in self {
+      if let e = trans(e) {
         mapped.append(e)
       }
     }

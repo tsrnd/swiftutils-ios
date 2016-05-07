@@ -96,7 +96,7 @@ public enum HTTPStatus: Int {
   case NetworkReadTimeout = 598
   case NetworkConnectTimeout = 599
 
-  init?(code: Int) {
+  public init?(code: Int) {
     self.init(rawValue: code)
   }
 

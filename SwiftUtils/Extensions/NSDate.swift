@@ -34,7 +34,7 @@ public class DateFormat {
   
   /** yyyy-MM-dd'T'HH:mm:ss */
   public static var TDateTime           = "yyyy-MM-dd'T'HH:mm:ss"
-  /** yyyy-MM-dd'T'HH:mm:ss.SSS'Z' */
+  /** yyyy-MM-dd'T'HH:mm:ss.SSS */
   public static var TDateTime3          = "yyyy-MM-dd'T'HH:mm:ss.SSS"
   /** yyyy-MM-dd'T'HH:mm:ss.SSSSSS */
   public static var TDateTime6          = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
@@ -53,9 +53,9 @@ extension NSTimeInterval {
     let hh = mm/60
     mm %= 60
     if hh < 1 {
-      return "\(mm)m"
+      return String(format: "%@m", mm)
     } else {
-      return "\(hh)h\(mm)m"
+      return String(format: "%@zd%@zd", hh, mm)
     }
   }
   
@@ -168,8 +168,8 @@ extension NSDateComponents {
   }
 }
 
-var fmts = [String : NSDateFormatter]()
-let lock = NSLock()
+private var fmts = [String : NSDateFormatter]()
+private let lock = NSLock()
 extension NSDateFormatter {
   public static func fromFormat(format: String!) -> NSDateFormatter! {
     lock.lock()

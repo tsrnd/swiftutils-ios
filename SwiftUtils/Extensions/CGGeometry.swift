@@ -123,7 +123,7 @@ public func / (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
 
 // MARK: CGSize
 extension CGSize {
-  init(size: CGFloat) {
+  public init(size: CGFloat) {
     self.init(width: size, height: size)
   }
 
