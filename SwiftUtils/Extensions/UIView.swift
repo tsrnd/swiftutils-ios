@@ -27,9 +27,14 @@ extension UIView {
     }
   }
 
-  public func border(color color: UIColor, width: CGFloat = 0.5) {
+  public func border(color color: UIColor, width: CGFloat, corner: CGFloat) {
     layer.borderColor = color.CGColor
     layer.borderWidth = width
+    layer.cornerRadius = corner
+  }
+
+  public func circle() {
+    layer.cornerRadius = min(bounds.width, bounds.height) / 2
   }
 
   public enum BorderPostition {

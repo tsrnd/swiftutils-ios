@@ -36,7 +36,7 @@ extension String {
     if start < startIndex || end > endIndex {
       return nil
     }
-    let range = Range(start: start, end: end)
+    let range = start ..< end
     return self[range]
   }
 
@@ -95,7 +95,7 @@ extension String {
     }
     return ""
   }
-  
+
   public func trimmedLeftCJK() -> String {
     var text = self
     while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
@@ -103,7 +103,7 @@ extension String {
     }
     return text
   }
-  
+
   public func trimmedRightCJK() -> String {
     var text = self
     while text.characters.last == Character("\n") || text.characters.last == Character(" ") {
@@ -111,15 +111,13 @@ extension String {
     }
     return text
   }
-  
+
   public func trimmedCJK() -> String {
     return trimmedLeftCJK().trimmedRightCJK()
   }
 
-  public static func random(var length len: Int = 0, charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
-    if len < 1 {
-      len = Int.random(max: 16)
-    }
+  public static func random(length len: Int = 0, charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+    let len = len < 1 ? len : Int.random(max: 16)
     var result = String()
     let max = charset.length - 1
     for _ in 0 ..< len {
@@ -129,15 +127,15 @@ extension String {
   }
 
   public var intValue: Int {
-    return (self as NSString).integerValue
+    return Int(self) ?? 0
   }
 
   public var doubleValue: Double {
-    return (self as NSString).doubleValue
+    return Double(self) ?? 0.0
   }
 
   public var floatValue: Float {
-    return (self as NSString).floatValue
+    return Float(self) ?? 0.0
   }
 
   public var boolValue: Bool {

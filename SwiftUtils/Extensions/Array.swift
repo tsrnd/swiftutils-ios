@@ -10,7 +10,7 @@ import UIKit
 
 extension Array {
   public mutating func shuffle() {
-    for var i = self.count - 1; i >= 1; i-- {
+    for i in (1 ..< count).reverse() {
       let j = Int.random(max: i - 1)
       swap(&self[i], &self[j])
     }

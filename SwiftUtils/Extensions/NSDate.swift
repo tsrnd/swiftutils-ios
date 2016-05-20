@@ -10,47 +10,47 @@ import Foundation
 
 public class DateFormat {
   /** yyyy-MM-dd HH:mm:ss */
-  public static var DateTime24          = "yyyy-MM-dd HH:mm:ss"
+  public static var DateTime24 = "yyyy-MM-dd HH:mm:ss"
   /** yyyy-MM-dd HH:mm:ss Z*/
-  public static var DateTime24Z         = "yyyy-MM-dd HH:mm:ss Z"
+  public static var DateTime24Z = "yyyy-MM-dd HH:mm:ss Z"
   /** yyyy-MM-dd hh:mm:ss a */
-  public static var DateTime12          = "yyyy-MM-dd hh:mm:ss a"
+  public static var DateTime12 = "yyyy-MM-dd hh:mm:ss a"
   /** yyyy-MM-dd hh:mm:ss a Z*/
-  public static var DateTime12Z         = "yyyy-MM-dd hh:mm:ss a Z"
+  public static var DateTime12Z = "yyyy-MM-dd hh:mm:ss a Z"
   /** yyyy-MM-dd HH:mm */
-  public static var DateTime24NoSec     = "yyyy-MM-dd HH:mm"
+  public static var DateTime24NoSec = "yyyy-MM-dd HH:mm"
   /** yyyy-MM-dd hh:mm a */
-  public static var DateTime12NoSec     = "yyyy-MM-dd hh:mm a"
+  public static var DateTime12NoSec = "yyyy-MM-dd hh:mm a"
   /** yyyy-MM-dd */
-  public static var Date                = "yyyy-MM-dd"
+  public static var Date = "yyyy-MM-dd"
   /** HH:mm:ss */
-  public static var Time24              = "HH:mm:ss"
+  public static var Time24 = "HH:mm:ss"
   /** hh:mm:ss a */
-  public static var Time12              = "hh:mm:ss a"
+  public static var Time12 = "hh:mm:ss a"
   /** HH:mm */
-  public static var Time24NoSec         = "HH:mm"
+  public static var Time24NoSec = "HH:mm"
   /** hh:mm a */
-  public static var Time12NoSec         = "hh:mm a"
-  
+  public static var Time12NoSec = "hh:mm a"
+
   /** yyyy-MM-dd'T'HH:mm:ss */
-  public static var TDateTime           = "yyyy-MM-dd'T'HH:mm:ss"
+  public static var TDateTime = "yyyy-MM-dd'T'HH:mm:ss"
   /** yyyy-MM-dd'T'HH:mm:ss.SSS */
-  public static var TDateTime3          = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+  public static var TDateTime3 = "yyyy-MM-dd'T'HH:mm:ss.SSS"
   /** yyyy-MM-dd'T'HH:mm:ss.SSSSSS */
-  public static var TDateTime6          = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
-  
+  public static var TDateTime6 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+
   /** yyyy-MM-dd'T'HH:mm:ss'Z' */
-  public static var TZDateTime          = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+  public static var TZDateTime = "yyyy-MM-dd'T'HH:mm:ss'Z'"
   /** yyyy-MM-dd'T'HH:mm:ss.SSS'Z' */
-  public static var TZDateTime3         = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+  public static var TZDateTime3 = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
   /** yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z' */
-  public static var TZDateTime6         = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+  public static var TZDateTime6 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 
 extension NSTimeInterval {
   public var time: String {
     var mm = Int(trunc(self / 60))
-    let hh = mm/60
+    let hh = mm / 60
     mm %= 60
     if hh < 1 {
       return String(format: "%@m", mm)
@@ -58,7 +58,7 @@ extension NSTimeInterval {
       return String(format: "%@zd%@zd", hh, mm)
     }
   }
-  
+
   public var clock: String {
     var duration = Int(self)
     let hour = duration / 3600
@@ -81,29 +81,29 @@ extension String {
 extension NSDate {
   public static var zero: NSDate {
     let comps = NSDateComponents(year: 0, month: 1, day: 1)
-    comps.timeZone = NSTimeZone.utcTimeZone()
+    comps.timeZone = NSTimeZone.UTC
     let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-    calendar.timeZone = NSTimeZone.utcTimeZone()
+    calendar.timeZone = NSTimeZone.UTC
     return calendar.dateFromComponents(comps)!
   }
-  
+
   public convenience init(str: String, format: String, localized: Bool) {
     let fmt = NSDateFormatter.fromFormat(format)
-    fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.utcTimeZone()
+    fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.UTC
     if let date = fmt.dateFromString(str) {
       self.init(timeInterval: 0, sinceDate: date)
     } else {
       self.init(timeInterval: 0, sinceDate: NSDate.zero)
     }
   }
-  
+
   public func toString(format: String, localized: Bool) -> String {
     let fmt = NSDateFormatter.fromFormat(format)
-    fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.utcTimeZone()
+    fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.UTC
     return fmt.stringFromDate(self)
   }
-  
-  public func timeAgo() -> String {
+
+  public func ago() -> String {
     let units: NSCalendarUnit = [.Day, .WeekOfYear, .Month, .Year, .Hour, .Minute, .Second]
     let options = NSCalendarOptions()
     let now = NSDate()
@@ -150,7 +150,7 @@ extension NSDate {
 }
 
 extension NSTimeZone {
-  public static func utcTimeZone() -> NSTimeZone {
+  public static var UTC: NSTimeZone {
     return NSTimeZone(abbreviation: "UTC")!
   }
 }
@@ -168,7 +168,7 @@ extension NSDateComponents {
   }
 }
 
-private var fmts = [String : NSDateFormatter]()
+private var fmts = [String: NSDateFormatter]()
 private let lock = NSLock()
 extension NSDateFormatter {
   public static func fromFormat(format: String!) -> NSDateFormatter! {

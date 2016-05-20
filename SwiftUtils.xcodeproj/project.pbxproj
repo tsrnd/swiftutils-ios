@@ -33,6 +33,8 @@
 		ECA6D5DA1C83E68E00A3D848 /* SwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */; };
 		ECA6D5E11C83E89B00A3D848 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA6D5E01C83E89B00A3D848 /* ArrayTests.swift */; };
 		ECC2F7B51CDDD76E001886B0 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2F7B41CDDD76E001886B0 /* RefreshControl.swift */; };
+		ECCEF3501CEF063500E22CA2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = ECCEF34F1CEF063500E22CA2 /* README.md */; };
+		ECCEF3521CEF063D00E22CA2 /* SwiftUtils.podspec in Resources */ = {isa = PBXBuildFile; fileRef = ECCEF3511CEF063D00E22CA2 /* SwiftUtils.podspec */; };
 		ECD6E3581BC770BA00AC951F /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6E3571BC770BA00AC951F /* Range.swift */; };
 		ECE0A4DB1C81836C00DB4758 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0A4DA1C81836C00DB4758 /* NSBundle.swift */; };
 		F473C4DA1C3399F6007CE3B0 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F473C4D91C3399F6007CE3B0 /* NSData.swift */; };
@@ -81,6 +83,8 @@
 		ECA6D5D91C83E68E00A3D848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECA6D5E01C83E89B00A3D848 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		ECC2F7B41CDDD76E001886B0 /* RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
+		ECCEF34F1CEF063500E22CA2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ECCEF3511CEF063D00E22CA2 /* SwiftUtils.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftUtils.podspec; sourceTree = "<group>"; };
 		ECD6E3571BC770BA00AC951F /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD9E6DD1BC24428001F8738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,12 +174,16 @@
 		ECD9E6CE1BC24428001F8738 = {
 			isa = PBXGroup;
 			children = (
+				ECCEF3511CEF063D00E22CA2 /* SwiftUtils.podspec */,
+				ECCEF34F1CEF063500E22CA2 /* README.md */,
 				ECD9E6DA1BC24428001F8738 /* SwiftUtils */,
 				ECA6D5D61C83E68E00A3D848 /* Tests */,
 				ECD9E6D91BC24428001F8738 /* Products */,
 				F492F990E42B525FD024519F /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		ECD9E6D91BC24428001F8738 /* Products */ = {
 			isa = PBXGroup;
@@ -303,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCEF3521CEF063D00E22CA2 /* SwiftUtils.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +356,7 @@
 				EC524A3C1BC517AF00DE1986 /* Dictionary.swift in Sources */,
 				EC5ED4021BC65E51004763CE /* SequenceType.swift in Sources */,
 				EC524A481BC5186B00DE1986 /* UIView.swift in Sources */,
+				ECCEF3501CEF063500E22CA2 /* README.md in Sources */,
 				F4FAB1ED1C15CBB7008C80D3 /* NSLock.swift in Sources */,
 				EC15C1461BC580A3006FF24D /* GCD.swift in Sources */,
 				EC524A421BC517E100DE1986 /* Double.swift in Sources */,

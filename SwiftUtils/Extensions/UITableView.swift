@@ -24,7 +24,7 @@ extension UITableView {
     separatorInset = insets
     layoutMargins = insets
   }
-  
+
   public func scrollsToBottom(animated: Bool) {
     let section = numberOfSections - 1
     let row = numberOfRowsInSection(section) - 1
@@ -66,11 +66,19 @@ extension UITableView {
   }
 
   public func dequeue<T: UITableViewCell>(aClass: T.Type) -> T! {
-    return dequeueReusableCellWithIdentifier(String(aClass)) as? T
+    let name = String(aClass)
+    guard let cell = dequeueReusableCellWithIdentifier(name) as? T else {
+      fatalError("\(name) is not registed")
+    }
+    return cell
   }
 
   public func dequeue<T: UITableViewHeaderFooterView>(aClass: T.Type) -> T! {
-    return dequeueReusableHeaderFooterViewWithIdentifier(String(aClass)) as? T
+    let name = String(aClass)
+    guard let cell = dequeueReusableHeaderFooterViewWithIdentifier(name) as? T else {
+      fatalError("\(name) is not registed")
+    }
+    return cell
   }
 }
 
