@@ -31,10 +31,12 @@ extension UIView {
     layer.borderColor = color.CGColor
     layer.borderWidth = width
     layer.cornerRadius = corner
+    layer.masksToBounds = true
   }
 
   public func circle() {
     layer.cornerRadius = min(bounds.width, bounds.height) / 2
+    layer.masksToBounds = true
   }
 
   public enum BorderPostition {
