@@ -151,12 +151,8 @@ extension String {
     return str as NSString as String
   }
 
-  public func appendPathComponent(str: String) -> String {
-    let s = (self as NSString).stringByAppendingPathComponent(str)
-    if s.hasSuffix("/") {
-      return s
-    }
-    return s + "/"
+  public func stringByAppendingPathComponent(str: String) -> String {
+    return (self as NSString).stringByAppendingPathComponent(str)
   }
 
   public var pathComponents: [String] {

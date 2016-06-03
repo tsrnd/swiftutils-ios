@@ -27,20 +27,21 @@ public class AlertController: UIAlertController {
 
   public func present(from from: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
     if let from = from where from.isViewLoaded() {
-      if let vc = from.presentedViewController {
-        if let vc = vc as? AlertController {
+      if let popup = from.presentedViewController {
+        if let vc = popup as? AlertController {
           if level > vc.level {
             vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
               self.present(from: from, animated: animated, completion: completion)
             })
           }
         } else if level >= .Normal {
-          vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
+          popup.dismissViewControllerAnimated(animated, completion: { () -> Void in
             self.present(from: from, animated: animated, completion: completion)
           })
         }
+      } else {
+        from.presentViewController(self, animated: animated, completion: completion)
       }
-      from.presentViewController(self, animated: animated, completion: completion)
     } else if let root = UIApplication.sharedApplication().delegate?.window??.rootViewController where root.isViewLoaded() {
       present(from: root, animated: animated, completion: completion)
     }
@@ -75,12 +76,12 @@ public func alertError(
   error: NSError,
   level: AlertLevel = .Normal,
   handler: (() -> Void)? = nil
-  ) -> AlertController {
-    let alert = AlertController(
-      title: NSBundle.mainBundle().name.localized,
-      message: error.localizedDescription.localized,
-      preferredStyle: .Alert
-    )
-    alert.addAction("OK".localized, style: .Cancel, handler: handler)
-    return alert
+) -> AlertController {
+  let alert = AlertController(
+    title: NSBundle.mainBundle().name.localized,
+    message: error.localizedDescription.localized,
+    preferredStyle: .Alert
+  )
+  alert.addAction("OK".localized, style: .Cancel, handler: handler)
+  return alert
 }

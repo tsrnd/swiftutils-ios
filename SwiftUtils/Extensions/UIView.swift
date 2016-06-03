@@ -27,11 +27,21 @@ extension UIView {
     }
   }
 
-  public func border(color color: UIColor, width: CGFloat, corner: CGFloat) {
+  public func border(color color: UIColor, width: CGFloat) {
     layer.borderColor = color.CGColor
     layer.borderWidth = width
     layer.cornerRadius = corner
     layer.masksToBounds = true
+  }
+
+  public var corner: CGFloat {
+    set {
+      layer.cornerRadius = newValue
+      layer.masksToBounds = true
+    }
+    get {
+      return layer.cornerRadius
+    }
   }
 
   public func circle() {
