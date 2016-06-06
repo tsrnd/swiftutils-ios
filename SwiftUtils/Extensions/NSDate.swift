@@ -79,7 +79,7 @@ extension String {
 }
 
 extension NSDate {
-  public static var zero: NSDate {
+  public class var zero: NSDate {
     let comps = NSDateComponents(year: 0, month: 1, day: 1)
     comps.timeZone = NSTimeZone.UTC
     let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
@@ -150,7 +150,7 @@ extension NSDate {
 }
 
 extension NSTimeZone {
-  public static var UTC: NSTimeZone {
+  public class var UTC: NSTimeZone {
     return NSTimeZone(abbreviation: "UTC")!
   }
 }
@@ -171,7 +171,7 @@ extension NSDateComponents {
 private var fmts = [String: NSDateFormatter]()
 private let lock = NSLock()
 extension NSDateFormatter {
-  public static func fromFormat(format: String!) -> NSDateFormatter! {
+  public class func fromFormat(format: String!) -> NSDateFormatter! {
     lock.lock()
     var fmt: NSDateFormatter!
     if let existFmt = fmts[format] {

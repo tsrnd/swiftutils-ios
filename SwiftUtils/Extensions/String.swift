@@ -223,7 +223,7 @@ extension NSMutableAttributedString {
 
 // MARK: NSMutableParagraphStyle
 extension NSMutableParagraphStyle {
-  public static func defaultStyle() -> NSMutableParagraphStyle! {
+  public class func defaultStyle() -> NSMutableParagraphStyle! {
     let style = NSMutableParagraphStyle()
     let defaultStyle = NSParagraphStyle.defaultParagraphStyle()
     style.lineSpacing = defaultStyle.lineSpacing

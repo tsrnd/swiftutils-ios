@@ -9,47 +9,47 @@
 import Foundation
 
 extension NSFileManager {
-  public static var homeDir: String! {
+  public class var homeDir: String! {
     return NSHomeDirectory()
   }
 
-  public static var homeUrl: NSURL! {
+  public class var homeUrl: NSURL! {
     return NSURL(fileURLWithPath: homeDir, isDirectory: true)
   }
 
-  public static var docDir: String! {
+  public class var docDir: String! {
     return NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
   }
 
-  public static var docUrl: NSURL! {
+  public class var docUrl: NSURL! {
     return NSURL(fileURLWithPath: docDir, isDirectory: true)
   }
 
-  public static var libraryDir: String! {
+  public class var libraryDir: String! {
     return NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true).first
   }
 
-  public static var libraryUrl: NSURL! {
+  public class var libraryUrl: NSURL! {
     return NSURL(fileURLWithPath: libraryDir, isDirectory: true)
   }
 
-  public static var appSupportDir: String! {
+  public class var appSupportDir: String! {
     return NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory, .UserDomainMask, true).first
   }
 
-  public static var appSupportUrl: NSURL! {
+  public class var appSupportUrl: NSURL! {
     return NSURL(fileURLWithPath: appSupportDir, isDirectory: true)
   }
 
-  public static var tmpDir: String {
+  public class var tmpDir: String {
     return NSTemporaryDirectory()
   }
 
-  public static var tmpUrl: NSURL {
+  public class var tmpUrl: NSURL {
     return NSURL(fileURLWithPath: tmpDir, isDirectory: true)
   }
 
-  public static func skipBackup(path: String) -> Bool {
+  public class func skipBackup(path: String) -> Bool {
     let fm = defaultManager()
     var isDir: ObjCBool = true
     if fm.fileExistsAtPath(path, isDirectory: &isDir) {
@@ -73,7 +73,7 @@ extension NSFileManager {
     return false
   }
 
-  public static func skipBackup() {
+  public class func skipBackup() {
     skipBackup(docDir)
     skipBackup(libraryDir)
   }
