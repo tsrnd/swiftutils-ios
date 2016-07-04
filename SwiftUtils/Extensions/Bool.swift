@@ -9,12 +9,12 @@
 import Foundation
 
 extension Bool {
-  public mutating func toggle() -> Bool {
-    self = !self
-    return self
-  }
+    public mutating func toggle() -> Bool {
+        self = !self
+        return self
+    }
 
-  public var intValue: Int {
-    return self ? 1 : 0
-  }
+    public var intValue: Int {
+        return self ? 1 : 0
+    }
 }

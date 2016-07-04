@@ -9,15 +9,15 @@
 import Foundation
 
 extension NSData {
-  public func toJSON() -> AnyObject? {
-    do {
-      return try NSJSONSerialization.JSONObjectWithData(self, options: NSJSONReadingOptions.AllowFragments)
-    } catch {
-      return nil
+    public func toJSON() -> AnyObject? {
+        do {
+            return try NSJSONSerialization.JSONObjectWithData(self, options: NSJSONReadingOptions.AllowFragments)
+        } catch {
+            return nil
+        }
     }
-  }
-  
-  public func toString(encoding: NSStringEncoding = NSUTF8StringEncoding) -> String? {
-    return String(data: self, encoding: encoding)
-  }
+
+    public func toString(encoding: NSStringEncoding = NSUTF8StringEncoding) -> String? {
+        return String(data: self, encoding: encoding)
+    }
 }

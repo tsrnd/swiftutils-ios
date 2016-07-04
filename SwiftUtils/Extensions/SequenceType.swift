@@ -9,16 +9,16 @@
 import Foundation
 
 extension SequenceType {
-  
-  typealias Element = Self.Generator.Element
-  
-  public func contains<T: Equatable> (item: T) -> Bool {
-    var generator =  self.generate()
-    while let next = generator.next() {
-      if let obj = next as? T where obj == item {
-        return true
-      }
+
+    typealias Element = Self.Generator.Element
+
+    public func contains<T: Equatable> (item: T) -> Bool {
+        var generator = self.generate()
+        while let next = generator.next() {
+            if let obj = next as? T where obj == item {
+                return true
+            }
+        }
+        return false
     }
-    return false
-  }
 }

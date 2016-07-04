@@ -9,14 +9,14 @@
 import UIKit
 
 public class TableView: UITableView {
-  public var allowHeaderViewsToFloat: Bool = false
-  public var allowFooterViewsToFloat: Bool = false
-  
-  public func allowsHeaderViewsToFloat() -> Bool {
-    return allowHeaderViewsToFloat
-  }
-  
-  public func allowsFooterViewsToFloat() -> Bool {
-    return allowFooterViewsToFloat
-  }
+    public var allowHeaderViewsToFloat: Bool = false
+    public var allowFooterViewsToFloat: Bool = false
+
+    public func allowsHeaderViewsToFloat() -> Bool {
+        return allowHeaderViewsToFloat
+    }
+
+    public func allowsFooterViewsToFloat() -> Bool {
+        return allowFooterViewsToFloat
+    }
 }
