@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class DateFormat {
+public struct DateFormat {
     /** yyyy-MM-dd HH:mm:ss */
     public static var DateTime24 = "yyyy-MM-dd HH:mm:ss"
     /** yyyy-MM-dd HH:mm:ss Z*/
@@ -73,8 +73,10 @@ extension NSTimeInterval {
 }
 
 extension String {
-    public func toDate(format: String, localized: Bool) -> NSDate {
-        return NSDate(str: self, format: format, localized: localized)
+    public func toDate(format: String, localized: Bool) -> NSDate? {
+        let fmt = NSDateFormatter.fromFormat(format)
+        fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.UTC
+        return fmt.dateFromString(self)
     }
 }
 
@@ -85,16 +87,6 @@ extension NSDate {
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         calendar.timeZone = NSTimeZone.UTC
         return calendar.dateFromComponents(comps)!
-    }
-
-    public convenience init(str: String, format: String, localized: Bool) {
-        let fmt = NSDateFormatter.fromFormat(format)
-        fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.UTC
-        if let date = fmt.dateFromString(str) {
-            self.init(timeInterval: 0, sinceDate: date)
-        } else {
-            self.init(timeInterval: 0, sinceDate: NSDate.zero)
-        }
     }
 
     public func toString(format: String, localized: Bool) -> String {
