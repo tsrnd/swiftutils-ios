@@ -20,11 +20,11 @@ extension NSBundle {
 
     public var version: String {
         guard let info = infoDictionary else { return "" }
-        return info[kCFBundleVersionKey as String] as? String ?? ""
+        return info[kCFBundleShortVersionKey] as? String ?? ""
     }
 
     public var build: String {
         guard let info = infoDictionary else { return "" }
-        return info[kCFBundleShortVersionKey] as? String ?? ""
+        return info[kCFBundleVersionKey as String] as? String ?? ""
     }
 }
