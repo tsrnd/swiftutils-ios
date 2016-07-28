@@ -3,7 +3,7 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/7/15.
-//  Copyright © 2015 Astraler Technology. All rights reserved.
+//  Copyright © 2015 DaoNV. All rights reserved.
 //
 
 import UIKit
@@ -20,16 +20,6 @@ extension Array {
         var array = self
         array.shuffle()
         return array
-    }
-
-    public func map<T>(@noescape trans: Element -> T?) -> [T] {
-        var mapped = [T]()
-        for e in self {
-            if let e = trans(e) {
-                mapped.append(e)
-            }
-        }
-        return mapped
     }
 }
 

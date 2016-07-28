@@ -39,7 +39,7 @@ class ArrayTests: XCTestCase {
 
     func test_map() {
         let nilInts: [Int?] = [0, 1, nil, 3]
-        let ints = nilInts.map { (int) -> Int? in
+        let ints: [Int] = nilInts.flatMap { (int) -> Int? in
             return int
         }
         let exp: [Int] = [0, 1, 3]

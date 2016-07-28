@@ -3,7 +3,7 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/7/15.
-//  Copyright © 2015 Astraler Technology. All rights reserved.
+//  Copyright © 2015 DaoNV. All rights reserved.
 //
 
 import UIKit
@@ -31,13 +31,12 @@ extension String {
     }
 
     public subscript(range: Range<Int>) -> String? {
-        let start = startIndex.advancedBy(range.startIndex)
-        let end = startIndex.advancedBy(range.endIndex)
+        let start = startIndex.advancedBy(range.startIndex, limit: endIndex)
+        let end = startIndex.advancedBy(range.endIndex, limit: endIndex)
         if start < startIndex || end > endIndex {
             return nil
         }
-        let range = start ..< end
-        return self[range]
+        return self[start..<end]
     }
 
     public var length: Int {
@@ -152,7 +151,18 @@ extension String {
     }
 
     public func stringByAppendingPathComponent(str: String) -> String {
-        return (self as NSString).stringByAppendingPathComponent(str)
+        var s1: String! = self
+        while s1.hasSuffix("/") {
+            s1 = s1[0...s1.length - 2]
+        }
+        var s2: String! = str
+        while s2.hasPrefix("/") {
+            s2 = s2[1...length - 1]
+        }
+        while s2.hasSuffix("/") {
+            s2 = s2[0...s2.length - 2]
+        }
+        return "\(s1)/\(s2)"
     }
 
     public var pathComponents: [String] {
