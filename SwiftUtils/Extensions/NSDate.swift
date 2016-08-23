@@ -73,9 +73,15 @@ extension NSTimeInterval {
 }
 
 extension String {
+    /**
+     Convert to NSDate with default-UTC NSTimeZone.
+     - parameter format: date format for formatter.
+     - parameter localized: if true, formatter's timezone is defaultTimeZone, else UTCTimeZone.
+     - returns: date string
+     */
     public func toDate(format: String, localized: Bool) -> NSDate? {
         let fmt = NSDateFormatter.fromFormat(format)
-        fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.UTC
+        fmt.timeZone = localized ? NSTimeZone.defaultTimeZone() : NSTimeZone.UTC
         return fmt.dateFromString(self)
     }
 }
@@ -84,14 +90,22 @@ extension NSDate {
     public class var zero: NSDate {
         let comps = NSDateComponents(year: 0, month: 1, day: 1)
         comps.timeZone = NSTimeZone.UTC
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        guard let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) else {
+            fatalError("not supported calendar with identifier: '\(NSCalendarIdentifierGregorian)'")
+        }
         calendar.timeZone = NSTimeZone.UTC
         return calendar.dateFromComponents(comps)!
     }
 
+    /**
+     Convert to String with default-UTC NSTimeZone.
+     - parameter format: date format for formatter.
+     - parameter localized: if true, formatter's timezone is defaultTimeZone, else UTCTimeZone.
+     - returns: date string
+     */
     public func toString(format: String, localized: Bool) -> String {
         let fmt = NSDateFormatter.fromFormat(format)
-        fmt.timeZone = localized ? NSTimeZone.localTimeZone() : NSTimeZone.UTC
+        fmt.timeZone = localized ? NSTimeZone.defaultTimeZone() : NSTimeZone.UTC
         return fmt.stringFromDate(self)
     }
 
@@ -103,40 +117,53 @@ extension NSDate {
             return ""
         }
 
-        let comps = NSCalendar.currentCalendar().components(units, fromDate: self, toDate: NSDate(), options: options)
+        let comps = NSCalendar.defaultCalendar.components(units, fromDate: self, toDate: NSDate(), options: options)
         if comps.year > 0 {
             let plural = comps.year == 1
-            let str = plural ? String(format: "%zd years".localized, comps.year) : String(format: "%zd year".localized, comps.year)
-            return String(format: "%@ ago".localized, str)
+            let str = plural ? String(format: "%zd years".localized(), comps.year) : String(format: "%zd year".localized(), comps.year)
+            return String(format: "%@ ago".localized(), str)
         } else if comps.month > 0 {
             let plural = comps.month == 1
-            let str = plural ? String(format: "%zd months".localized, comps.month) : String(format: "%zd month".localized, comps.month)
-            return String(format: "%@ ago".localized, str)
+            let str = plural ? String(format: "%zd months".localized(), comps.month) : String(format: "%zd month".localized(), comps.month)
+            return String(format: "%@ ago".localized(), str)
         } else if comps.weekOfYear > 0 {
             let plural = comps.weekOfYear == 1
-            let str = plural ? String(format: "%zd weeks".localized, comps.weekOfYear) : String(format: "%zd week".localized, comps.weekOfYear)
-            return String(format: "%@ ago".localized, str)
+            let str = plural ? String(format: "%zd weeks".localized(), comps.weekOfYear) : String(format: "%zd week".localized(), comps.weekOfYear)
+            return String(format: "%@ ago".localized(), str)
         } else if comps.day > 0 {
             if comps.day > 1 {
-                let str = String(format: "%zd days".localized, comps.day)
-                return String(format: "%@ ago".localized, str)
+                let str = String(format: "%zd days".localized(), comps.day)
+                return String(format: "%@ ago".localized(), str)
             } else {
-                return "yesterday".localized
+                return "yesterday".localized()
             }
         } else {
             if comps.hour > 0 {
                 let plural = comps.hour == 1
-                let str = plural ? String(format: "%zd hours".localized, comps.hour) : String(format: "%zd hour".localized, comps.hour)
-                return String(format: "%@ ago".localized, str)
+                let str = plural ? String(format: "%zd hours".localized(), comps.hour) : String(format: "%zd hour".localized(), comps.hour)
+                return String(format: "%@ ago".localized(), str)
             } else {
                 if comps.minute > 0 {
                     let plural = comps.minute == 1
-                    let str = plural ? String(format: "%zd minutes".localized, comps.minute) : String(format: "%zd minute".localized, comps.minute)
-                    return String(format: "%@ ago".localized, str)
+                    let str = plural ? String(format: "%zd minutes".localized(), comps.minute) : String(format: "%zd minute".localized(), comps.minute)
+                    return String(format: "%@ ago".localized(), str)
                 } else {
-                    return "now".localized
+                    return "now".localized()
                 }
             }
+        }
+    }
+}
+
+private var calendar = NSCalendar.currentCalendar()
+
+extension NSCalendar {
+    static var defaultCalendar: NSCalendar {
+        set {
+            calendar = defaultCalendar
+        }
+        get {
+            return calendar
         }
     }
 }
@@ -158,20 +185,36 @@ extension NSDateComponents {
         self.second = sec
         self.nanosecond = nsec
     }
+
+    public convenience init(hour: Int, minute: Int, sec: Int = 0, nsec: Int = 0) {
+        self.init()
+        self.year = 0
+        self.month = 0
+        self.day = 0
+        self.hour = hour
+        self.minute = minute
+        self.second = sec
+        self.nanosecond = nsec
+    }
 }
 
-private var fmts = [String: NSDateFormatter]()
 private let lock = NSLock()
+private let dateFormatterCache = NSCache(name: "SwiftUtils.NSDateFormatter", countLimit: 5)
+
 extension NSDateFormatter {
-    public class func fromFormat(format: String!) -> NSDateFormatter! {
+    public static var sharedCache: NSCache {
+        return dateFormatterCache
+    }
+
+    public static func fromFormat(format: String) -> NSDateFormatter {
         lock.lock()
-        var fmt: NSDateFormatter!
-        if let existFmt = fmts[format] {
-            fmt = existFmt
+        let fmt: NSDateFormatter
+        if let exist = sharedCache[format] as? NSDateFormatter {
+            fmt = exist
         } else {
             fmt = NSDateFormatter()
             fmt.dateFormat = format
-            fmts[format] = fmt
+            sharedCache.setObject(fmt, forKey: format)
         }
         lock.unlock()
         return fmt

@@ -50,6 +50,16 @@ public class AlertController: UIAlertController {
     public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
         dismissViewControllerAnimated(animated, completion: completion)
     }
+
+    public class func alertWithError(error: NSError, level: AlertLevel = .Normal, handler: (() -> Void)? = nil) -> AlertController {
+        let alert = AlertController(
+            title: NSBundle.mainBundle().name.localized(),
+            message: error.localizedDescription.localized(),
+            preferredStyle: .Alert
+        )
+        alert.addAction("OK".localized(), style: .Cancel, handler: handler)
+        return alert
+    }
 }
 
 public func == (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
@@ -70,18 +80,4 @@ public func < (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
 
 public func <= (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
     return lhs.rawValue <= rhs.rawValue
-}
-
-public func alertError(
-    error: NSError,
-    level: AlertLevel = .Normal,
-    handler: (() -> Void)? = nil
-) -> AlertController {
-    let alert = AlertController(
-        title: NSBundle.mainBundle().name.localized,
-        message: error.localizedDescription.localized,
-        preferredStyle: .Alert
-    )
-    alert.addAction("OK".localized, style: .Cancel, handler: handler)
-    return alert
 }

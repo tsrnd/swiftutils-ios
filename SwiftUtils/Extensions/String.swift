@@ -95,6 +95,10 @@ extension String {
         return ""
     }
 
+    public func trimmed(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
+        return trimmedLeft(characterSet: set).trimmedRight(characterSet: set)
+    }
+
     public func trimmedLeftCJK() -> String {
         var text = self
         while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
@@ -165,22 +169,27 @@ extension String {
         return "\(s1)/\(s2)"
     }
 
+    /// The file-system path components of the receiver. (read-only)
     public var pathComponents: [String] {
         return (self as NSString).pathComponents
     }
 
+    // The last path component of the receiver. (read-only)
     public var lastPathComponent: String {
         return (self as NSString).lastPathComponent
     }
 
+    // The path extension, if any, of the string as interpreted as a path. (read-only)
     public var pathExtension: String {
         return (self as NSString).pathExtension
     }
 
+    // Initializes an NSURL object with a provided URL string. (read-only)
     public var url: NSURL? {
-        return NSURL(string: self)!
+        return NSURL(string: self)
     }
 
+    // The host, conforming to RFC 1808. (read-only)
     public var host: String {
         if let url = url, host = url.host {
             return host
@@ -188,11 +197,8 @@ extension String {
         return ""
     }
 
-    public var localized: String {
-        return NSLocalizedString(self, comment: "")
-    }
-
-    public func localized(comment: String) -> String {
+    // Returns a localized string, using the main bundle.
+    public func localized(comment: String = "") -> String {
         return NSLocalizedString(self, comment: comment)
     }
 
