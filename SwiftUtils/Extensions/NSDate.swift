@@ -158,7 +158,7 @@ extension NSDate {
 private var calendar = NSCalendar.currentCalendar()
 
 extension NSCalendar {
-    static var defaultCalendar: NSCalendar {
+    public static var defaultCalendar: NSCalendar {
         set {
             calendar = defaultCalendar
         }
