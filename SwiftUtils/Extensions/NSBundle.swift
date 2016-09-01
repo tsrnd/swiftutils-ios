@@ -8,7 +8,7 @@
 
 import Foundation
 
-public let kCFBundleDisplayNameKey = "kCFBundleDisplayName"
+public let kCFBundleDisplayNameKey = "CFBundleDisplayName"
 public let kCFBundleNameKey = "CFBundleName"
 public let kCFBundleShortVersionKey = "CFBundleShortVersionString"
 

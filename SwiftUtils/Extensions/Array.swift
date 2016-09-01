@@ -16,19 +16,27 @@ extension Array {
         }
     }
 
-    public var shuffled: [Element] {
+    public func shuffled() -> [Element] {
         var array = self
         array.shuffle()
         return array
     }
+
+    public func toJSONData() -> NSData? {
+        do {
+            guard let json = self as? AnyObject else { return nil }
+            return try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
+        } catch {
+            return nil
+        }
+    }
 }
 
 extension Array where Element: Equatable {
-    public mutating func remove(ele: Element) -> Bool {
-        if let i = indexOf(ele) {
-            removeAtIndex(i)
-            return true
+    public mutating func remove(element: Element) -> Element? {
+        guard let idx = indexOf(element) else {
+            return nil
         }
-        return false
+        return removeAtIndex(idx)
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 extension String {
+    @warn_unused_result
     public init(aClass: AnyClass) {
         let name = NSStringFromClass(aClass).componentsSeparatedByString(".").last!
         self.init(name)
@@ -48,6 +49,7 @@ extension String {
     }
 
     // Regex
+    @warn_unused_result
     public func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
         if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
             let range = NSRange(location: 0, length: length)
@@ -56,12 +58,13 @@ extension String {
         return nil
     }
 
-    public func contains(pattern: String, ignoreCase: Bool = false) -> Bool? {
-        if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
-            let range = NSRange(location: 0, length: self.characters.count)
-            return regex.firstMatchInString(self, options: [], range: range) != nil
+    @warn_unused_result
+    public func contains(pattern: String, ignoreCase: Bool = false) -> Bool {
+        guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
+            return false
         }
-        return nil
+        let range = NSRange(location: 0, length: self.characters.count)
+        return regex.firstMatchInString(self, options: [], range: range) != nil
     }
 
     public func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
@@ -198,8 +201,15 @@ extension String {
     }
 
     // Returns a localized string, using the main bundle.
+    @warn_unused_result
     public func localized(comment: String = "") -> String {
         return NSLocalizedString(self, comment: comment)
+    }
+
+    // Returns data with NSUTF8StringEncoding
+    @warn_unused_result
+    public func toData() -> NSData! {
+        return dataUsingEncoding(NSUTF8StringEncoding)
     }
 
     // MARK: Validation

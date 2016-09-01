@@ -14,7 +14,7 @@ extension Bool {
         return self
     }
 
-    public var intValue: Int {
+    public func toInt() -> Int {
         return self ? 1 : 0
     }
 }

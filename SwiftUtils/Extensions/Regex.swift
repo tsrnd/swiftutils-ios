@@ -11,7 +11,7 @@ import Foundation
 extension NSRegularExpression {
     public class func regex(pattern: String, ignoreCase: Bool = false) -> NSRegularExpression? {
         let options: NSRegularExpressionOptions = ignoreCase ? [.CaseInsensitive]: []
-        var regex: NSRegularExpression?
+        let regex: NSRegularExpression?
         do {
             regex = try NSRegularExpression(pattern: pattern, options: options)
         } catch {

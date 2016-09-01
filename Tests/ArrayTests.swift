@@ -29,7 +29,7 @@ class ArrayTests: XCTestCase {
     func test_shuffled() {
         var shuffled: [Int]!
         self.measureBlock { () -> Void in
-            shuffled = self.origin.shuffled
+            shuffled = self.origin.shuffled()
         }
         let test = { (lhs: Int, rhs: Int) -> Bool in
             return lhs < rhs

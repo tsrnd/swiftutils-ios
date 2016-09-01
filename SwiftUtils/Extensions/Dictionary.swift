@@ -25,28 +25,11 @@ extension Dictionary {
         }
     }
 
-    public func map<U, V>(@noescape trans: Element -> (U, V)?) -> [U: V] {
-        var mapped = [U: V]()
-        for (u, v) in self {
-            if let (u, v) = trans((u, v)) {
-                mapped[u] = v
-            }
-        }
-        return mapped
-    }
-
-    public func has(key: Key) -> Bool {
+    public func hasKey(key: Key) -> Bool {
         return indexForKey(key) != nil
     }
 
-    public mutating func shift() -> (Key, Value?)? {
-        if let key = keys.first {
-            return (key, removeValueForKey(key))
-        }
-        return nil
-    }
-
-    public var data: NSData? {
+    public func toJSONData() -> NSData? {
         do {
             guard let json = self as? AnyObject else { return nil }
             return try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
