@@ -8,8 +8,8 @@
 
 import UIKit
 
-public typealias JSObject = [String: AnyObject]
-public typealias JSArray = [JSObject]
+typealias JSObject = [String: AnyObject]
+typealias JSArray = [JSObject]
 
 public enum DeviceType {
     case iPhone4
@@ -38,7 +38,3 @@ public let iPhone4 = (iPhone && DeviceType.iPhone4.size == kScreenSize)
 public let iPhone5 = (iPhone && DeviceType.iPhone5.size == kScreenSize)
 public let iPhone6 = (iPhone && DeviceType.iPhone6.size == kScreenSize)
 public let iPhone6p = (iPhone && DeviceType.iPhone6p.size == kScreenSize)
-
-public func loadNib<T: UIView>(aClass: T.Type) -> T! {
-    return NSBundle.mainBundle().loadNibNamed(String(T), owner: nil, options: nil).first as? T
-}

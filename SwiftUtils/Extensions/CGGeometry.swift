@@ -8,7 +8,6 @@
 
 import UIKit
 
-// MARK: CGPoint
 extension CGPoint {
     public var isZero: Bool {
         return x == 0 && y == 0
@@ -121,7 +120,6 @@ public func / (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
     return CGPoint(x: lhs.x / rhs, y: lhs.y / rhs)
 }
 
-// MARK: CGSize
 extension CGSize {
     public init(size: CGFloat) {
         self.init(width: size, height: size)
@@ -172,7 +170,6 @@ public func / (lhs: CGSize, rhs: CGFloat) -> CGSize {
     return CGSize(width: lhs.width / rhs, height: lhs.height / rhs)
 }
 
-// MARK: CGVector
 extension CGVector {
     public var isZero: Bool {
         return dx == 0 && dy == 0
@@ -219,7 +216,6 @@ public func /= (inout lhs: CGVector, rhs: CGFloat) -> CGVector {
     return lhs
 }
 
-// MARK: CGRect
 extension CGRect {
     public var mid: CGPoint {
         return CGPoint(x: midX, y: midY)

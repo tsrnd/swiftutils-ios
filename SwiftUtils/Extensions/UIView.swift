@@ -13,8 +13,17 @@ public class IntrinsicContentView: UIView {
 }
 
 extension UIView {
-    public static var nib: UINib {
+    public class func nib() -> UINib {
         return UINib(nibName: String(self), bundle: nil)
+    }
+
+    public class func loadNib<T: UIView>() -> T! {
+        let name = String(self)
+        let bundle = NSBundle(forClass: T.self)
+        guard let xib = bundle.loadNibNamed(name, owner: nil, options: nil).first as? T else {
+            fatalError("Cannot load nib named `\(name)`")
+        }
+        return xib
     }
 }
 

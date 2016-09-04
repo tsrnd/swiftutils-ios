@@ -177,22 +177,22 @@ extension String {
         return (self as NSString).pathComponents
     }
 
-    // The last path component of the receiver. (read-only)
+    /// The last path component of the receiver. (read-only)
     public var lastPathComponent: String {
         return (self as NSString).lastPathComponent
     }
 
-    // The path extension, if any, of the string as interpreted as a path. (read-only)
+    /// The path extension, if any, of the string as interpreted as a path. (read-only)
     public var pathExtension: String {
         return (self as NSString).pathExtension
     }
 
-    // Initializes an NSURL object with a provided URL string. (read-only)
+    /// Initializes an NSURL object with a provided URL string. (read-only)
     public var url: NSURL? {
         return NSURL(string: self)
     }
 
-    // The host, conforming to RFC 1808. (read-only)
+    /// The host, conforming to RFC 1808. (read-only)
     public var host: String {
         if let url = url, host = url.host {
             return host
@@ -206,7 +206,7 @@ extension String {
         return NSLocalizedString(self, comment: comment)
     }
 
-    // Returns data with NSUTF8StringEncoding
+    /// Returns data with NSUTF8StringEncoding
     @warn_unused_result
     public func toData() -> NSData! {
         return dataUsingEncoding(NSUTF8StringEncoding)
@@ -228,14 +228,12 @@ extension String {
     }
 }
 
-// MARK: Character
 extension Character {
     public var intValue: Int {
         return (String(self) as NSString).integerValue
     }
 }
 
-// MARK: NSMutableAttributedString
 extension NSMutableAttributedString {
     public func appendString(string: String, attributes: [String: AnyObject]) {
         let attStr = NSAttributedString(string: string, attributes: attributes)
@@ -243,7 +241,6 @@ extension NSMutableAttributedString {
     }
 }
 
-// MARK: NSMutableParagraphStyle
 extension NSMutableParagraphStyle {
     public class func defaultStyle() -> NSMutableParagraphStyle! {
         let style = NSMutableParagraphStyle()

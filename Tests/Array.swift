@@ -18,14 +18,6 @@ class ArrayTests: XCTestCase {
         return numbers
     }()
 
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func test_shuffled() {
         var shuffled: [Int]!
         self.measureBlock { () -> Void in

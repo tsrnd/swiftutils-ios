@@ -10,15 +10,6 @@ import XCTest
 @testable import SwiftUtils
 
 class StringTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func test_initWithClass() {
         let clazz = String(UIViewController)
         XCTAssertEqual(clazz, "UIViewController")
@@ -71,5 +62,4 @@ class StringTests: XCTestCase {
             XCTAssertTrue(email.validate(String.Regex.Email2))
         }
     }
-
 }

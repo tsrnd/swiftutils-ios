@@ -10,15 +10,7 @@ import XCTest
 @testable import SwiftUtils
 
 class BoolTests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
-    func testToggle() {
+    func test_toggle() {
         var bool = true
         bool.toggle()
         XCTAssertFalse(bool)

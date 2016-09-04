@@ -32,7 +32,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftUtils', '~> 1.5.3'
+pod 'SwiftUtils', '~> 1.6.0'
 ```
 
 Then, run the following command:

@@ -25,6 +25,7 @@ public class AlertController: UIAlertController {
         addAction(UIAlertAction(title: title, style: style, handler: actionHandler))
     }
 
+    // Recommend `present` method for AlertController instead of default is `presentViewController`.
     public func present(from from: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
         if let from = from where from.isViewLoaded() {
             if let popup = from.presentedViewController {
