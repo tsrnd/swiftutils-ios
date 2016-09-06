@@ -213,13 +213,13 @@ extension String {
     }
 
     // MARK: Validation
-    public struct Regex {
-        static let Number = "^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$"
-        static let Name = "[a-zA-Z\\s]+"
-        static let Email1 = ".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*"
-        static let Email2 = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
-        static let Password = "[a-zA-Z0-9_]+"
-        static let URL = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
+    public struct ValidationRegex {
+        public static let Number = "^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$"
+        public static let Name = "[a-zA-Z\\s]+"
+        public static let Email1 = ".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*"
+        public static let Email2 = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
+        public static let Password = "[a-zA-Z0-9_]+"
+        public static let URL = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
     }
 
     public func validate(regex: String) -> Bool {
