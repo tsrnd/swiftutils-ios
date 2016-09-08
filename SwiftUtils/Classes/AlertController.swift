@@ -18,11 +18,20 @@ public enum AlertLevel: Int {
 public class AlertController: UIAlertController {
     public var level = AlertLevel.Normal
 
-    public func addAction(title: String?, style: UIAlertActionStyle = UIAlertActionStyle.Default, handler: (() -> Void)? = nil) {
+    public static func create(title: String, message: String, level: AlertLevel = .Normal, preferredStyle: UIAlertControllerStyle = .Alert) -> AlertController {
+        let alert = AlertController(title: title, message: message, preferredStyle: preferredStyle)
+        alert.level = level
+        
+        return alert
+    }
+    
+    public func addAction(title: String?, style: UIAlertActionStyle = UIAlertActionStyle.Default, handler: (() -> Void)? = nil) -> AlertController {
         let actionHandler: ((UIAlertAction) -> Void)? = handler != nil ? { (action: UIAlertAction) -> Void in
             handler?()
         }: nil
         addAction(UIAlertAction(title: title, style: style, handler: actionHandler))
+        
+        return self
     }
 
     // Recommend `present` method for AlertController instead of default is `presentViewController`.
@@ -83,29 +92,3 @@ public func <= (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
     return lhs.rawValue <= rhs.rawValue
 }
 
-public func AlertWithOK(
-    title: String,
-    message: String,
-    level: AlertController.AlertLevel = .Normal,
-    handler:(() -> Void)? = nil
-    ) -> AlertController {
-    let alert = AlertController(title: title.localized, message: message.localized, preferredStyle: .Alert)
-    
-    alert.addAction("OK".localized, style: .Cancel, handler: handler)
-    return alert
-}
-
-public func AlertWithOkAndCancel(
-    title: String,
-    message: String,
-    level: AlertController.AlertLevel = .Normal,
-    OkHandler:(() -> Void)? = nil,
-    CancelHandler:(() -> Void)? = nil
-    ) -> AlertController {
-    let alert = AlertController(title: title.localized, message: message.localized, preferredStyle: .Alert)
-    
-    alert.addAction("OK".localized, style: .Default, handler: OkHandler)
-    alert.addAction("Cancel".localized, style: .Cancel, handler: CancelHandler)
-    
-    return alert
-}
