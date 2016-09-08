@@ -3,234 +3,263 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/7/15.
-//  Copyright © 2015 Astraler Technology. All rights reserved.
+//  Copyright © 2015 DaoNV. All rights reserved.
 //
 
 import UIKit
 
 extension String {
-  public init(aClass: AnyClass) {
-    let name = NSStringFromClass(aClass).componentsSeparatedByString(".").last!
-    self.init(name)
-  }
-
-  public subscript(index: Int) -> Character? {
-    let range = startIndex.advancedBy(index)
-    if range < startIndex || range > endIndex {
-      return nil
+    @warn_unused_result
+    public init(aClass: AnyClass) {
+        let name = NSStringFromClass(aClass).componentsSeparatedByString(".").last!
+        self.init(name)
     }
-    return self[range]
-  }
 
-  public subscript(index: Int) -> String? {
-    let range = startIndex.advancedBy(index)
-    if let char: Character = self[range] {
-      return String(char)
+    public subscript(index: Int) -> Character? {
+        let range = startIndex.advancedBy(index)
+        if range < startIndex || range > endIndex {
+            return nil
+        }
+        return self[range]
     }
-    return nil
-  }
 
-  public subscript(range: Range<Int>) -> String? {
-    let start = startIndex.advancedBy(range.startIndex)
-    let end = startIndex.advancedBy(range.endIndex)
-    if start < startIndex || end > endIndex {
-      return nil
+    public subscript(index: Int) -> String? {
+        let range = startIndex.advancedBy(index)
+        if let char: Character = self[range] {
+            return String(char)
+        }
+        return nil
     }
-    let range = Range(start: start, end: end)
-    return self[range]
-  }
 
-  public var length: Int {
-    return self.characters.count
-  }
-
-  public var capitalized: String {
-    return capitalizedString
-  }
-
-  // Regex
-  public func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
-    if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
-      let range = NSRange(location: 0, length: length)
-      return regex.matchesInString(self, options: [], range: range).map { $0 }
+    public subscript(range: Range<Int>) -> String? {
+        let start = startIndex.advancedBy(range.startIndex, limit: endIndex)
+        let end = startIndex.advancedBy(range.endIndex, limit: endIndex)
+        if start < startIndex || end > endIndex {
+            return nil
+        }
+        return self[start..<end]
     }
-    return nil
-  }
 
-  public func contains(pattern: String, ignoreCase: Bool = false) -> Bool? {
-    if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
-      let range = NSRange(location: 0, length: self.characters.count)
-      return regex.firstMatchInString(self, options: [], range: range) != nil
+    public var length: Int {
+        return self.characters.count
     }
-    return nil
-  }
 
-  public func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
-    if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
-      let range = NSRange(location: 0, length: self.characters.count)
-      return regex.stringByReplacingMatchesInString(self, options: [], range: range, withTemplate: replacementString)
+    public var capitalized: String {
+        return capitalizedString
     }
-    return nil
-  }
 
-  public func insert(index: Int, _ string: String) -> String {
-    if index > length {
-      return self + string
-    } else if index < 0 {
-      return string + self
+    // Regex
+    @warn_unused_result
+    public func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
+        if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
+            let range = NSRange(location: 0, length: length)
+            return regex.matchesInString(self, options: [], range: range).map { $0 }
+        }
+        return nil
     }
-    return self[0 ..< index]! + string + self[index ..< length]!
-  }
 
-  public func trimmedLeft(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
-    if let range = rangeOfCharacterFromSet(set.invertedSet) {
-      return self[range.startIndex ..< endIndex]
+    @warn_unused_result
+    public func contains(pattern: String, ignoreCase: Bool = false) -> Bool {
+        guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
+            return false
+        }
+        let range = NSRange(location: 0, length: self.characters.count)
+        return regex.firstMatchInString(self, options: [], range: range) != nil
     }
-    return ""
-  }
 
-  public func trimmedRight(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
-    if let range = rangeOfCharacterFromSet(set.invertedSet, options: NSStringCompareOptions.BackwardsSearch) {
-      return self[startIndex ..< range.endIndex]
+    public func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
+        if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
+            let range = NSRange(location: 0, length: self.characters.count)
+            return regex.stringByReplacingMatchesInString(self, options: [], range: range, withTemplate: replacementString)
+        }
+        return nil
     }
-    return ""
-  }
 
-  public func trimmed() -> String {
-    return trimmedLeft().trimmedRight()
-  }
-
-  public static func random(var length len: Int = 0, charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
-    if len < 1 {
-      len = Int.random(max: 16)
+    public func insert(index: Int, _ string: String) -> String {
+        if index > length {
+            return self + string
+        } else if index < 0 {
+            return string + self
+        }
+        return self[0 ..< index]! + string + self[index ..< length]!
     }
-    var result = String()
-    let max = charset.length - 1
-    for _ in 0 ..< len {
-      result += String(charset[Int.random(min: 0, max: max)]!)
+
+    public func trimmedLeft(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
+        if let range = rangeOfCharacterFromSet(set.invertedSet) {
+            return self[range.startIndex ..< endIndex]
+        }
+        return ""
     }
-    return result
-  }
 
-  public var intValue: Int {
-    return (self as NSString).integerValue
-  }
-
-  public var doubleValue: Double {
-    return (self as NSString).doubleValue
-  }
-
-  public var floatValue: Float {
-    return (self as NSString).floatValue
-  }
-
-  public var boolValue: Bool {
-    return (self as NSString).boolValue
-  }
-
-  public func replaceKeysByValues(values: [String: AnyObject]) -> String {
-    let str: NSMutableString = NSMutableString(string: self)
-    let range = NSRange(location: 0, length: str.length)
-    for (key, value) in values {
-      str.replaceOccurrencesOfString(key, withString: "\(value)", options: [.CaseInsensitiveSearch, .LiteralSearch], range: range)
+    public func trimmedRight(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
+        if let range = rangeOfCharacterFromSet(set.invertedSet, options: NSStringCompareOptions.BackwardsSearch) {
+            return self[startIndex ..< range.endIndex]
+        }
+        return ""
     }
-    return str as NSString as String
-  }
 
-  public func appendPathComponent(str: String) -> String {
-    let s = (self as NSString).stringByAppendingPathComponent(str)
-    if s.hasSuffix("/") {
-      return s
+    public func trimmed(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
+        return trimmedLeft(characterSet: set).trimmedRight(characterSet: set)
     }
-    return s + "/"
-  }
 
-  public var pathComponents: [String] {
-    return (self as NSString).pathComponents
-  }
-
-  public var lastPathComponent: String {
-    return (self as NSString).lastPathComponent
-  }
-
-  public var pathExtension: String {
-    return (self as NSString).pathExtension
-  }
-
-  public var url: NSURL? {
-    return NSURL(string: self)!
-  }
-
-  public var host: String {
-    if let url = url, host = url.host {
-      return host
+    public func trimmedLeftCJK() -> String {
+        var text = self
+        while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
+            text = text.substringFromIndex(text.startIndex.advancedBy(1))
+        }
+        return text
     }
-    return ""
-  }
 
-  public var localized: String {
-    return NSLocalizedString(self, comment: "")
-  }
+    public func trimmedRightCJK() -> String {
+        var text = self
+        while text.characters.last == Character("\n") || text.characters.last == Character(" ") {
+            text = text.substringToIndex(text.endIndex.advancedBy(-1))
+        }
+        return text
+    }
 
-  public func localized(comment: String) -> String {
-    return NSLocalizedString(self, comment: comment)
-  }
+    public func trimmedCJK() -> String {
+        return trimmedLeftCJK().trimmedRightCJK()
+    }
 
-  // MARK: Validation
-  public enum Regex: String {
-    case Number = "^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$"
-    case Name = "[a-zA-Z\\s]+"
-    case Email1 = ".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*"
-    case Email2 = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
-    case Password = "[a-zA-Z0-9_]+"
-    case URL = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
-  }
+    public static func random(length len: Int = 0, charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+        let len = len < 1 ? len : Int.random(max: 16)
+        var result = String()
+        let max = charset.length - 1
+        for _ in 0 ..< len {
+            result += String(charset[Int.random(min: 0, max: max)]!)
+        }
+        return result
+    }
 
-  public func validate(regex: String) -> Bool {
-    let pre = NSPredicate(format: "SELF MATCHES %@", regex)
-    return pre.evaluateWithObject(self)
-  }
+    public var intValue: Int {
+        return Int(self) ?? 0
+    }
 
-  public func validate(regex: Regex) -> Bool {
-    return validate(regex.rawValue)
-  }
+    public var doubleValue: Double {
+        return Double(self) ?? 0.0
+    }
+
+    public var floatValue: Float {
+        return Float(self) ?? 0.0
+    }
+
+    public var boolValue: Bool {
+        return (self as NSString).boolValue
+    }
+
+    public func replaceKeysByValues(values: [String: AnyObject]) -> String {
+        let str: NSMutableString = NSMutableString(string: self)
+        let range = NSRange(location: 0, length: str.length)
+        for (key, value) in values {
+            str.replaceOccurrencesOfString(key, withString: "\(value)", options: [.CaseInsensitiveSearch, .LiteralSearch], range: range)
+        }
+        return str as NSString as String
+    }
+
+    public func stringByAppendingPathComponent(str: String) -> String {
+        var s1: String! = self
+        while s1.hasSuffix("/") {
+            s1 = s1[0...s1.length - 2]
+        }
+        var s2: String! = str
+        while s2.hasPrefix("/") {
+            s2 = s2[1...length - 1]
+        }
+        while s2.hasSuffix("/") {
+            s2 = s2[0...s2.length - 2]
+        }
+        return "\(s1)/\(s2)"
+    }
+
+    /// The file-system path components of the receiver. (read-only)
+    public var pathComponents: [String] {
+        return (self as NSString).pathComponents
+    }
+
+    /// The last path component of the receiver. (read-only)
+    public var lastPathComponent: String {
+        return (self as NSString).lastPathComponent
+    }
+
+    /// The path extension, if any, of the string as interpreted as a path. (read-only)
+    public var pathExtension: String {
+        return (self as NSString).pathExtension
+    }
+
+    /// Initializes an NSURL object with a provided URL string. (read-only)
+    public var url: NSURL? {
+        return NSURL(string: self)
+    }
+
+    /// The host, conforming to RFC 1808. (read-only)
+    public var host: String {
+        if let url = url, host = url.host {
+            return host
+        }
+        return ""
+    }
+
+    // Returns a localized string, using the main bundle.
+    @warn_unused_result
+    public func localized(comment: String = "") -> String {
+        return NSLocalizedString(self, comment: comment)
+    }
+
+    /// Returns data with NSUTF8StringEncoding
+    @warn_unused_result
+    public func toData() -> NSData! {
+        return dataUsingEncoding(NSUTF8StringEncoding)
+    }
+
+    // MARK: Validation
+    public struct ValidationRegex {
+        public static let Number = "^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$"
+        public static let Name = "[a-zA-Z\\s]+"
+        public static let Email1 = ".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*"
+        public static let Email2 = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
+        public static let Password = "[a-zA-Z0-9_]+"
+        public static let URL = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
+    }
+
+    public func validate(regex: String) -> Bool {
+        let pre = NSPredicate(format: "SELF MATCHES %@", regex)
+        return pre.evaluateWithObject(self)
+    }
 }
 
-// MARK: Character
 extension Character {
-  public var intValue: Int {
-    return (String(self) as NSString).integerValue
-  }
+    public var intValue: Int {
+        return (String(self) as NSString).integerValue
+    }
 }
 
-// MARK: NSMutableAttributedString
 extension NSMutableAttributedString {
-  public func appendString(string: String, attributes: [String: AnyObject]) {
-    let attStr = NSAttributedString(string: string, attributes: attributes)
-    appendAttributedString(attStr)
-  }
+    public func appendString(string: String, attributes: [String: AnyObject]) {
+        let attStr = NSAttributedString(string: string, attributes: attributes)
+        appendAttributedString(attStr)
+    }
 }
 
-// MARK: NSMutableParagraphStyle
 extension NSMutableParagraphStyle {
-  public static func defaultStyle() -> NSMutableParagraphStyle! {
-    let style = NSMutableParagraphStyle()
-    let defaultStyle = NSParagraphStyle.defaultParagraphStyle()
-    style.lineSpacing = defaultStyle.lineSpacing
-    style.paragraphSpacing = defaultStyle.paragraphSpacing
-    style.alignment = defaultStyle.alignment
-    style.firstLineHeadIndent = defaultStyle.firstLineHeadIndent
-    style.headIndent = defaultStyle.headIndent
-    style.tailIndent = defaultStyle.tailIndent
-    style.lineBreakMode = defaultStyle.lineBreakMode
-    style.minimumLineHeight = defaultStyle.minimumLineHeight
-    style.maximumLineHeight = defaultStyle.maximumLineHeight
-    style.baseWritingDirection = defaultStyle.baseWritingDirection
-    style.lineHeightMultiple = defaultStyle.lineHeightMultiple
-    style.paragraphSpacingBefore = defaultStyle.paragraphSpacingBefore
-    style.hyphenationFactor = defaultStyle.hyphenationFactor
-    style.tabStops = defaultStyle.tabStops
-    style.defaultTabInterval = defaultStyle.defaultTabInterval
-    return style
-  }
+    public class func defaultStyle() -> NSMutableParagraphStyle! {
+        let style = NSMutableParagraphStyle()
+        let defaultStyle = NSParagraphStyle.defaultParagraphStyle()
+        style.lineSpacing = defaultStyle.lineSpacing
+        style.paragraphSpacing = defaultStyle.paragraphSpacing
+        style.alignment = defaultStyle.alignment
+        style.firstLineHeadIndent = defaultStyle.firstLineHeadIndent
+        style.headIndent = defaultStyle.headIndent
+        style.tailIndent = defaultStyle.tailIndent
+        style.lineBreakMode = defaultStyle.lineBreakMode
+        style.minimumLineHeight = defaultStyle.minimumLineHeight
+        style.maximumLineHeight = defaultStyle.maximumLineHeight
+        style.baseWritingDirection = defaultStyle.baseWritingDirection
+        style.lineHeightMultiple = defaultStyle.lineHeightMultiple
+        style.paragraphSpacingBefore = defaultStyle.paragraphSpacingBefore
+        style.hyphenationFactor = defaultStyle.hyphenationFactor
+        style.tabStops = defaultStyle.tabStops
+        style.defaultTabInterval = defaultStyle.defaultTabInterval
+        return style
+    }
 }

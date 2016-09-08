@@ -3,42 +3,40 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/7/15.
-//  Copyright © 2015 Astraler Technology. All rights reserved.
+//  Copyright © 2015 DaoNV. All rights reserved.
 //
 
 import UIKit
 
 extension Array {
-  public mutating func shuffle() {
-    for var i = self.count - 1; i >= 1; i-- {
-      let j = Int.random(max: i - 1)
-      swap(&self[i], &self[j])
+    public mutating func shuffle() {
+        for i in (1 ..< count).reverse() {
+            let j = Int.random(max: i - 1)
+            swap(&self[i], &self[j])
+        }
     }
-  }
 
-  public var shuffled: [Element] {
-    var array = self
-    array.shuffle()
-    return array
-  }
-
-  public func map<T>(@noescape trans: Element -> T?) -> [T] {
-    var mapped = [T]()
-    forEach { (ele) -> () in
-      if let e = trans(ele) {
-        mapped.append(e)
-      }
+    public func shuffled() -> [Element] {
+        var array = self
+        array.shuffle()
+        return array
     }
-    return mapped
-  }
+
+    public func toJSONData() -> NSData? {
+        do {
+            guard let json = self as? AnyObject else { return nil }
+            return try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
+        } catch {
+            return nil
+        }
+    }
 }
 
 extension Array where Element: Equatable {
-  public mutating func remove(ele: Element) -> Bool {
-    if let i = indexOf(ele) {
-      removeAtIndex(i)
-      return true
+    public mutating func remove(element: Element) -> Element? {
+        guard let idx = indexOf(element) else {
+            return nil
+        }
+        return removeAtIndex(idx)
     }
-    return false
-  }
 }
