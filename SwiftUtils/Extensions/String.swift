@@ -213,7 +213,7 @@ extension String {
     }
 
     // MARK: Validation
-    public struct ValidationRegex {
+    public struct Regex {
         public static let Number = "^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$"
         public static let Name = "[a-zA-Z\\s]+"
         public static let Email1 = ".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*"
