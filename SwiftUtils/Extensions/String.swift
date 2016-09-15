@@ -9,14 +9,14 @@
 import UIKit
 
 extension String {
-    @warn_unused_result
+    
     public init(aClass: AnyClass) {
-        let name = NSStringFromClass(aClass).componentsSeparatedByString(".").last!
+        let name = NSStringFromClass(aClass).components(separatedBy: ".").last!
         self.init(name)
     }
 
     public subscript(index: Int) -> Character? {
-        let range = startIndex.advancedBy(index)
+        let range = characters.index(startIndex, offsetBy: index)
         if range < startIndex || range > endIndex {
             return nil
         }
@@ -24,7 +24,7 @@ extension String {
     }
 
     public subscript(index: Int) -> String? {
-        let range = startIndex.advancedBy(index)
+        let range = characters.index(startIndex, offsetBy: index)
         if let char: Character = self[range] {
             return String(char)
         }
@@ -32,12 +32,12 @@ extension String {
     }
 
     public subscript(range: Range<Int>) -> String? {
-        let start = startIndex.advancedBy(range.startIndex, limit: endIndex)
-        let end = startIndex.advancedBy(range.endIndex, limit: endIndex)
-        if start < startIndex || end > endIndex {
+        let start = characters.index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex)
+        let end = characters.index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex)
+        if start! < startIndex || end! > endIndex {
             return nil
         }
-        return self[start..<end]
+        return self[start!..<end!]
     }
 
     public var length: Int {
@@ -45,37 +45,37 @@ extension String {
     }
 
     public var capitalized: String {
-        return capitalizedString
+        return capitalized
     }
 
     // Regex
-    @warn_unused_result
-    public func matches(pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
+    
+    public func matches(_ pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
         if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
             let range = NSRange(location: 0, length: length)
-            return regex.matchesInString(self, options: [], range: range).map { $0 }
+            return regex.matches(in: self, options: [], range: range).map { $0 }
         }
         return nil
     }
 
-    @warn_unused_result
-    public func contains(pattern: String, ignoreCase: Bool = false) -> Bool {
+    
+    public func contains(_ pattern: String, ignoreCase: Bool = false) -> Bool {
         guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
             return false
         }
         let range = NSRange(location: 0, length: self.characters.count)
-        return regex.firstMatchInString(self, options: [], range: range) != nil
+        return regex.firstMatch(in: self, options: [], range: range) != nil
     }
 
-    public func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
+    public func replace(_ pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
         if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
             let range = NSRange(location: 0, length: self.characters.count)
-            return regex.stringByReplacingMatchesInString(self, options: [], range: range, withTemplate: replacementString)
+            return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replacementString)
         }
         return nil
     }
 
-    public func insert(index: Int, _ string: String) -> String {
+    public func insert(_ index: Int, _ string: String) -> String {
         if index > length {
             return self + string
         } else if index < 0 {
@@ -84,28 +84,28 @@ extension String {
         return self[0 ..< index]! + string + self[index ..< length]!
     }
 
-    public func trimmedLeft(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
-        if let range = rangeOfCharacterFromSet(set.invertedSet) {
-            return self[range.startIndex ..< endIndex]
+    public func trimmedLeft(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
+        if let range = rangeOfCharacter(from: set.inverted) {
+            return self[range.lowerBound ..< endIndex]
         }
         return ""
     }
 
-    public func trimmedRight(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
-        if let range = rangeOfCharacterFromSet(set.invertedSet, options: NSStringCompareOptions.BackwardsSearch) {
-            return self[startIndex ..< range.endIndex]
+    public func trimmedRight(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
+        if let range = rangeOfCharacter(from: set.inverted, options: NSString.CompareOptions.backwards) {
+            return self[startIndex ..< range.upperBound]
         }
         return ""
     }
 
-    public func trimmed(characterSet set: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String {
+    public func trimmed(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
         return trimmedLeft(characterSet: set).trimmedRight(characterSet: set)
     }
 
     public func trimmedLeftCJK() -> String {
         var text = self
         while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
-            text = text.substringFromIndex(text.startIndex.advancedBy(1))
+            text = text.substring(from: text.characters.index(text.startIndex, offsetBy: 1))
         }
         return text
     }
@@ -113,7 +113,7 @@ extension String {
     public func trimmedRightCJK() -> String {
         var text = self
         while text.characters.last == Character("\n") || text.characters.last == Character(" ") {
-            text = text.substringToIndex(text.endIndex.advancedBy(-1))
+            text = text.substring(to: text.characters.index(text.endIndex, offsetBy: -1))
         }
         return text
     }
@@ -148,16 +148,16 @@ extension String {
         return (self as NSString).boolValue
     }
 
-    public func replaceKeysByValues(values: [String: AnyObject]) -> String {
+    public func replaceKeysByValues(_ values: [String: AnyObject]) -> String {
         let str: NSMutableString = NSMutableString(string: self)
         let range = NSRange(location: 0, length: str.length)
         for (key, value) in values {
-            str.replaceOccurrencesOfString(key, withString: "\(value)", options: [.CaseInsensitiveSearch, .LiteralSearch], range: range)
+            str.replaceOccurrences(of: key, with: "\(value)", options: [.caseInsensitive, .literal], range: range)
         }
         return str as NSString as String
     }
 
-    public func stringByAppendingPathComponent(str: String) -> String {
+    public func stringByAppendingPathComponent(_ str: String) -> String {
         var s1: String! = self
         while s1.hasSuffix("/") {
             s1 = s1[0...s1.length - 2]
@@ -188,28 +188,28 @@ extension String {
     }
 
     /// Initializes an NSURL object with a provided URL string. (read-only)
-    public var url: NSURL? {
-        return NSURL(string: self)
+    public var url: URL? {
+        return URL(string: self)
     }
 
     /// The host, conforming to RFC 1808. (read-only)
     public var host: String {
-        if let url = url, host = url.host {
+        if let url = url, let host = url.host {
             return host
         }
         return ""
     }
 
     // Returns a localized string, using the main bundle.
-    @warn_unused_result
-    public func localized(comment: String = "") -> String {
+    
+    public func localized(_ comment: String = "") -> String {
         return NSLocalizedString(self, comment: comment)
     }
 
     /// Returns data with NSUTF8StringEncoding
-    @warn_unused_result
-    public func toData() -> NSData! {
-        return dataUsingEncoding(NSUTF8StringEncoding)
+    
+    public func toData() -> Data! {
+        return data(using: String.Encoding.utf8)
     }
 
     // MARK: Validation
@@ -222,9 +222,9 @@ extension String {
         public static let URL = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
     }
 
-    public func validate(regex: String) -> Bool {
+    public func validate(_ regex: String) -> Bool {
         let pre = NSPredicate(format: "SELF MATCHES %@", regex)
-        return pre.evaluateWithObject(self)
+        return pre.evaluate(with: self)
     }
 }
 
@@ -235,16 +235,16 @@ extension Character {
 }
 
 extension NSMutableAttributedString {
-    public func appendString(string: String, attributes: [String: AnyObject]) {
+    public func appendString(_ string: String, attributes: [String: AnyObject]) {
         let attStr = NSAttributedString(string: string, attributes: attributes)
-        appendAttributedString(attStr)
+        append(attStr)
     }
 }
 
 extension NSMutableParagraphStyle {
     public class func defaultStyle() -> NSMutableParagraphStyle! {
         let style = NSMutableParagraphStyle()
-        let defaultStyle = NSParagraphStyle.defaultParagraphStyle()
+        let defaultStyle = NSParagraphStyle.default
         style.lineSpacing = defaultStyle.lineSpacing
         style.paragraphSpacing = defaultStyle.paragraphSpacing
         style.alignment = defaultStyle.alignment

@@ -20,13 +20,13 @@ class ArrayTests: XCTestCase {
 
     func test_shuffled() {
         var shuffled: [Int]!
-        self.measureBlock { () -> Void in
+        self.measure { () -> Void in
             shuffled = self.origin.shuffled()
         }
         let test = { (lhs: Int, rhs: Int) -> Bool in
             return lhs < rhs
         }
-        XCTAssertEqual(shuffled.sort(test), origin.sort(test), "sorted shuffled should equal to sorted origin")
+        XCTAssertEqual(shuffled.sorted(by: test), origin.sorted(by: test), "sorted shuffled should equal to sorted origin")
     }
 
     func test_map() {

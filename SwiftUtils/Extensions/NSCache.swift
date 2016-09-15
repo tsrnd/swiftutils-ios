@@ -18,13 +18,13 @@ extension NSCache {
 
     public subscript(key: AnyObject) -> AnyObject? {
         get {
-            return objectForKey(key)
+            return object(forKey: key as! KeyType)
         }
         set {
             if let value: AnyObject = newValue {
-                setObject(value, forKey: key)
+                setObject(value as! ObjectType, forKey: key as! KeyType)
             } else {
-                removeObjectForKey(key)
+                removeObject(forKey: key as! KeyType)
             }
         }
     }

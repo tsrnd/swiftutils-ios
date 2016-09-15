@@ -8,16 +8,16 @@
 
 import Foundation
 
-extension NSData {
+extension Data {
     public func toJSON() -> AnyObject? {
         do {
-            return try NSJSONSerialization.JSONObjectWithData(self, options: NSJSONReadingOptions.AllowFragments)
+            return try JSONSerialization.jsonObject(with: self, options: JSONSerialization.ReadingOptions.allowFragments)
         } catch {
             return nil
         }
     }
 
-    public func toString(encoding: NSStringEncoding = NSUTF8StringEncoding) -> String? {
+    public func toString(_ encoding: String.Encoding = String.Encoding.utf8) -> String? {
         return String(data: self, encoding: encoding)
     }
 }

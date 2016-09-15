@@ -9,16 +9,16 @@
 import UIKit
 
 public enum AlertLevel: Int {
-    case Low
-    case Normal
-    case High
-    case Require
+    case low
+    case normal
+    case high
+    case require
 }
 
-public class AlertController: UIAlertController {
-    public var level = AlertLevel.Normal
+open class AlertController: UIAlertController {
+    open var level = AlertLevel.normal
 
-    public func addAction(title: String?, style: UIAlertActionStyle = UIAlertActionStyle.Default, handler: (() -> Void)? = nil) {
+    open func addAction(_ title: String?, style: UIAlertActionStyle = UIAlertActionStyle.default, handler: (() -> Void)? = nil) {
         let actionHandler: ((UIAlertAction) -> Void)? = handler != nil ? { (action: UIAlertAction) -> Void in
             handler?()
         }: nil
@@ -26,39 +26,39 @@ public class AlertController: UIAlertController {
     }
 
     // Recommend `present` method for AlertController instead of default is `presentViewController`.
-    public func present(from from: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
-        if let from = from where from.isViewLoaded() {
+    open func present(from: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
+        if let from = from , from.isViewLoaded {
             if let popup = from.presentedViewController {
                 if let vc = popup as? AlertController {
                     if level > vc.level {
-                        vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
+                        vc.dismiss(animated: animated, completion: { () -> Void in
                             self.present(from: from, animated: animated, completion: completion)
                         })
                     }
-                } else if level >= .Normal {
-                    popup.dismissViewControllerAnimated(animated, completion: { () -> Void in
+                } else if level >= .normal {
+                    popup.dismiss(animated: animated, completion: { () -> Void in
                         self.present(from: from, animated: animated, completion: completion)
                     })
                 }
             } else {
-                from.presentViewController(self, animated: animated, completion: completion)
+                from.present(self, animated: animated, completion: completion)
             }
-        } else if let root = UIApplication.sharedApplication().delegate?.window??.rootViewController where root.isViewLoaded() {
+        } else if let root = UIApplication.shared.delegate?.window??.rootViewController , root.isViewLoaded {
             present(from: root, animated: animated, completion: completion)
         }
     }
 
-    public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
-        dismissViewControllerAnimated(animated, completion: completion)
+    open func dismiss(_ animated: Bool = true, completion: (() -> Void)? = nil) {
+        self.dismiss(animated: animated, completion: completion)
     }
 
-    public class func alertWithError(error: NSError, level: AlertLevel = .Normal, handler: (() -> Void)? = nil) -> AlertController {
+    open class func alertWithError(_ error: NSError, level: AlertLevel = .normal, handler: (() -> Void)? = nil) -> AlertController {
         let alert = AlertController(
-            title: NSBundle.mainBundle().name.localized(),
+            title: Bundle.main.name.localized(),
             message: error.localizedDescription.localized(),
-            preferredStyle: .Alert
+            preferredStyle: .alert
         )
-        alert.addAction("OK".localized(), style: .Cancel, handler: handler)
+        alert.addAction("OK".localized(), style: .cancel, handler: handler)
         return alert
     }
 }

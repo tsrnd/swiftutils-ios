@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class RefreshControl: UIRefreshControl {
+open class RefreshControl: UIRefreshControl {
 
-    override public func endRefreshing() {
+    override open func endRefreshing() {
         let scrollView = superview as? UIScrollView
-        let scrollEnabled = scrollView?.scrollEnabled ?? true
-        scrollView?.scrollEnabled = false
+        let scrollEnabled = scrollView?.isScrollEnabled ?? true
+        scrollView?.isScrollEnabled = false
         super.endRefreshing()
-        scrollView?.scrollEnabled = scrollEnabled
+        scrollView?.isScrollEnabled = scrollEnabled
     }
 
 }
