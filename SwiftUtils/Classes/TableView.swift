@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class TableView: UITableView {
-    public var allowHeaderViewsToFloat: Bool = false
-    public var allowFooterViewsToFloat: Bool = false
+open class TableView: UITableView {
+    open var allowHeaderViewsToFloat: Bool = false
+    open var allowFooterViewsToFloat: Bool = false
 
-    public func allowsHeaderViewsToFloat() -> Bool {
+    open func allowsHeaderViewsToFloat() -> Bool {
         return allowHeaderViewsToFloat
     }
 
-    public func allowsFooterViewsToFloat() -> Bool {
+    open func allowsFooterViewsToFloat() -> Bool {
         return allowFooterViewsToFloat
     }
 }

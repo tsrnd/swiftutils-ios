@@ -8,39 +8,39 @@
 
 import Foundation
 
-private var _defaultCalendar = NSCalendar.currentCalendar()
+private var _defaultCalendar = Calendar.current
 
-extension NSCalendar {
-    public static func setDefaultCalendar(defaultCalendar: NSCalendar) {
+extension Calendar {
+    public static func setDefaultCalendar(_ defaultCalendar: Calendar) {
         _defaultCalendar = defaultCalendar
     }
 
-    public static func defaultCalendar() -> NSCalendar {
+    public static func defaultCalendar() -> Calendar {
         return _defaultCalendar
     }
 }
 
-extension NSTimeZone {
-    public class var UTC: NSTimeZone {
-        return NSTimeZone(abbreviation: "UTC")!
+extension TimeZone {
+    public static var UTC: TimeZone {
+        return TimeZone(abbreviation: "UTC")!
     }
 }
 
-private var _defaultLocale = NSLocale.currentLocale()
+private var _defaultLocale = Locale.current
 
-extension NSLocale {
-    public static func setDefaultLocale(defaultLocale: NSLocale) {
+extension Locale {
+    public static func setDefaultLocale(_ defaultLocale: Locale) {
         _defaultLocale = defaultLocale
     }
 
-    public static func defaultLocale() -> NSLocale {
+    public static func defaultLocale() -> Locale {
         return _defaultLocale
     }
 }
 
-extension NSDateComponents {
-    public convenience init(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, sec: Int = 0, nsec: Int = 0) {
-        self.init()
+extension DateComponents {
+    public init(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, sec: Int = 0, nsec: Int = 0) {
+        (self as NSDateComponents).init()
         self.year = year
         self.month = month
         self.day = day
@@ -48,12 +48,12 @@ extension NSDateComponents {
         self.minute = minute
         self.second = sec
         self.nanosecond = nsec
-        self.calendar = NSCalendar.defaultCalendar()
-        self.timeZone = NSTimeZone.defaultTimeZone()
+        (self as NSDateComponents).calendar = Calendar.defaultCalendar()
+        (self as NSDateComponents).timeZone = TimeZone.current
     }
 
-    public convenience init(hour: Int, minute: Int, sec: Int = 0, nsec: Int = 0) {
-        self.init()
+    public init(hour: Int, minute: Int, sec: Int = 0, nsec: Int = 0) {
+        (self as NSDateComponents).init()
         self.year = 0
         self.month = 0
         self.day = 0
@@ -61,7 +61,7 @@ extension NSDateComponents {
         self.minute = minute
         self.second = sec
         self.nanosecond = nsec
-        self.calendar = NSCalendar.defaultCalendar()
-        self.timeZone = NSTimeZone.defaultTimeZone()
+        (self as NSDateComponents).calendar = Calendar.defaultCalendar()
+        (self as NSDateComponents).timeZone = TimeZone.current
     }
 }

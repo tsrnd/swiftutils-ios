@@ -10,6 +10,6 @@ import UIKit
 
 extension UIViewController {
     public class func vc() -> Self {
-        return self.init(nibName: String(self), bundle: nil)
+        return self.init(nibName: String(describing: self), bundle: nil)
     }
 }

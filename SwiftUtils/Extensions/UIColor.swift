@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    public class func RGB(red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor {
+    public class func RGB(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor {
         let red = max(0.0, min(CGFloat(red) / 255.0, 1.0))
         let green = max(0.0, min(CGFloat(green) / 255.0, 1.0))
         let blue = max(0.0, min(CGFloat(blue) / 255.0, 1.0))
@@ -17,14 +17,14 @@ extension UIColor {
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 
-    public func image(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
+    public func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         let ctx = UIGraphicsGetCurrentContext()
         setFill()
-        CGContextFillPath(ctx)
+        ctx?.fillPath()
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return img
+        return img!
     }
 }
 

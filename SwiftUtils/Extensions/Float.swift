@@ -29,17 +29,17 @@ extension Float {
         return Foundation.round(self)
     }
 
-    public func clamp(min: Float, _ max: Float) -> Float {
+    public func clamp(_ min: Float, _ max: Float) -> Float {
         return Swift.max(min, Swift.min(max, self))
     }
 
-    public static func random(min min: Float = 0, max: Float) -> Float {
+    public static func random(min: Float = 0, max: Float) -> Float {
         let diff = max - min
         let rand = Float(arc4random() % (UInt32(RAND_MAX) + 1))
         return ((rand / Float(RAND_MAX)) * diff) + min
     }
 
-    public func distance(precision: Int = -1) -> String { // precision < 0: Auto
+    public func distance(_ precision: Int = -1) -> String { // precision < 0: Auto
         var num = self
         var unit = "m"
         if num > 1000.0 {

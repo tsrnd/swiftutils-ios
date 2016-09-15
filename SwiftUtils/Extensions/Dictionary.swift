@@ -17,7 +17,7 @@ extension Dictionary {
         return Array(values)
     }
 
-    public mutating func updateValues(dic: [Key: Value]?) {
+    public mutating func updateValues(_ dic: [Key: Value]?) {
         if let dic = dic {
             for (key, value) in dic {
                 self[key] = value
@@ -25,14 +25,13 @@ extension Dictionary {
         }
     }
 
-    public func hasKey(key: Key) -> Bool {
-        return indexForKey(key) != nil
+    public func hasKey(_ key: Key) -> Bool {
+        return index(forKey: key) != nil
     }
 
-    public func toJSONData() -> NSData? {
+    public func toJSONData() -> Data? {
         do {
-            guard let json = self as? AnyObject else { return nil }
-            return try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
+            return try JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.prettyPrinted)
         } catch {
             return nil
         }
