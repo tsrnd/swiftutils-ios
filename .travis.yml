@@ -6,11 +6,11 @@ env:
   global:
   - PROJECT="SwiftUtils.xcodeproj"
   - SCHEME="SwiftUtils"
-  - SDK="iphonesimulator9.2"
+  - SDK="iphonesimulator10.0"
   matrix:
-    - DESTINATION="OS=8.1,name=iPhone 6"   POD_LINT="NO"
-    - DESTINATION="OS=9.2,name=iPhone 6"  POD_LINT="NO"
-    - DESTINATION="OS=10.0,name=iPhone 6"  POD_LINT="YES"
+    - DESTINATION="OS=8.4,name=iPhone 6"    POD_LINT="NO"
+    - DESTINATION="OS=9.3,name=iPhone 6"    POD_LINT="NO"
+    - DESTINATION="OS=10.0,name=iPhone 6"   POD_LINT="YES"
 before_install:
   - set -o pipefail
   - gem install xcpretty
