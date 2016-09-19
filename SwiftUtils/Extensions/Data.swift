@@ -1,5 +1,5 @@
 //
-//  NSData.swift
+//  Data.swift
 //  SwiftUtils
 //
 //  Created by DaoNV on 12/30/15.
@@ -9,7 +9,7 @@
 import Foundation
 
 extension Data {
-    public func toJSON() -> AnyObject? {
+    public func toJSON() -> Any? {
         do {
             return try JSONSerialization.jsonObject(with: self, options: JSONSerialization.ReadingOptions.allowFragments)
         } catch {
@@ -17,7 +17,7 @@ extension Data {
         }
     }
 
-    public func toString(_ encoding: String.Encoding = String.Encoding.utf8) -> String? {
+    public func toString(encoding: String.Encoding = String.Encoding.utf8) -> String? {
         return String(data: self, encoding: encoding)
     }
 }

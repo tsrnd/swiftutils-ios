@@ -8,50 +8,48 @@
 
 import UIKit
 
-extension String {
-    
-    public init(aClass: AnyClass) {
-        let name = NSStringFromClass(aClass).components(separatedBy: ".").last!
-        self.init(name)
-    }
+public struct Regex {
+    public static let Number = "^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$"
+    public static let Name = "[a-zA-Z\\s]+"
+    public static let Email1 = ".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*"
+    public static let Email2 = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
+    public static let Password = "[a-zA-Z0-9_]+"
+    public static let URL = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
+}
 
-    public subscript(index: Int) -> Character? {
-        let range = characters.index(startIndex, offsetBy: index)
-        if range < startIndex || range > endIndex {
-            return nil
+extension String {
+    public subscript(index: Int) -> Character {
+        guard let range = characters.index(startIndex, offsetBy: index, limitedBy: endIndex) else {
+            fatalError("index `\(index)` is out range of string `\(self)`, length = \(length)")
         }
         return self[range]
     }
 
-    public subscript(index: Int) -> String? {
-        let range = characters.index(startIndex, offsetBy: index)
-        if let char: Character = self[range] {
-            return String(char)
+    public subscript(index: Int) -> String {
+        guard let range = characters.index(startIndex, offsetBy: index, limitedBy: endIndex) else {
+            fatalError("index `\(index)` is out range of string `\(self)`, length = \(length)")
         }
-        return nil
+        let char = self[range]
+        return String(char)
     }
 
-    public subscript(range: Range<Int>) -> String? {
-        let start = characters.index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex)
-        let end = characters.index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex)
-        if start! < startIndex || end! > endIndex {
-            return nil
+    public subscript(range: CountableRange<Int>) -> String {
+        guard let start = characters.index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex),
+            let end = characters.index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex) else { return "" }
+        if start < startIndex || end > endIndex {
+            return ""
         }
-        return self[start!..<end!]
+        return self[start..<end]
     }
 
     public var length: Int {
-        return self.characters.count
-    }
-
-    public var capitalized: String {
-        return capitalized
+        return characters.count
     }
 
     // Regex
     
     public func matches(_ pattern: String, ignoreCase: Bool = false) -> [NSTextCheckingResult]? {
-        if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
+        if let regex = NSRegularExpression(pattern: pattern, ignoreCase: ignoreCase) {
             let range = NSRange(location: 0, length: length)
             return regex.matches(in: self, options: [], range: range).map { $0 }
         }
@@ -60,7 +58,7 @@ extension String {
 
     
     public func contains(_ pattern: String, ignoreCase: Bool = false) -> Bool {
-        guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
+        guard let regex = NSRegularExpression(pattern: pattern, ignoreCase: ignoreCase) else {
             return false
         }
         let range = NSRange(location: 0, length: self.characters.count)
@@ -68,7 +66,7 @@ extension String {
     }
 
     public func replace(_ pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
-        if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
+        if let regex = NSRegularExpression(pattern: pattern, ignoreCase: ignoreCase) {
             let range = NSRange(location: 0, length: self.characters.count)
             return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replacementString)
         }
@@ -81,7 +79,8 @@ extension String {
         } else if index < 0 {
             return string + self
         }
-        return self[0 ..< index]! + string + self[index ..< length]!
+        return ""
+//        return self[0 ..< index] + string + self[index ..< length]
     }
 
     public func trimmedLeft(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
@@ -122,12 +121,16 @@ extension String {
         return trimmedLeftCJK().trimmedRightCJK()
     }
 
-    public static func random(length len: Int = 0, charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+    public static func random(
+        length len: Int = 0,
+        charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    ) -> String {
         let len = len < 1 ? len : Int.random(max: 16)
         var result = String()
         let max = charset.length - 1
-        for _ in 0 ..< len {
-            result += String(charset[Int.random(min: 0, max: max)]!)
+        len.loop {
+            let sub: String = charset[Int.random(min: 0, max: max)]
+            result += sub
         }
         return result
     }
@@ -148,26 +151,26 @@ extension String {
         return (self as NSString).boolValue
     }
 
-    public func replaceKeysByValues(_ values: [String: AnyObject]) -> String {
+    public func replace(keysValues info: [String: AnyObject]) -> String {
         let str: NSMutableString = NSMutableString(string: self)
         let range = NSRange(location: 0, length: str.length)
-        for (key, value) in values {
+        for (key, value) in info {
             str.replaceOccurrences(of: key, with: "\(value)", options: [.caseInsensitive, .literal], range: range)
         }
         return str as NSString as String
     }
 
-    public func stringByAppendingPathComponent(_ str: String) -> String {
-        var s1: String! = self
+    public func appending(pathComponent component: String) -> String {
+        var s1 = self
         while s1.hasSuffix("/") {
-            s1 = s1[0...s1.length - 2]
+            s1 = s1[0 ..< s1.length - 1]
         }
-        var s2: String! = str
+        var s2 = component
         while s2.hasPrefix("/") {
-            s2 = s2[1...length - 1]
+            s2 = s2[1 ..< s2.length]
         }
         while s2.hasSuffix("/") {
-            s2 = s2[0...s2.length - 2]
+            s2 = s2[0 ..< s2.length - 1]
         }
         return "\(s1)/\(s2)"
     }
@@ -212,17 +215,7 @@ extension String {
         return data(using: String.Encoding.utf8)
     }
 
-    // MARK: Validation
-    public struct Regex {
-        public static let Number = "^(?:|0|[1-9]\\d*)(?:\\.\\d*)?$"
-        public static let Name = "[a-zA-Z\\s]+"
-        public static let Email1 = ".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*"
-        public static let Email2 = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
-        public static let Password = "[a-zA-Z0-9_]+"
-        public static let URL = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
-    }
-
-    public func validate(_ regex: String) -> Bool {
+    public func validate(regex: String) -> Bool {
         let pre = NSPredicate(format: "SELF MATCHES %@", regex)
         return pre.evaluate(with: self)
     }

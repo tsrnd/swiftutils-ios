@@ -15,17 +15,4 @@ extension NSCache {
         self.totalCostLimit = totalCostLimit
         self.countLimit = countLimit
     }
-
-    public subscript(key: AnyObject) -> AnyObject? {
-        get {
-            return object(forKey: key as! KeyType)
-        }
-        set {
-            if let value: AnyObject = newValue {
-                setObject(value as! ObjectType, forKey: key as! KeyType)
-            } else {
-                removeObject(forKey: key as! KeyType)
-            }
-        }
-    }
 }

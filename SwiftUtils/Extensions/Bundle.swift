@@ -1,5 +1,5 @@
 //
-//  NSBundle.swift
+//  Bundle.swift
 //  SwiftUtils
 //
 //  Created by DaoNV on 2/27/16.

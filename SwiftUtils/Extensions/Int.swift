@@ -23,8 +23,12 @@ extension Int {
         return (self % 2) == 1
     }
 
-    public func clamp(_ range: Range<Int>) -> Int {
+    public func clamp(_ range: CountableClosedRange<Int>) -> Int {
         return clamp(range.lowerBound, range.upperBound - 1)
+    }
+
+    public func clamp(_ range: CountableRange<Int>) -> Int {
+        return clamp(range.lowerBound, range.upperBound)
     }
 
     public func clamp(_ min: Int, _ max: Int) -> Int {
@@ -68,6 +72,8 @@ extension Int {
     }
 
     public static func random(min: Int = 0, max: Int) -> Int {
-        return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
+        let len = UInt32((max - min) + 1)
+        let rand = arc4random_uniform(len)
+        return Int(rand) + min
     }
 }

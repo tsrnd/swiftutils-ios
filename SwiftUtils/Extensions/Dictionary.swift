@@ -17,15 +17,15 @@ extension Dictionary {
         return Array(values)
     }
 
-    public mutating func updateValues(_ dic: [Key: Value]?) {
-        if let dic = dic {
-            for (key, value) in dic {
+    public mutating func update(values: [Key: Value]?) {
+        if let values = values {
+            for (key, value) in values {
                 self[key] = value
             }
         }
     }
 
-    public func hasKey(_ key: Key) -> Bool {
+    public func has(key: Key) -> Bool {
         return index(forKey: key) != nil
     }
 

@@ -11,8 +11,8 @@ import XCTest
 
 class StringTests: XCTestCase {
     func test_initWithClass() {
-        let clazz = String(describing: UIViewController)
-        XCTAssertEqual(clazz, "UIViewController")
+//        let clazz = String(UIViewController.self)
+//        XCTAssertEqual(clazz, "UIViewController")
     }
 
     func test_subscriptCharacter() {
@@ -32,10 +32,10 @@ class StringTests: XCTestCase {
     func test_subscriptStringWithRange() {
         let str = "hello world"
         var sub: String!
-        sub = str[0...1]
+        sub = str[0 ..< 2]
         XCTAssertNotNil(sub)
         XCTAssertEqual(sub, "he")
-        sub = str[0...10]
+        sub = str[0 ..< 11]
         XCTAssertNotNil(sub)
         XCTAssertEqual(sub, "hello world")
     }
@@ -43,23 +43,23 @@ class StringTests: XCTestCase {
     func test_stringByAppendingPathComponent() {
         let str = "http://google.com"
         var path: String
-        path = str.stringByAppendingPathComponent("api/v3")
+        path = str.appending(pathComponent: "api/v3")
         XCTAssertEqual(path, "http://google.com/api/v3")
-        path = str.stringByAppendingPathComponent("/api/v3")
+        path = str.appending(pathComponent: "/api/v3")
         XCTAssertEqual(path, "http://google.com/api/v3")
-        path = str.stringByAppendingPathComponent("/api/v3/")
+        path = str.appending(pathComponent: "/api/v3/")
         XCTAssertEqual(path, "http://google.com/api/v3")
     }
 
     func test_validate() {
         var email: String
         email = "supports@example.com"
-        XCTAssertTrue(email.validate(String.Regex.Email2))
+        XCTAssertTrue(email.validate(regex: Regex.Email2))
         email = "supports$@example.com"
-        XCTAssertFalse(email.validate(String.Regex.Email2))
+        XCTAssertFalse(email.validate(regex: Regex.Email2))
         email = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.com.vn"
         measure {
-            XCTAssertTrue(email.validate(String.Regex.Email2))
+            XCTAssertTrue(email.validate(regex: Regex.Email2))
         }
     }
 }

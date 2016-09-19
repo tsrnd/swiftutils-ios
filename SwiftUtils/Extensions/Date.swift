@@ -1,5 +1,5 @@
 //
-//  NSDate.swift
+//  Date.swift
 //  SwiftUtils
 //
 //  Created by DaoNV on 10/7/15.
@@ -40,7 +40,7 @@ extension Locale {
 
 extension DateComponents {
     public init(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, sec: Int = 0, nsec: Int = 0) {
-        (self as NSDateComponents).init()
+        self.init()
         self.year = year
         self.month = month
         self.day = day
@@ -48,12 +48,12 @@ extension DateComponents {
         self.minute = minute
         self.second = sec
         self.nanosecond = nsec
-        (self as NSDateComponents).calendar = Calendar.defaultCalendar()
-        (self as NSDateComponents).timeZone = TimeZone.current
+        self.calendar = Calendar.defaultCalendar()
+        self.timeZone = TimeZone.current
     }
 
     public init(hour: Int, minute: Int, sec: Int = 0, nsec: Int = 0) {
-        (self as NSDateComponents).init()
+        self.init()
         self.year = 0
         self.month = 0
         self.day = 0
@@ -61,7 +61,7 @@ extension DateComponents {
         self.minute = minute
         self.second = sec
         self.nanosecond = nsec
-        (self as NSDateComponents).calendar = Calendar.defaultCalendar()
-        (self as NSDateComponents).timeZone = TimeZone.current
+        self.calendar = Calendar.defaultCalendar()
+        self.timeZone = TimeZone.current
     }
 }

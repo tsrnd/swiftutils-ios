@@ -24,8 +24,7 @@ extension Array {
 
     public func toJSONData() -> Data? {
         do {
-            guard let json = self as? AnyObject else { return nil }
-            return try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            return try JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.prettyPrinted)
         } catch {
             return nil
         }
@@ -33,10 +32,11 @@ extension Array {
 }
 
 extension Array where Element: Equatable {
+    /// Removes and returns the first element is found.
     public mutating func remove(_ element: Element) -> Element? {
         guard let idx = index(of: element) else {
             return nil
         }
-        return self.remove(at: idx)
+        return remove(at: idx)
     }
 }

@@ -38,23 +38,4 @@ extension Double {
         let rand = Double(arc4random() % (UInt32(RAND_MAX) + 1))
         return ((rand / Double(RAND_MAX)) * diff) + min
     }
-
-    public func distance(_ precision: Int = -1, meter: String = "m", kilometer: String = "km") -> String { // precision < 0: Auto
-        var num = self
-        var unit = meter
-        if num > 1000.0 {
-            unit = kilometer
-            num /= 1000.0
-        }
-        if precision == -1 {
-            if num == trunc(num) {
-                return String(format: "%.0f%@", num, unit)
-            } else {
-                return String(format: "%.1f%@", num, unit)
-            }
-        } else {
-            let format = "%.\(precision)f%@"
-            return String(format: format, num, unit)
-        }
-    }
 }
