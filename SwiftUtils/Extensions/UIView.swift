@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class IntrinsicContentView: UIView {
-    public var intrinsicContentSizeEnabled = true
+open class IntrinsicContentView: UIView {
+    open var intrinsicContentSizeEnabled = true
 }
 
 extension UIView {
     public class func nib() -> UINib {
-        return UINib(nibName: String(self), bundle: nil)
+        return UINib(nibName: String(describing: self), bundle: nil)
     }
 
     public class func loadNib<T: UIView>() -> T! {
-        let name = String(self)
-        let bundle = NSBundle(forClass: T.self)
-        guard let xib = bundle.loadNibNamed(name, owner: nil, options: nil).first as? T else {
+        let name = String(describing: self)
+        let bundle = Bundle(for: T.self)
+        guard let xib = bundle.loadNibNamed(name, owner: nil, options: nil)?.first as? T else {
             fatalError("Cannot load nib named `\(name)`")
         }
         return xib
@@ -30,14 +30,14 @@ extension UIView {
 // MARK: Appearance
 extension UIView {
     public func clear() {
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
         for sub in subviews {
             sub.clear()
         }
     }
 
-    public func border(color color: UIColor, width: CGFloat) {
-        layer.borderColor = color.CGColor
+    public func border(color: UIColor, width: CGFloat) {
+        layer.borderColor = color.cgColor
         layer.borderWidth = width
         layer.cornerRadius = corner
         layer.masksToBounds = true
@@ -59,41 +59,41 @@ extension UIView {
     }
 
     public enum BorderPostition {
-        case Top
-        case Left
-        case Bottom
-        case Right
+        case top
+        case left
+        case bottom
+        case right
     }
 
-    public func border(pos: BorderPostition, color: UIColor = UIColor.blackColor(), width: CGFloat = 0.5, insets: UIEdgeInsets = UIEdgeInsetsZero) {
+    public func border(_ pos: BorderPostition, color: UIColor = UIColor.black, width: CGFloat = 0.5, insets: UIEdgeInsets = UIEdgeInsets.zero) {
         let rect: CGRect = {
             switch pos {
-            case .Top: return CGRect(x: 0, y: 0, width: frame.width, height: width)
-            case .Left: return CGRect(x: 0, y: 0, width: width, height: frame.height)
-            case .Bottom: return CGRect(x: 0, y: frame.height - width, width: frame.width, height: width)
-            case .Right: return CGRect(x: frame.width - width, y: 0, width: width, height: frame.height)
+            case .top: return CGRect(x: 0, y: 0, width: frame.width, height: width)
+            case .left: return CGRect(x: 0, y: 0, width: width, height: frame.height)
+            case .bottom: return CGRect(x: 0, y: frame.height - width, width: frame.width, height: width)
+            case .right: return CGRect(x: frame.width - width, y: 0, width: width, height: frame.height)
             }
         }()
         let border = UIView(frame: rect)
         border.backgroundColor = color
         border.autoresizingMask = {
             switch pos {
-            case .Top: return [.FlexibleWidth, .FlexibleBottomMargin]
-            case .Left: return [.FlexibleHeight, .FlexibleRightMargin]
-            case .Bottom: return [.FlexibleWidth, .FlexibleTopMargin]
-            case .Right: return [.FlexibleHeight, .FlexibleLeftMargin]
+            case .top: return [.flexibleWidth, .flexibleBottomMargin]
+            case .left: return [.flexibleHeight, .flexibleRightMargin]
+            case .bottom: return [.flexibleWidth, .flexibleTopMargin]
+            case .right: return [.flexibleHeight, .flexibleLeftMargin]
             }
         }()
         addSubview(border)
     }
 
-    public func shadow(color color: UIColor, offset: CGSize = CGSize(width: 0, height: 0), opacity: Float = 1.0, radius: CGFloat = 3.0) {
-        layer.shadowColor = color.CGColor
+    public func shadow(color: UIColor, offset: CGSize = CGSize(width: 0, height: 0), opacity: Float = 1.0, radius: CGFloat = 3.0) {
+        layer.shadowColor = color.cgColor
         layer.shadowOffset = offset
         layer.shadowOpacity = opacity
         layer.shadowRadius = radius
         layer.shouldRasterize = true
-        layer.rasterizationScale = UIScreen.mainScreen().scale
+        layer.rasterizationScale = UIScreen.main.scale
     }
 }
 

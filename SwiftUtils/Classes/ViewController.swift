@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class ViewController: UIViewController {
-    public private(set) var isViewDidAppear = false
-    public private(set) var isViewFirstAppear = false
+open class ViewController: UIViewController {
+    open fileprivate(set) var isViewDidAppear = false
+    open fileprivate(set) var isViewFirstAppear = false
 
-    public override init(nibName: String?, bundle: NSBundle?) {
+    public override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: bundle)
         setup()
     }
@@ -22,28 +22,28 @@ public class ViewController: UIViewController {
         setup()
     }
 
-    public func setup() {
+    open func setup() {
         automaticallyAdjustsScrollViewInsets = false
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         isViewFirstAppear = true
     }
 
-    public override func viewDidAppear(animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isViewDidAppear = true
-        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             self?.isViewFirstAppear = false
         }
     }
 
-    public override func viewWillDisappear(animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         isViewDidAppear = false
     }
