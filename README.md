@@ -9,7 +9,7 @@
 ## Requirements
 
 - iOS 8.0+
-- Xcode 7.3 (Swift 2.2)
+- Xcode 8.0 (Swift 3.0)
 
 ## Installation
 
@@ -23,7 +23,7 @@
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build SwiftUtils 1.4+.
+> CocoaPods 1.0.0+ is required to build SwiftUtils 2.0+.
 
 To integrate SwiftUtils into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -32,7 +32,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftUtils', '~> 1.6.1'
+pod 'SwiftUtils', '~> 2.0.0'
 ```
 
 Then, run the following command:

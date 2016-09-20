@@ -9,7 +9,7 @@
 import UIKit
 
 extension UITableView {
-    override public var delaysContentTouches: Bool {
+    override open var delaysContentTouches: Bool {
         didSet {
             for view in subviews {
                 if let scroll = view as? UIScrollView {
@@ -20,62 +20,62 @@ extension UITableView {
         }
     }
 
-    public func setSeparatorInsets(insets: UIEdgeInsets) {
+    public func setSeparatorInsets(_ insets: UIEdgeInsets) {
         separatorInset = insets
         layoutMargins = insets
     }
 
-    public func scrollsToBottom(animated: Bool) {
+    public func scrollsToBottom(_ animated: Bool) {
         let section = numberOfSections - 1
-        let row = numberOfRowsInSection(section) - 1
+        let row = numberOfRows(inSection: section) - 1
         if section < 0 || row < 0 {
             return
         }
-        let path = NSIndexPath(forRow: row, inSection: section)
+        let path = IndexPath(row: row, section: section)
         let offset = contentOffset.y
-        scrollToRowAtIndexPath(path, atScrollPosition: .Top, animated: animated)
+        scrollToRow(at: path, at: .top, animated: animated)
         let delay = (animated ? 0.2 : 0.0) * Double(NSEC_PER_SEC)
-        let t = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(t, dispatch_get_main_queue(), { () -> Void in
+        let t = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: t, execute: { () -> Void in
             if self.contentOffset.y != offset {
                 self.scrollsToBottom(false)
             }
         })
     }
 
-    public func registerNib<T: UITableViewCell>(aClass: T.Type) {
-        let name = String(aClass)
+    public func registerNib<T: UITableViewCell>(_ aClass: T.Type) {
+        let name = String(describing: aClass)
         let nib = UINib(nibName: name, bundle: nil)
-        registerNib(nib, forCellReuseIdentifier: name)
+        register(nib, forCellReuseIdentifier: name)
     }
 
-    public func registerClass<T: UITableViewCell>(aClass: T.Type) {
-        let name = String(aClass)
-        registerClass(aClass, forCellReuseIdentifier: name)
+    public func registerClass<T: UITableViewCell>(_ aClass: T.Type) {
+        let name = String(describing: aClass)
+        register(aClass, forCellReuseIdentifier: name)
     }
 
-    public func registerNib<T: UITableViewHeaderFooterView>(aClass: T.Type) {
-        let name = String(aClass)
+    public func registerNib<T: UITableViewHeaderFooterView>(_ aClass: T.Type) {
+        let name = String(describing: aClass)
         let nib = UINib(nibName: name, bundle: nil)
-        registerNib(nib, forHeaderFooterViewReuseIdentifier: name)
+        register(nib, forHeaderFooterViewReuseIdentifier: name)
     }
 
-    public func registerClass<T: UITableViewHeaderFooterView>(aClass: T.Type) {
-        let name = String(aClass)
-        registerClass(aClass, forHeaderFooterViewReuseIdentifier: name)
+    public func registerClass<T: UITableViewHeaderFooterView>(_ aClass: T.Type) {
+        let name = String(describing: aClass)
+        register(aClass, forHeaderFooterViewReuseIdentifier: name)
     }
 
-    public func dequeue<T: UITableViewCell>(aClass: T.Type) -> T! {
-        let name = String(aClass)
-        guard let cell = dequeueReusableCellWithIdentifier(name) as? T else {
+    public func dequeue<T: UITableViewCell>(_ aClass: T.Type) -> T! {
+        let name = String(describing: aClass)
+        guard let cell = dequeueReusableCell(withIdentifier: name) as? T else {
             fatalError("\(name) is not registed")
         }
         return cell
     }
 
-    public func dequeue<T: UITableViewHeaderFooterView>(aClass: T.Type) -> T! {
-        let name = String(aClass)
-        guard let cell = dequeueReusableHeaderFooterViewWithIdentifier(name) as? T else {
+    public func dequeue<T: UITableViewHeaderFooterView>(_ aClass: T.Type) -> T! {
+        let name = String(describing: aClass)
+        guard let cell = dequeueReusableHeaderFooterView(withIdentifier: name) as? T else {
             fatalError("\(name) is not registed")
         }
         return cell
@@ -83,7 +83,7 @@ extension UITableView {
 }
 
 extension UITableViewCell {
-    public func setSeparatorInsets(insets: UIEdgeInsets) {
+    public func setSeparatorInsets(_ insets: UIEdgeInsets) {
         separatorInset = insets
         layoutMargins = insets
     }

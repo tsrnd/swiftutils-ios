@@ -10,7 +10,7 @@ import UIKit
 
 extension Array {
     public mutating func shuffle() {
-        for i in (1 ..< count).reverse() {
+        for i in (1 ..< count).reversed() {
             let j = Int.random(max: i - 1)
             swap(&self[i], &self[j])
         }
@@ -22,10 +22,9 @@ extension Array {
         return array
     }
 
-    public func toJSONData() -> NSData? {
+    public func toJSONData() -> Data? {
         do {
-            guard let json = self as? AnyObject else { return nil }
-            return try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
+            return try JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.prettyPrinted)
         } catch {
             return nil
         }
@@ -33,10 +32,11 @@ extension Array {
 }
 
 extension Array where Element: Equatable {
-    public mutating func remove(element: Element) -> Element? {
-        guard let idx = indexOf(element) else {
+    /// Removes and returns the first element is found.
+    public mutating func remove(_ element: Element) -> Element? {
+        guard let idx = index(of: element) else {
             return nil
         }
-        return removeAtIndex(idx)
+        return remove(at: idx)
     }
 }

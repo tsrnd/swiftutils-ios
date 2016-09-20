@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImage {
-    public func scaleToSize(newSize: CGSize, aspectFill: Bool = false) -> UIImage {
+    public func scaleToSize(_ newSize: CGSize, aspectFill: Bool = false) -> UIImage {
         let scaleFactorWidth = newSize.width / size.width
         let scaleFactorHeight = newSize.height / size.height
         let scaleFactor = aspectFill ? max(scaleFactorWidth, scaleFactorHeight) : min(scaleFactorWidth, scaleFactorHeight)
@@ -18,12 +18,12 @@ extension UIImage {
         scaledSize.width *= scaleFactor
         scaledSize.height *= scaleFactor
 
-        UIGraphicsBeginImageContextWithOptions(scaledSize, false, UIScreen.mainScreen().scale)
+        UIGraphicsBeginImageContextWithOptions(scaledSize, false, UIScreen.main.scale)
         let scaledImageRect = CGRect(x: 0.0, y: 0.0, width: scaledSize.width, height: scaledSize.height)
-        drawInRect(scaledImageRect)
+        draw(in: scaledImageRect)
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        return scaledImage
+        return scaledImage!
     }
 }

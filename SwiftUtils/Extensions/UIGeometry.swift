@@ -17,7 +17,7 @@ extension UIEdgeInsets {
         return UIEdgeInsets(top: -top, left: -left, bottom: -bottom, right: -right)
     }
 
-    public func inset(rect: CGRect) -> CGRect {
+    public func inset(_ rect: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(rect, self)
     }
 
@@ -62,7 +62,7 @@ public func / (lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     return insets
 }
 
-public func += (inout lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
+public func += (lhs: inout UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     lhs.top += rhs
     lhs.left += rhs
     lhs.bottom += rhs
@@ -70,7 +70,7 @@ public func += (inout lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     return lhs
 }
 
-public func -= (inout lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
+public func -= (lhs: inout UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     lhs.top -= rhs
     lhs.left -= rhs
     lhs.bottom -= rhs
@@ -78,7 +78,7 @@ public func -= (inout lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     return lhs
 }
 
-public func *= (inout lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
+public func *= (lhs: inout UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     lhs.top *= rhs
     lhs.left *= rhs
     lhs.bottom *= rhs
@@ -86,7 +86,7 @@ public func *= (inout lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     return lhs
 }
 
-public func /= (inout lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
+public func /= (lhs: inout UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
     lhs.top /= rhs
     lhs.left /= rhs
     lhs.bottom /= rhs

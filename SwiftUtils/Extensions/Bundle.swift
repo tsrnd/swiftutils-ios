@@ -1,5 +1,5 @@
 //
-//  NSBundle.swift
+//  Bundle.swift
 //  SwiftUtils
 //
 //  Created by DaoNV on 2/27/16.
@@ -12,7 +12,7 @@ public let kCFBundleDisplayNameKey = "CFBundleDisplayName"
 public let kCFBundleNameKey = "CFBundleName"
 public let kCFBundleShortVersionKey = "CFBundleShortVersionString"
 
-extension NSBundle {
+extension Bundle {
     public var name: String {
         guard let info = infoDictionary else { return "" }
         return info[kCFBundleDisplayNameKey] as? String ?? info[kCFBundleNameKey] as? String ?? ""

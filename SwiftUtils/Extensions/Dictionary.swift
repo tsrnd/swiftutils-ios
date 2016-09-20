@@ -17,22 +17,21 @@ extension Dictionary {
         return Array(values)
     }
 
-    public mutating func updateValues(dic: [Key: Value]?) {
-        if let dic = dic {
-            for (key, value) in dic {
+    public mutating func update(values: [Key: Value]?) {
+        if let values = values {
+            for (key, value) in values {
                 self[key] = value
             }
         }
     }
 
-    public func hasKey(key: Key) -> Bool {
-        return indexForKey(key) != nil
+    public func has(key: Key) -> Bool {
+        return index(forKey: key) != nil
     }
 
-    public func toJSONData() -> NSData? {
+    public func toJSONData() -> Data? {
         do {
-            guard let json = self as? AnyObject else { return nil }
-            return try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
+            return try JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.prettyPrinted)
         } catch {
             return nil
         }

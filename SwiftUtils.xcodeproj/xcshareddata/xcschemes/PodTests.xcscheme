@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECD9E6D71BC24428001F8738"
-               BuildableName = "SwiftUtils.framework"
-               BlueprintName = "SwiftUtils"
-               ReferencedContainer = "container:SwiftUtils.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECA6D5D41C83E68E00A3D848"
-               BuildableName = "UnitTests.xctest"
-               BlueprintName = "UnitTests"
+               BlueprintIdentifier = "EC3766891D8FD6280095FA78"
+               BuildableName = "PodTests.app"
+               BlueprintName = "PodTests"
                ReferencedContainer = "container:SwiftUtils.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,23 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECA6D5D41C83E68E00A3D848"
-               BuildableName = "UnitTests.xctest"
-               BlueprintName = "UnitTests"
-               ReferencedContainer = "container:SwiftUtils.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECD9E6D71BC24428001F8738"
-            BuildableName = "SwiftUtils.framework"
-            BlueprintName = "SwiftUtils"
+            BlueprintIdentifier = "EC3766891D8FD6280095FA78"
+            BuildableName = "PodTests.app"
+            BlueprintName = "PodTests"
             ReferencedContainer = "container:SwiftUtils.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECD9E6D71BC24428001F8738"
-            BuildableName = "SwiftUtils.framework"
-            BlueprintName = "SwiftUtils"
+            BlueprintIdentifier = "EC3766891D8FD6280095FA78"
+            BuildableName = "PodTests.app"
+            BlueprintName = "PodTests"
             ReferencedContainer = "container:SwiftUtils.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -93,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECD9E6D71BC24428001F8738"
-            BuildableName = "SwiftUtils.framework"
-            BlueprintName = "SwiftUtils"
+            BlueprintIdentifier = "EC3766891D8FD6280095FA78"
+            BuildableName = "PodTests.app"
+            BlueprintName = "PodTests"
             ReferencedContainer = "container:SwiftUtils.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

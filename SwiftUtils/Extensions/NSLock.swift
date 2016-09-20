@@ -9,8 +9,8 @@
 import UIKit
 
 extension NSLock {
-    public func sync(@noescape block: () -> Void) {
-        let locked = tryLock()
+    public func sync(_ block: () -> Void) {
+        let locked = `try`()
         block()
         if locked {
             unlock()
