@@ -35,7 +35,7 @@ public class AlertController: UIAlertController {
                             self.present(from: from, animated: animated, completion: completion)
                         })
                     }
-                } else if level >= .Normal {
+                } else if level > popup.dynamicType.level {
                     popup.dismissViewControllerAnimated(animated, completion: { () -> Void in
                         self.present(from: from, animated: animated, completion: completion)
                     })
@@ -81,4 +81,10 @@ public func < (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
 
 public func <= (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
     return lhs.rawValue <= rhs.rawValue
+}
+
+extension UIViewController {
+    class var level: AlertLevel {
+        return .Normal
+    }
 }
