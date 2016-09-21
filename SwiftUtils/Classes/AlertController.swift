@@ -84,7 +84,7 @@ public func <= (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
 }
 
 extension UIViewController {
-    class var level: AlertLevel {
+    public class var level: AlertLevel {
         return .Normal
     }
 }
