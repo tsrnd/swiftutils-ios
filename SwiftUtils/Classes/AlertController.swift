@@ -15,7 +15,12 @@ public enum AlertLevel: Int {
     case Require
 }
 
-public class AlertController: UIAlertController {
+public protocol AlertLevelProtocol: NSObjectProtocol {
+    var level: AlertLevel { get }
+    func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)?)
+}
+
+public class AlertController: UIAlertController, AlertLevelProtocol {
     public var level = AlertLevel.Normal
 
     public func addAction(title: String?, style: UIAlertActionStyle = UIAlertActionStyle.Default, handler: (() -> Void)? = nil) {
@@ -29,13 +34,13 @@ public class AlertController: UIAlertController {
     public func present(from from: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
         if let from = from where from.isViewLoaded() {
             if let popup = from.presentedViewController {
-                if let vc = popup as? AlertController {
+                if let vc = popup as? AlertLevelProtocol {
                     if level > vc.level {
                         vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
                             self.present(from: from, animated: animated, completion: completion)
                         })
                     }
-                } else if level > popup.dynamicType.level {
+                } else if level > .Normal {
                     popup.dismissViewControllerAnimated(animated, completion: { () -> Void in
                         self.present(from: from, animated: animated, completion: completion)
                     })
@@ -81,10 +86,4 @@ public func < (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
 
 public func <= (lhs: AlertLevel, rhs: AlertLevel) -> Bool {
     return lhs.rawValue <= rhs.rawValue
-}
-
-extension UIViewController {
-    public class var level: AlertLevel {
-        return .Normal
-    }
 }
