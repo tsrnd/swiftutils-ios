@@ -10,21 +10,26 @@ import UIKit
 
 extension String {
 
-   public subscript(i: Int) -> String? {
-        guard i >= 0 && i < characters.count else { return nil }
-        return String(self[index(startIndex, offsetBy: i)])
+   public subscript(idx: Int) -> String? {
+        guard idx >= 0 && idx < characters.count else { return nil }
+        return String(self[index(startIndex, offsetBy: idx)])
+    }
+    
+    public subscript(idx: Int) -> Character? {
+        guard idx >= 0 && idx < characters.count else { return nil }
+        return self[index(startIndex, offsetBy: idx)]
     }
     
     public subscript(range: Range<Int>) -> String? {
-        let lowerIndex = index(startIndex, offsetBy: max(0,range.lowerBound), limitedBy: endIndex) ?? endIndex
+        let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
         return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex))
     }
     
     public subscript(range: ClosedRange<Int>) -> String {
-        let lowerIndex = index(startIndex, offsetBy: max(0,range.lowerBound), limitedBy: endIndex) ?? endIndex
+        let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
         return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex))
     }
-
+    
     public var length: Int {
         return self.characters.count
     }

@@ -11,7 +11,7 @@ import XCTest
 
 class StringTests: XCTestCase {
     func test_initWithClass() {
-        let clazz = String(UIViewController)
+        let clazz = String(describing: UIViewController.self)
         XCTAssertEqual(clazz, "UIViewController")
     }
 
@@ -58,7 +58,7 @@ class StringTests: XCTestCase {
         email = "supports$@example.com"
         XCTAssertFalse(email.validate(String.Regex.Email2))
         email = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.com.vn"
-        measureBlock {
+        measure {
             XCTAssertTrue(email.validate(String.Regex.Email2))
         }
     }

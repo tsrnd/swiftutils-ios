@@ -32,7 +32,7 @@ open class AlertController: UIAlertController, AlertLevelProtocol {
 
     // Recommend `present` method for AlertController instead of default is `presentViewController`.
     open func present(from: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
-        if let from = from , from.isViewLoaded {
+        if let from = from, from.isViewLoaded {
             if let popup = from.presentedViewController {
                 if let vc = popup as? AlertLevelProtocol {
                     if level > vc.level {
@@ -48,7 +48,7 @@ open class AlertController: UIAlertController, AlertLevelProtocol {
             } else {
                 from.present(self, animated: animated, completion: completion)
             }
-        } else if let root = UIApplication.shared.delegate?.window??.rootViewController , root.isViewLoaded {
+        } else if let root = UIApplication.shared.delegate?.window??.rootViewController, root.isViewLoaded {
             present(from: root, animated: animated, completion: completion)
         }
     }

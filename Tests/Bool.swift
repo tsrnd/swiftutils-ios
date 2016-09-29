@@ -12,7 +12,7 @@ import XCTest
 class BoolTests: XCTestCase {
     func test_toggle() {
         var bool = true
-        bool.toggle()
+       _ = bool.toggle()
         XCTAssertFalse(bool)
     }
 }

@@ -22,10 +22,17 @@ extension Array {
         return array
     }
 
+    public func toJSONString() -> String? {
+        guard let data = toJSONData() else {
+            return nil
+        }
+        return String.init(data: data, encoding: .utf8)
+    }
+    
     public func toJSONData() -> Data? {
         do {
-            guard let json = self as? AnyObject else { return nil }
-            return try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let data = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+            return data
         } catch {
             return nil
         }

@@ -21,7 +21,7 @@ open class Label: UILabel {
         super.drawText(in: edgeInsets.inset(rect))
     }
 
-    open override var intrinsicContentSize : CGSize {
+    open override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
         size.width += (edgeInsets.left + edgeInsets.right)
         size.height += (edgeInsets.top + edgeInsets.bottom)
