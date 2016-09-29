@@ -157,19 +157,11 @@ extension String {
         return str as NSString as String
     }
 
-    public func stringByAppendingPathComponent(str: String) -> String {
-        var s1: String! = self
-        while s1.hasSuffix("/") {
-            s1 = s1[0...s1.length - 2]
-        }
-        var s2: String! = str
-        while s2.hasPrefix("/") {
-            s2 = s2[1...length - 1]
-        }
-        while s2.hasSuffix("/") {
-            s2 = s2[0...s2.length - 2]
-        }
-        return "\(s1)/\(s2)"
+    public func append(path path: String) -> String {
+        let set = NSCharacterSet(charactersInString: "/")
+        let left = trimmedRight(characterSet: set)
+        let right = path.trimmed(characterSet: set)
+        return left + "/" + right
     }
 
     /// The file-system path components of the receiver. (read-only)
@@ -235,7 +227,7 @@ extension Character {
 }
 
 extension NSMutableAttributedString {
-    public func appendString(string: String, attributes: [String: AnyObject]) {
+    public func append(string string: String, attributes: [String: AnyObject]) {
         let attStr = NSAttributedString(string: string, attributes: attributes)
         appendAttributedString(attStr)
     }
