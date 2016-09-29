@@ -9,7 +9,7 @@
 import UIKit
 
 extension Int {
-    public func loop(@noescape block: () -> Void) {
+    public func loop(_ block: () -> Void) {
         for _ in 0 ..< self {
             block()
         }
@@ -23,11 +23,11 @@ extension Int {
         return (self % 2) == 1
     }
 
-    public func clamp(range: Range<Int>) -> Int {
-        return clamp(range.startIndex, range.endIndex - 1)
+    public func clamp(_ range: Range<Int>) -> Int {
+        return clamp(range.lowerBound, range.upperBound - 1)
     }
 
-    public func clamp(min: Int, _ max: Int) -> Int {
+    public func clamp(_ min: Int, _ max: Int) -> Int {
         return Swift.max(min, Swift.min(max, self))
     }
 
@@ -46,11 +46,11 @@ extension Int {
         return Swift.abs(self)
     }
 
-    public func gcd(num: Int) -> Int {
+    public func gcd(_ num: Int) -> Int {
         return num == 0 ? self : num.gcd(self % num)
     }
 
-    public func lcm(num: Int) -> Int {
+    public func lcm(_ num: Int) -> Int {
         return (self * num).abs / gcd(num)
     }
 
@@ -67,7 +67,7 @@ extension Int {
         return String(format: "%zd%@", self, suffix[index])
     }
 
-    public static func random(min min: Int = 0, max: Int) -> Int {
+    public static func random(min: Int = 0, max: Int) -> Int {
         return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
     }
 }

@@ -22,25 +22,25 @@ public func == (lhs: CGPoint, rhs: CGPoint) -> Bool {
     return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
-public func += (inout lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+public func += (lhs: inout CGPoint, rhs: CGPoint) -> CGPoint {
     lhs.x += rhs.x
     lhs.y += rhs.y
     return lhs
 }
 
-public func += (inout lhs: CGPoint, rhs: CGSize) -> CGPoint {
+public func += (lhs: inout CGPoint, rhs: CGSize) -> CGPoint {
     lhs.x += rhs.width
     lhs.y += rhs.height
     return lhs
 }
 
-public func += (inout lhs: CGPoint, rhs: CGVector) -> CGPoint {
+public func += (lhs: inout CGPoint, rhs: CGVector) -> CGPoint {
     lhs.x += rhs.dx
     lhs.y += rhs.dy
     return lhs
 }
 
-public func += (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+public func += (lhs: inout CGPoint, rhs: CGFloat) -> CGPoint {
     lhs.x += rhs
     lhs.y += rhs
     return lhs
@@ -62,23 +62,23 @@ public func + (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
     return CGPoint(x: lhs.x + rhs, y: lhs.y + rhs)
 }
 
-public func -= (inout lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+public func -= (lhs: inout CGPoint, rhs: CGPoint) -> CGPoint {
     lhs.x -= rhs.x
     lhs.y -= rhs.y
     return lhs
 }
 
-public func -= (inout lhs: CGPoint, rhs: CGSize) -> CGPoint {
+public func -= (lhs: inout CGPoint, rhs: CGSize) -> CGPoint {
     return CGPoint(x: lhs.x - rhs.width, y: lhs.y - rhs.height)
 }
 
-public func -= (inout lhs: CGPoint, rhs: CGVector) -> CGPoint {
+public func -= (lhs: inout CGPoint, rhs: CGVector) -> CGPoint {
     lhs.x -= rhs.dx
     lhs.y -= rhs.dy
     return lhs
 }
 
-public func -= (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+public func -= (lhs: inout CGPoint, rhs: CGFloat) -> CGPoint {
     lhs.x -= rhs
     lhs.y -= rhs
     return lhs
@@ -100,7 +100,7 @@ public func - (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
     return CGPoint(x: lhs.x - rhs, y: lhs.y - rhs)
 }
 
-public func *= (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+public func *= (lhs: inout CGPoint, rhs: CGFloat) -> CGPoint {
     lhs.x *= rhs
     lhs.y *= rhs
     return lhs
@@ -110,7 +110,7 @@ public func * (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
     return CGPoint(x: lhs.x * rhs, y: lhs.y * rhs)
 }
 
-public func /= (inout lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+public func /= (lhs: inout CGPoint, rhs: CGFloat) -> CGPoint {
     lhs.x /= rhs
     lhs.y /= rhs
     return lhs
@@ -130,7 +130,7 @@ extension CGSize {
     }
 }
 
-public func += (inout lhs: CGSize, rhs: CGSize) -> CGSize {
+public func += (lhs: inout CGSize, rhs: CGSize) -> CGSize {
     lhs.width += rhs.width
     lhs.height += rhs.height
     return lhs
@@ -140,7 +140,7 @@ public func + (lhs: CGSize, rhs: CGSize) -> CGSize {
     return CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
 }
 
-public func -= (inout lhs: CGSize, rhs: CGSize) -> CGSize {
+public func -= (lhs: inout CGSize, rhs: CGSize) -> CGSize {
     lhs.width -= rhs.width
     lhs.height -= rhs.height
     return lhs
@@ -150,7 +150,7 @@ public func - (lhs: CGSize, rhs: CGSize) -> CGSize {
     return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
 }
 
-public func *= (inout lhs: CGSize, rhs: CGFloat) -> CGSize {
+public func *= (lhs: inout CGSize, rhs: CGFloat) -> CGSize {
     lhs.width *= rhs
     lhs.height *= rhs
     return lhs
@@ -160,7 +160,7 @@ public func * (lhs: CGSize, rhs: CGFloat) -> CGSize {
     return CGSize(width: lhs.width * rhs, height: lhs.height * rhs)
 }
 
-public func /= (inout lhs: CGSize, rhs: CGFloat) -> CGSize {
+public func /= (lhs: inout CGSize, rhs: CGFloat) -> CGSize {
     lhs.width /= rhs
     lhs.height /= rhs
     return lhs
@@ -188,7 +188,7 @@ public func + (lhs: CGVector, rhs: CGVector) -> CGVector {
     return CGVector(dx: lhs.dx + rhs.dx, dy: lhs.dy + rhs.dy)
 }
 
-public func += (inout lhs: CGVector, rhs: CGVector) -> CGVector {
+public func += (lhs: inout CGVector, rhs: CGVector) -> CGVector {
     lhs.dx += rhs.dx
     lhs.dy += rhs.dy
     return lhs
@@ -210,7 +210,7 @@ public func / (lhs: CGVector, rhs: CGFloat) -> CGVector {
     return CGVector(dx: lhs.dx / rhs, dy: lhs.dy / rhs)
 }
 
-public func /= (inout lhs: CGVector, rhs: CGFloat) -> CGVector {
+public func /= (lhs: inout CGVector, rhs: CGFloat) -> CGVector {
     lhs.dx /= rhs
     lhs.dy /= rhs
     return lhs

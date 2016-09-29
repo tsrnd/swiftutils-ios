@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension NSCache {
     public convenience init(name: String, totalCostLimit: Int = 0, countLimit: Int = 0) {
@@ -15,17 +16,19 @@ extension NSCache {
         self.totalCostLimit = totalCostLimit
         self.countLimit = countLimit
     }
-
+    
     public subscript(key: AnyObject) -> AnyObject? {
-        get {
-            return objectForKey(key)
-        }
         set {
-            if let value: AnyObject = newValue {
-                setObject(value, forKey: key)
+            if let value = newValue {
+                (self as! NSCache<AnyObject, AnyObject>).setObject(value, forKey: key)
             } else {
-                removeObjectForKey(key)
+                (self as! NSCache<AnyObject, AnyObject>).removeObject(forKey: key)
             }
         }
+        
+        get {
+            return (self as! NSCache<AnyObject, AnyObject>).object(forKey: key)
+        }
+    
     }
 }

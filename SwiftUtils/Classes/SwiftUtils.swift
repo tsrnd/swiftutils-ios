@@ -29,10 +29,10 @@ public enum DeviceType {
     }
 }
 
-public let kScreenSize = UIScreen.mainScreen().bounds.size
+public let kScreenSize = UIScreen.main.bounds.size
 
-public let iPhone = (UIDevice.currentDevice().userInterfaceIdiom == .Phone)
-public let iPad = (UIDevice.currentDevice().userInterfaceIdiom == .Pad)
+public let iPhone = (UIDevice.current.userInterfaceIdiom == .phone)
+public let iPad = (UIDevice.current.userInterfaceIdiom == .pad)
 
 public let iPhone4 = (iPhone && DeviceType.iPhone4.size == kScreenSize)
 public let iPhone5 = (iPhone && DeviceType.iPhone5.size == kScreenSize)
