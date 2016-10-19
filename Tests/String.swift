@@ -3,7 +3,7 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 7/28/16.
-//  Copyright © 2016 Astraler Technology. All rights reserved.
+//  Copyright © 2016 Asian Tech Co., Ltd. All rights reserved.
 //
 
 import XCTest
@@ -40,14 +40,14 @@ class StringTests: XCTestCase {
         XCTAssertEqual(sub, "hello world")
     }
 
-    func test_stringByAppendingPathComponent() {
+    func test_appending_path() {
         let str = "http://google.com"
         var path: String
-        path = str.stringByAppendingPathComponent("api/v3")
+        path = str.appending(path: "api/v3")
         XCTAssertEqual(path, "http://google.com/api/v3")
-        path = str.stringByAppendingPathComponent("/api/v3")
+        path = str.appending(path: "/api/v3")
         XCTAssertEqual(path, "http://google.com/api/v3")
-        path = str.stringByAppendingPathComponent("/api/v3/")
+        path = str.appending(path: "/api/v3/")
         XCTAssertEqual(path, "http://google.com/api/v3")
     }
 
