@@ -54,14 +54,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EC45F2971D92A71200A26AF0 /* PBXContainerItemProxy */ = {
+		ECA6D5DB1C83E68E00A3D848 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ECD9E6CF1BC24428001F8738 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ECA6D5D41C83E68E00A3D848;
-			remoteInfo = Tests;
+			remoteGlobalIDString = ECD9E6D71BC24428001F8738;
+			remoteInfo = SwiftUtils;
 		};
-		ECA6D5DB1C83E68E00A3D848 /* PBXContainerItemProxy */ = {
+		ECE5D8A61DB8762B00193DD5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ECD9E6CF1BC24428001F8738 /* Project object */;
 			proxyType = 1;
@@ -122,8 +122,6 @@
 		ECBAE7941DB773A600E520CE /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		ECBAE7951DB773A600E520CE /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		ECBAE7961DB773A600E520CE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECCEF34F1CEF063500E22CA2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		ECCEF3511CEF063D00E22CA2 /* SwiftUtils.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftUtils.podspec; sourceTree = "<group>"; };
 		ECD9E6D81BC24428001F8738 /* SwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -257,8 +255,6 @@
 		ECD9E6CE1BC24428001F8738 = {
 			isa = PBXGroup;
 			children = (
-				ECCEF3511CEF063D00E22CA2 /* SwiftUtils.podspec */,
-				ECCEF34F1CEF063500E22CA2 /* README.md */,
 				ECBAE7741DB773A600E520CE /* Sources */,
 				ECA6D5D61C83E68E00A3D848 /* Tests */,
 				EC45F2851D92A26F00A26AF0 /* PodTest */,
@@ -315,7 +311,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EC45F2981D92A71200A26AF0 /* PBXTargetDependency */,
+				ECE5D8A71DB8762B00193DD5 /* PBXTargetDependency */,
 			);
 			name = PodTest;
 			productName = PodTest;
@@ -559,15 +555,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EC45F2981D92A71200A26AF0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ECA6D5D41C83E68E00A3D848 /* Tests */;
-			targetProxy = EC45F2971D92A71200A26AF0 /* PBXContainerItemProxy */;
-		};
 		ECA6D5DC1C83E68E00A3D848 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ECD9E6D71BC24428001F8738 /* SwiftUtils */;
 			targetProxy = ECA6D5DB1C83E68E00A3D848 /* PBXContainerItemProxy */;
+		};
+		ECE5D8A71DB8762B00193DD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECD9E6D71BC24428001F8738 /* SwiftUtils */;
+			targetProxy = ECE5D8A61DB8762B00193DD5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
