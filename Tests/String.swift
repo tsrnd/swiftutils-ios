@@ -3,7 +3,7 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 7/28/16.
-//  Copyright © 2016 Astraler Technology. All rights reserved.
+//  Copyright © 2016 Asian Tech Co., Ltd. All rights reserved.
 //
 
 import XCTest
@@ -11,7 +11,7 @@ import XCTest
 
 class StringTests: XCTestCase {
     func test_initWithClass() {
-        let clazz = String(UIViewController)
+        let clazz = String(describing: UIViewController.self)
         XCTAssertEqual(clazz, "UIViewController")
     }
 
@@ -40,14 +40,14 @@ class StringTests: XCTestCase {
         XCTAssertEqual(sub, "hello world")
     }
 
-    func test_stringByAppendingPathComponent() {
+    func test_appending_path() {
         let str = "http://google.com"
         var path: String
-        path = str.stringByAppendingPathComponent("api/v3")
+        path = str.appending(path: "api/v3")
         XCTAssertEqual(path, "http://google.com/api/v3")
-        path = str.stringByAppendingPathComponent("/api/v3")
+        path = str.appending(path: "/api/v3")
         XCTAssertEqual(path, "http://google.com/api/v3")
-        path = str.stringByAppendingPathComponent("/api/v3/")
+        path = str.appending(path: "/api/v3/")
         XCTAssertEqual(path, "http://google.com/api/v3")
     }
 
@@ -58,7 +58,7 @@ class StringTests: XCTestCase {
         email = "supports$@example.com"
         XCTAssertFalse(email.validate(String.Regex.Email2))
         email = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.com.vn"
-        measureBlock {
+        measure {
             XCTAssertTrue(email.validate(String.Regex.Email2))
         }
     }

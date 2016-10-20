@@ -1,26 +1,32 @@
 language: objective-c
-osx_image: xcode7.2
+osx_image: xcode8
 cache:
-  - cocoapods
+  bundler: true
+  cocoapods: true
+  directories:
+    - ~/.rvm
+    - ~/.cocoapods
+    - .bundle
+    - vendor
 env:
   global:
-  - PROJECT="SwiftUtils.xcodeproj"
-  - SCHEME="SwiftUtils"
-  - SDK="iphonesimulator9.2"
-  matrix:
-    - DESTINATION="OS=8.1,name=iPhone 6 Plus"   POD_LINT="NO"
-    - DESTINATION="OS=9.2,name=iPhone 6s Plus"  POD_LINT="YES"
-before_install:
+    - WORKSPACE='SwiftUtils.xcworkspace'
+    - SCHEME='Framework'
+    - SDK='iphonesimulator10.0'
+    - DESTINATION='OS=10.0,name=iPhone 6'
+install:
   - set -o pipefail
-  - gem install xcpretty
+  - brew update
+  - ./scripts/setup
+  # workaround https://github.com/realm/SwiftLint/issues/13
+  - ln -s /Applications/Xcode-8.app /Applications/Xcode.app
 script:
-  # test Debug
-  - xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration Debug build test | xcpretty -c
-  # test Release
-  - xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -configuration ReleaseTest build test | xcpretty -c
-  # pod lint if needs
-  - if [ $POD_LINT == "YES" ]; then pod lib lint --quick; fi
+  - ./scripts/validate_branch
+  - ./scripts/lint
+  - ./scripts/test
+  - ./scripts/pod_test
+  - bundle exec pod lib lint --quick
 notifications:
   email: false
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - ./scripts/codecov

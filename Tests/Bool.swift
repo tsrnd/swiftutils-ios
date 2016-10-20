@@ -3,7 +3,7 @@
 //  SwiftUtils
 //
 //  Created by DaoNV on 6/6/16.
-//  Copyright © 2016 Astraler Technology. All rights reserved.
+//  Copyright © 2016 Asian Tech Co., Ltd. All rights reserved.
 //
 
 import XCTest
@@ -12,7 +12,7 @@ import XCTest
 class BoolTests: XCTestCase {
     func test_toggle() {
         var bool = true
-        bool.toggle()
+       _ = bool.toggle()
         XCTAssertFalse(bool)
     }
 }

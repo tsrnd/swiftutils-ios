@@ -3,7 +3,7 @@
 //  PodTest
 //
 //  Created by DaoNV on 9/21/16.
-//  Copyright © 2016 Astraler Technology. All rights reserved.
+//  Copyright © 2016 Asian Tech Co., Ltd. All rights reserved.
 //
 
 import UIKit
@@ -13,8 +13,8 @@ import SwiftUtils
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         return true
     }
 }

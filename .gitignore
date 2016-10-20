@@ -21,11 +21,12 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+*.DS_Store
 
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
-
+.DS_Store
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
