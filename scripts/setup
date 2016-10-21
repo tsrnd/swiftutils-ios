@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+bundle install --path=vendor/bundle --jobs 4 --retry 3
 
 brew tap Homebrew/bundle
 brew bundle
