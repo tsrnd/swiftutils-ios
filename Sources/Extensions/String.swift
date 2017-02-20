@@ -48,7 +48,6 @@ extension String {
         return nil
     }
 
-    
     public func contains(_ pattern: String, ignoreCase: Bool = false) -> Bool {
         guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
             return false
@@ -146,7 +145,6 @@ extension String {
         }
         return str as NSString as String
     }
-
 
     public func appending(path: String) -> String {
         let set = CharacterSet(charactersIn: "/")
