@@ -42,7 +42,7 @@ extension UICollectionView {
         register(aClass, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
     }
 
-    public func dequeue<T: UICollectionViewCell>(_ aClass: T.Type, forIndexPath indexPath: IndexPath) -> T! {
+    public func dequeue<T: UICollectionViewCell>(_ aClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
         let name = String(describing: aClass)
         guard let cell = dequeueReusableCell(withReuseIdentifier: name, for: indexPath) as? T else {
             fatalError("\(name) is not registed")
@@ -50,7 +50,7 @@ extension UICollectionView {
         return cell
     }
 
-    public func dequeue<T: UICollectionReusableView>(_ aClass: T.Type, type: SectionType, forIndexPath indexPath: IndexPath) -> T! {
+    public func dequeue<T: UICollectionReusableView>(_ aClass: T.Type, type: SectionType, forIndexPath indexPath: IndexPath) -> T {
         let name = String(describing: aClass)
         guard let cell = dequeueReusableSupplementaryView(ofKind: type.kind, withReuseIdentifier: name, for: indexPath) as? T else {
             fatalError("\(name) is not registed")
