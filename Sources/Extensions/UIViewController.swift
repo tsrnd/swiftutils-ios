@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIViewController {
-    public class func vc() -> Self {
+    open class func vc() -> Self {
         return self.init(nibName: String(describing: self), bundle: nil)
     }
 }

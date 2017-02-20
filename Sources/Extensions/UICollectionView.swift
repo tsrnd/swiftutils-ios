@@ -9,40 +9,39 @@
 import UIKit
 
 extension UICollectionView {
-    public enum SectionType {
-        case header
-        case footer
-        var kind: String {
-            switch self {
-            case .header: return UICollectionElementKindSectionHeader
-            case .footer: return UICollectionElementKindSectionFooter
-            }
+    open func register<T: UICollectionViewCell>(_ aClass: T.Type) {
+        let name = String(describing: aClass)
+        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
+            let nib = UINib(nibName: name, bundle: nil)
+            register(nib, forCellWithReuseIdentifier: name)
+        } else {
+            register(aClass, forCellWithReuseIdentifier: name)
         }
     }
 
-    public func registerNib<T: UICollectionViewCell>(_ aClass: T.Type) {
+    open func register<T: UICollectionReusableView>(header aClass: T.Type) {
         let name = String(describing: aClass)
-        let nib = UINib(nibName: name, bundle: nil)
-        register(nib, forCellWithReuseIdentifier: name)
+        let kind = UICollectionElementKindSectionHeader
+        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
+            let nib = UINib(nibName: name, bundle: nil)
+            register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
+        } else {
+            register(aClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
+        }
     }
 
-    public func registerClass<T: UICollectionViewCell>(_ aClass: T.Type) {
+    open func register<T: UICollectionReusableView>(footer aClass: T.Type) {
         let name = String(describing: aClass)
-        register(aClass, forCellWithReuseIdentifier: name)
+        let kind = UICollectionElementKindSectionFooter
+        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
+            let nib = UINib(nibName: name, bundle: nil)
+            register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
+        } else {
+            register(aClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
+        }
     }
 
-    public func registerNib<T: UICollectionReusableView>(_ aClass: T.Type, type: SectionType) {
-        let name = String(describing: aClass)
-        let nib = UINib(nibName: name, bundle: nil)
-        register(nib, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
-    }
-
-    public func registerClass<T: UICollectionReusableView>(_ aClass: T.Type, type: SectionType) {
-        let name = String(describing: aClass)
-        register(aClass, forSupplementaryViewOfKind: type.kind, withReuseIdentifier: name)
-    }
-
-    public func dequeue<T: UICollectionViewCell>(_ aClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
+    open func dequeue<T: UICollectionViewCell>(_ aClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
         let name = String(describing: aClass)
         guard let cell = dequeueReusableCell(withReuseIdentifier: name, for: indexPath) as? T else {
             fatalError("\(name) is not registed")
@@ -50,9 +49,17 @@ extension UICollectionView {
         return cell
     }
 
-    public func dequeue<T: UICollectionReusableView>(_ aClass: T.Type, type: SectionType, forIndexPath indexPath: IndexPath) -> T {
+    open func dequeue<T: UICollectionReusableView>(header aClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
         let name = String(describing: aClass)
-        guard let cell = dequeueReusableSupplementaryView(ofKind: type.kind, withReuseIdentifier: name, for: indexPath) as? T else {
+        guard let cell = dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: name, for: indexPath) as? T else {
+            fatalError("\(name) is not registed")
+        }
+        return cell
+    }
+
+    open func dequeue<T: UICollectionReusableView>(footer aClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
+        let name = String(describing: aClass)
+        guard let cell = dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: name, for: indexPath) as? T else {
             fatalError("\(name) is not registed")
         }
         return cell

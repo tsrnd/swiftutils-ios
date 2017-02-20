@@ -43,32 +43,30 @@ extension UITableView {
         })
     }
 
-    public func registerNib<T: UITableViewCell>(_ aClass: T.Type) {
+    public func register<T: UITableViewCell>(_ aClass: T.Type) {
         let name = String(describing: aClass)
-        let nib = UINib(nibName: name, bundle: nil)
-        register(nib, forCellReuseIdentifier: name)
+        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
+            let nib = UINib(nibName: name, bundle: nil)
+            register(nib, forCellReuseIdentifier: name)
+        } else {
+            register(aClass, forCellReuseIdentifier: name)
+        }
     }
 
-    public func registerClass<T: UITableViewCell>(_ aClass: T.Type) {
+    public func register<T: UITableViewHeaderFooterView>(_ aClass: T.Type) {
         let name = String(describing: aClass)
-        register(aClass, forCellReuseIdentifier: name)
-    }
-
-    public func registerNib<T: UITableViewHeaderFooterView>(_ aClass: T.Type) {
-        let name = String(describing: aClass)
-        let nib = UINib(nibName: name, bundle: nil)
-        register(nib, forHeaderFooterViewReuseIdentifier: name)
-    }
-
-    public func registerClass<T: UITableViewHeaderFooterView>(_ aClass: T.Type) {
-        let name = String(describing: aClass)
-        register(aClass, forHeaderFooterViewReuseIdentifier: name)
+        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
+            let nib = UINib(nibName: name, bundle: nil)
+            register(nib, forHeaderFooterViewReuseIdentifier: name)
+        } else {
+            register(aClass, forHeaderFooterViewReuseIdentifier: name)
+        }
     }
 
     public func dequeue<T: UITableViewCell>(_ aClass: T.Type) -> T {
         let name = String(describing: aClass)
         guard let cell = dequeueReusableCell(withIdentifier: name) as? T else {
-            fatalError("\(name) is not registed")
+            fatalError("`\(name)` is not registed")
         }
         return cell
     }
@@ -76,7 +74,7 @@ extension UITableView {
     public func dequeue<T: UITableViewHeaderFooterView>(_ aClass: T.Type) -> T {
         let name = String(describing: aClass)
         guard let cell = dequeueReusableHeaderFooterView(withIdentifier: name) as? T else {
-            fatalError("\(name) is not registed")
+            fatalError("`\(name)` is not registed")
         }
         return cell
     }
