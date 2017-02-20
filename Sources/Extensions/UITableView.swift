@@ -65,7 +65,7 @@ extension UITableView {
         register(aClass, forHeaderFooterViewReuseIdentifier: name)
     }
 
-    public func dequeue<T: UITableViewCell>(_ aClass: T.Type) -> T! {
+    public func dequeue<T: UITableViewCell>(_ aClass: T.Type) -> T {
         let name = String(describing: aClass)
         guard let cell = dequeueReusableCell(withIdentifier: name) as? T else {
             fatalError("\(name) is not registed")
@@ -73,7 +73,7 @@ extension UITableView {
         return cell
     }
 
-    public func dequeue<T: UITableViewHeaderFooterView>(_ aClass: T.Type) -> T! {
+    public func dequeue<T: UITableViewHeaderFooterView>(_ aClass: T.Type) -> T {
         let name = String(describing: aClass)
         guard let cell = dequeueReusableHeaderFooterView(withIdentifier: name) as? T else {
             fatalError("\(name) is not registed")
