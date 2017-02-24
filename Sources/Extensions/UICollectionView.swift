@@ -11,8 +11,9 @@ import UIKit
 extension UICollectionView {
     open func register<T: UICollectionViewCell>(_ aClass: T.Type) {
         let name = String(describing: aClass)
-        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
-            let nib = UINib(nibName: name, bundle: nil)
+        let bundle = Bundle.main
+        if bundle.path(forResource: name, ofType: "nib") != nil {
+            let nib = UINib(nibName: name, bundle: bundle)
             register(nib, forCellWithReuseIdentifier: name)
         } else {
             register(aClass, forCellWithReuseIdentifier: name)
@@ -22,8 +23,9 @@ extension UICollectionView {
     open func register<T: UICollectionReusableView>(header aClass: T.Type) {
         let name = String(describing: aClass)
         let kind = UICollectionElementKindSectionHeader
-        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
-            let nib = UINib(nibName: name, bundle: nil)
+        let bundle = Bundle.main
+        if bundle.path(forResource: name, ofType: "nib") != nil {
+            let nib = UINib(nibName: name, bundle: bundle)
             register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
         } else {
             register(aClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
@@ -33,8 +35,9 @@ extension UICollectionView {
     open func register<T: UICollectionReusableView>(footer aClass: T.Type) {
         let name = String(describing: aClass)
         let kind = UICollectionElementKindSectionFooter
-        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
-            let nib = UINib(nibName: name, bundle: nil)
+        let bundle = Bundle.main
+        if bundle.path(forResource: name, ofType: "nib") != nil {
+            let nib = UINib(nibName: name, bundle: bundle)
             register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
         } else {
             register(aClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: name)

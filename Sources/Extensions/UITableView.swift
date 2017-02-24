@@ -45,8 +45,9 @@ extension UITableView {
 
     public func register<T: UITableViewCell>(_ aClass: T.Type) {
         let name = String(describing: aClass)
-        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
-            let nib = UINib(nibName: name, bundle: nil)
+        let bundle = Bundle.main
+        if bundle.path(forResource: name, ofType: "nib") != nil {
+            let nib = UINib(nibName: name, bundle: bundle)
             register(nib, forCellReuseIdentifier: name)
         } else {
             register(aClass, forCellReuseIdentifier: name)
@@ -55,8 +56,9 @@ extension UITableView {
 
     public func register<T: UITableViewHeaderFooterView>(_ aClass: T.Type) {
         let name = String(describing: aClass)
-        if Bundle(for: aClass).path(forResource: name, ofType: "xib") != nil {
-            let nib = UINib(nibName: name, bundle: nil)
+        let bundle = Bundle.main
+        if bundle.path(forResource: name, ofType: "nib") != nil {
+            let nib = UINib(nibName: name, bundle: bundle)
             register(nib, forHeaderFooterViewReuseIdentifier: name)
         } else {
             register(aClass, forHeaderFooterViewReuseIdentifier: name)
