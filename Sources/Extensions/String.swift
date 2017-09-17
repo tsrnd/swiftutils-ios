@@ -20,14 +20,16 @@ extension String {
         return self[index(startIndex, offsetBy: idx)]
     }
     
-    public subscript(range: Range<Int>) -> String? {
+    public subscript(range: Range<Int>) -> String {
         let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
-        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex))
+        let higherIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex
+        return String(self[lowerIndex..<higherIndex])
     }
     
     public subscript(range: ClosedRange<Int>) -> String {
         let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
-        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex))
+        let higherIndex = (index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex)
+        return String(self[lowerIndex..<higherIndex])
     }
     
     public var length: Int {
@@ -70,19 +72,19 @@ extension String {
         } else if index < 0 {
             return string + self
         }
-        return self[0 ..< index]! + string + self[index ..< length]!
+        return self[0 ..< index] + string + self[index ..< length]
     }
 
     public func trimmedLeft(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
         if let range = rangeOfCharacter(from: set.inverted) {
-            return self[range.lowerBound ..< endIndex]
+            return String(self[range.lowerBound ..< endIndex])
         }
         return ""
     }
 
     public func trimmedRight(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
         if let range = rangeOfCharacter(from: set.inverted, options: NSString.CompareOptions.backwards) {
-            return self[startIndex ..< range.upperBound]
+            return String(self[startIndex ..< range.upperBound])
         }
         return ""
     }
@@ -94,7 +96,8 @@ extension String {
     public func trimmedLeftCJK() -> String {
         var text = self
         while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
-            text = text.substring(from: text.characters.index(text.startIndex, offsetBy: 1))
+            let index = text.characters.index(text.startIndex, offsetBy: 1)
+            text = String(text[index...])
         }
         return text
     }
@@ -102,7 +105,8 @@ extension String {
     public func trimmedRightCJK() -> String {
         var text = self
         while text.characters.last == Character("\n") || text.characters.last == Character(" ") {
-            text = text.substring(to: text.characters.index(text.endIndex, offsetBy: -1))
+            let index = text.characters.index(text.endIndex, offsetBy: -1)
+            text = String(text[..<index])
         }
         return text
     }
@@ -216,7 +220,7 @@ extension Character {
 }
 
 extension NSMutableAttributedString {
-    public func append(string: String, attributes: [String: AnyObject]) {
+    public func append(string: String, attributes: [NSAttributedStringKey: Any]) {
         let attStr = NSAttributedString(string: string, attributes: attributes)
         append(attStr)
     }
