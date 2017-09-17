@@ -17,7 +17,7 @@ public enum AlertLevel: Int {
 
 public protocol AlertLevelProtocol: NSObjectProtocol {
     var level: AlertLevel { get }
-    func dismiss(_ animated: Bool, completion: (() -> Void)?)
+    func dismissViewControllerAnimated(_ flag: Bool, completion: (() -> Void)?)
 }
 
 open class AlertController: UIAlertController, AlertLevelProtocol {
@@ -36,7 +36,7 @@ open class AlertController: UIAlertController, AlertLevelProtocol {
             if let popup = from.presentedViewController {
                 if let vc = popup as? AlertLevelProtocol {
                     if level > vc.level {
-                        vc.dismiss(animated, completion: { () -> Void in
+                        vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
                             self.present(from: from, animated: animated, completion: completion)
                         })
                     }

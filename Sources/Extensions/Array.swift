@@ -12,7 +12,7 @@ extension Array {
     public mutating func shuffle() {
         for i in (1 ..< count).reversed() {
             let j = Int.random(max: i - 1)
-            self.swapAt(i, j)
+            swap(&self[i], &self[j])
         }
     }
 
