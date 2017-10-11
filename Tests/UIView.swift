@@ -11,7 +11,7 @@ import XCTest
 
 class UIViewTests: XCTestCase {
     func test_loadNib() {
-        let xib: TestView! = TestView.loadNib()
+        let xib: TestView = TestView.loadNib()
         XCTAssertNotNil(xib)
     }
 }

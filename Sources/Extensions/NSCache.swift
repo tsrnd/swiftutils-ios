@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 
 extension NSCache {
-    public convenience init(name: String, totalCostLimit: Int = 0, countLimit: Int = 0) {
-        self.init()
-        self.name = name
-        self.totalCostLimit = totalCostLimit
-        self.countLimit = countLimit
-    }
+
+//    TOTO: - Error: `Extension of a generic Objective-C class cannot access the class's generic parameters at runtime`
+//
+//    public convenience init(name: String, totalCostLimit: Int = 0, countLimit: Int = 0) {
+//        self.init()
+//        self.name = name
+//        self.totalCostLimit = totalCostLimit
+//        self.countLimit = countLimit
+//    }
 }
