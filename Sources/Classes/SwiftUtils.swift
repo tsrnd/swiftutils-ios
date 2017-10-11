@@ -16,6 +16,7 @@ public enum DeviceType {
     case iPhone5
     case iPhone6
     case iPhone6p
+    case iPhoneX
     case iPad
 
     public var size: CGSize {
@@ -24,6 +25,7 @@ public enum DeviceType {
         case .iPhone5: return CGSize(width: 320, height: 568)
         case .iPhone6: return CGSize(width: 375, height: 667)
         case .iPhone6p: return CGSize(width: 414, height: 736)
+        case .iPhoneX: return CGSize(width: 375, height: 812)
         case .iPad: return CGSize(width: 768, height: 1024)
         }
     }
@@ -38,3 +40,4 @@ public let iPhone4 = (iPhone && DeviceType.iPhone4.size == kScreenSize)
 public let iPhone5 = (iPhone && DeviceType.iPhone5.size == kScreenSize)
 public let iPhone6 = (iPhone && DeviceType.iPhone6.size == kScreenSize)
 public let iPhone6p = (iPhone && DeviceType.iPhone6p.size == kScreenSize)
+public let iPhoneX = (iPhone && DeviceType.iPhoneX.size == kScreenSize)
