@@ -62,4 +62,18 @@ class StringTests: XCTestCase {
             XCTAssertTrue(email.validate(String.Regex.Email2))
         }
     }
+
+    func test_trimmedLeftCJK() {
+        let str = "   \n hello \n world"
+        let sub = str.trimmedLeftCJK()
+        XCTAssertNotNil(sub)
+        XCTAssertEqual(sub, "hello \n world")
+    }
+
+    func test_trimmedRightCJK() {
+        let str = "hello \n world  \n  "
+        let sub = str.trimmedRightCJK()
+        XCTAssertNotNil(sub)
+        XCTAssertEqual(sub, "hello \n world")
+    }
 }

@@ -15,12 +15,13 @@ public enum AlertLevel: Int {
     case require
 }
 
-public protocol AlertLevelProtocol: NSObjectProtocol {
+public protocol AlertLevelProtocol: class {
     var level: AlertLevel { get }
-    func dismissViewControllerAnimated(_ flag: Bool, completion: (() -> Void)?)
+    func dismiss(animated: Bool, completion: (() -> Void)?)
 }
 
 open class AlertController: UIAlertController, AlertLevelProtocol {
+
     open var level = AlertLevel.normal
 
     open func addAction(_ title: String?, style: UIAlertActionStyle = UIAlertActionStyle.default, handler: (() -> Void)? = nil) {
@@ -36,7 +37,7 @@ open class AlertController: UIAlertController, AlertLevelProtocol {
             if let popup = from.presentedViewController {
                 if let vc = popup as? AlertLevelProtocol {
                     if level > vc.level {
-                        vc.dismissViewControllerAnimated(animated, completion: { () -> Void in
+                        vc.dismiss(animated: animated, completion: { () -> Void in
                             self.present(from: from, animated: animated, completion: completion)
                         })
                     }

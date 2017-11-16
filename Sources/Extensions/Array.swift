@@ -9,10 +9,11 @@
 import UIKit
 
 extension Array {
+
     public mutating func shuffle() {
         for i in (1 ..< count).reversed() {
             let j = Int.random(max: i - 1)
-            swap(&self[i], &self[j])
+            swapAt(i, j)
         }
     }
 

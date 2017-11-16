@@ -1,5 +1,5 @@
 PODS:
-  - SwiftUtils (2.0.0)
+  - SwiftUtils (4.0.0)
 
 DEPENDENCIES:
   - SwiftUtils (from `./`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  SwiftUtils: 5740ba35416bf51d8262790e1e29b3e138125f86
+  SwiftUtils: 777a745c11b380b27142350d44204498aaee00fc
 
 PODFILE CHECKSUM: 5713ad14923341d67ab5a070d614ff5fdc29e9b6
 
-COCOAPODS: 1.1.0
+COCOAPODS: 1.2.1

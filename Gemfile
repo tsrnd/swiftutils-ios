@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
-ruby '~> 2.3.0'
+ruby '~> 2.4.0'
 
-gem 'xcpretty', '~> 0.2.2'
-gem 'cocoapods', '~> 1.1.0'
-gem 'linterbot', '~> 0.2.5'
+gem 'xcpretty', '~> 0.2.8'
+gem 'cocoapods', '~> 1.2.1'
+gem 'linterbot', '~> 0.2.7'
+gem 'json', '~> 2.0.3'
