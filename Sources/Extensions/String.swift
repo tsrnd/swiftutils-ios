@@ -11,31 +11,29 @@ import UIKit
 extension String {
 
    public subscript(idx: Int) -> String? {
-        guard idx >= 0 && idx < characters.count else { return nil }
+        guard idx >= 0 && idx < count else { return nil }
         return String(self[index(startIndex, offsetBy: idx)])
     }
     
     public subscript(idx: Int) -> Character? {
-        guard idx >= 0 && idx < characters.count else { return nil }
+        guard idx >= 0 && idx < count else { return nil }
         return self[index(startIndex, offsetBy: idx)]
     }
     
     public subscript(range: Range<Int>) -> String? {
         let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
-        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex))
+        let higherIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex
+        return String(self[lowerIndex..<higherIndex])
     }
     
     public subscript(range: ClosedRange<Int>) -> String {
         let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) ?? endIndex
-        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex))
+        let higherIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex
+        return String(self[lowerIndex..<higherIndex])
     }
     
     public var length: Int {
-        return self.characters.count
-    }
-
-    public var capitalized: String {
-        return self.capitalized
+        return count
     }
 
     // Regex
@@ -52,13 +50,13 @@ extension String {
         guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
             return false
         }
-        let range = NSRange(location: 0, length: self.characters.count)
+        let range = NSRange(location: 0, length: count)
         return regex.firstMatch(in: self, options: [], range: range) != nil
     }
 
     public func replace(_ pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
         if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
-            let range = NSRange(location: 0, length: self.characters.count)
+            let range = NSRange(location: 0, length: count)
             return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replacementString)
         }
         return nil
@@ -75,14 +73,14 @@ extension String {
 
     public func trimmedLeft(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
         if let range = rangeOfCharacter(from: set.inverted) {
-            return self[range.lowerBound ..< endIndex]
+            return String(self[range.lowerBound ..< endIndex])
         }
         return ""
     }
 
     public func trimmedRight(characterSet set: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String {
         if let range = rangeOfCharacter(from: set.inverted, options: NSString.CompareOptions.backwards) {
-            return self[startIndex ..< range.upperBound]
+            return String(self[startIndex ..< range.upperBound])
         }
         return ""
     }
@@ -93,16 +91,16 @@ extension String {
 
     public func trimmedLeftCJK() -> String {
         var text = self
-        while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
-            text = text.substring(from: text.characters.index(text.startIndex, offsetBy: 1))
+        while text.first == Character("\n") || text.first == Character(" ") {
+            text.removeFirst(1)
         }
         return text
     }
 
     public func trimmedRightCJK() -> String {
         var text = self
-        while text.characters.last == Character("\n") || text.characters.last == Character(" ") {
-            text = text.substring(to: text.characters.index(text.endIndex, offsetBy: -1))
+        while text.last == Character("\n") || text.last == Character(" ") {
+            text.removeLast(1)
         }
         return text
     }
@@ -216,9 +214,14 @@ extension Character {
 }
 
 extension NSMutableAttributedString {
-    public func append(string: String, attributes: [String: AnyObject]) {
-        let attStr = NSAttributedString(string: string, attributes: attributes)
-        append(attStr)
+    public func append(string: String, attributes: [String: Any]) {
+        let attributedString = NSMutableAttributedString(string: string)
+        let range = NSRange(location: 0, length: attributedString.string.count)
+        let convertedAttributes = Dictionary(uniqueKeysWithValues:
+            attributes.lazy.map { (NSAttributedStringKey($0.key), $0.value) }
+        )
+        attributedString.addAttributes(convertedAttributes, range: range)
+        append(attributedString)
     }
 }
 
