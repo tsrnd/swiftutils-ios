@@ -57,7 +57,7 @@ open class AlertController: UIAlertController, AlertLevelProtocol {
         self.dismiss(animated: animated, completion: completion)
     }
 
-    open class func alertWithError(_ error: NSError, level: AlertLevel = .normal, handler: (() -> Void)? = nil) -> AlertController {
+    open class func alertWithError(_ error: Error, level: AlertLevel = .normal, handler: (() -> Void)? = nil) -> AlertController {
         let alert = AlertController(
             title: Bundle.main.name.localized(),
             message: error.localizedDescription.localized(),
