@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/zendobk/SwiftUtils.svg?branch=master)](https://travis-ci.org/zendobk/SwiftUtils)
+[![Build Status](https://travis-ci.org/tsrnd/swiftutils-ios.svg?branch=1.3.6)](https://travis-ci.org/tsrnd/swiftutils-ios)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SwiftUtils.svg)](https://img.shields.io/cocoapods/v/SwiftUtils.svg)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftUtils.svg?style=flat)](http://cocoadocs.org/docsets/SwiftUtils)
-[![Coverage Status](https://codecov.io/github/zendobk/SwiftUtils/coverage.svg?branch=master)](https://codecov.io/github/zendobk/SwiftUtils?branch=master)
+[![Coverage Status](https://codecov.io/github/tsrnd/swiftutils-ios/coverage.svg?branch=master)](https://codecov.io/github/tsrnd/swiftutils-ios?branch=master)
 
-[SwiftUtils](https://github.com/zendobk/SwiftUtils)
+[SwiftUtils](https://github.com/tsrnd/swiftutils-ios)
 ============
 
 ## Requirements
