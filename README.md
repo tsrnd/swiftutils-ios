@@ -9,12 +9,9 @@
 ## Requirements
 
 - iOS 8.0+
-- Xcode 9 (Swift 4.x) version ~> 4
-- Xcode 8 (Swift 3.x) version ~> 2
+- Xcode 9 ~ Swift 4.0+
 
 ## Installation
-
-> **Embedded frameworks require a minimum deployment target of iOS 8.**
 
 ### CocoaPods
 
@@ -24,7 +21,7 @@
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1.0+ is required to build SwiftUtils 2.0+.
+> CocoaPods 1.2.0+ is required to build SwiftUtils 4.0+.
 
 To integrate SwiftUtils into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -33,7 +30,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftUtils', '~> 4.0.0'
+pod 'SwiftUtils', '~> 4.0'
 ```
 
 Then, run the following command:
