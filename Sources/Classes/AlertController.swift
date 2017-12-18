@@ -28,7 +28,8 @@ open class AlertController: UIAlertController, AlertLevelProtocol {
         let actionHandler: ((UIAlertAction) -> Void)? = handler != nil ? { (action: UIAlertAction) -> Void in
             handler?()
         }: nil
-        addAction(UIAlertAction(title: title, style: style, handler: actionHandler))
+        let action = UIAlertAction(title: title, style: style, handler: actionHandler)
+        addAction(action)
     }
 
     // Recommend `present` method for AlertController instead of default is `presentViewController`.

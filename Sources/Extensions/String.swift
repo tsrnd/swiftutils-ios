@@ -214,14 +214,9 @@ extension Character {
 }
 
 extension NSMutableAttributedString {
-    public func append(string: String, attributes: [String: Any]) {
-        let attributedString = NSMutableAttributedString(string: string)
-        let range = NSRange(location: 0, length: attributedString.string.count)
-        let convertedAttributes = Dictionary(uniqueKeysWithValues:
-            attributes.lazy.map { (NSAttributedStringKey($0.key), $0.value) }
-        )
-        attributedString.addAttributes(convertedAttributes, range: range)
-        append(attributedString)
+    public func append(string: String, attributes: [NSAttributedStringKey: Any]) {
+        let str = NSMutableAttributedString(string: string, attributes: attributes)
+        append(str)
     }
 }
 
