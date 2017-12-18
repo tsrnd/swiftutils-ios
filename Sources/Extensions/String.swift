@@ -46,7 +46,7 @@ extension String {
         return nil
     }
 
-    public func contains(_ pattern: String, ignoreCase: Bool = false) -> Bool {
+    public func contains(_ pattern: String, ignoreCase: Bool) -> Bool {
         guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
             return false
         }
