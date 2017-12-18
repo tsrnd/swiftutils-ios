@@ -6,3 +6,9 @@ use_frameworks!
 target 'PodTest' do
     pod 'SwiftUtils', :path => './'
 end
+
+target 'SwiftUtils' do
+    target 'Tests' do
+        inherit! :search_paths
+    end
+end
