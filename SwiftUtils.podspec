@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name     = 'SwiftUtils'
-  s.version  = '4.0.1'
+  s.version  = '4.0.2'
   s.license  = 'MIT'
   s.summary  = 'SwiftUtils'
-  s.homepage = 'https://github.com/zendobk/SwiftUtils'
+  s.homepage = 'https://github.com/tsrnd/swiftutils-ios'
   s.authors  = { 'Dao Nguyen' => 'zendobk' }
   s.source   = { :git => 'https://github.com/tsrnd/swiftutils-ios.git', :tag => s.version}
   s.requires_arc = true

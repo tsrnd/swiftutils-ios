@@ -1,34 +1,14 @@
 language: objective-c
-osx_image: xcode9.1
+osx_image: xcode9.2
 cache:
-  bundler: true
-  cocoapods: true
-  directories:
-    - ~/.rvm
-    - ~/.cocoapods
-    - .bundle
-    - vendor
-env:
-  global:
-    - WORKSPACE='SwiftUtils.xcworkspace'
-    - SCHEME='SwiftUtils'
-    - SDK='iphonesimulator11.1'
-    - DESTINATION='OS=11.1,name=iPhone 6'
+  - bundler
+  - cocoapods
 install:
   - set -o pipefail
-  - brew update
-  - ./scripts/setup
-  # workaround https://github.com/realm/SwiftLint/issues/13
-  - ln -s /Applications/Xcode-8.app /Applications/Xcode.app
+  - sudo systemsetup -settimezone Asia/Ho_Chi_Minh
+  - bundle install --path=vendor/bundle --jobs 4 --retry 3
 script:
-  - export REPO_SLUG="$TRAVIS_REPO_SLUG"
-  - export SRC_BRANCH="$(./scripts/src_branch)"
-  - export PR_NUMBER="$(./scripts/pr_number)"
-  - ./scripts/lint
-  - ./scripts/test
-  - ./scripts/pod_test
-  - bundle exec pod lib lint --quick
-notifications:
-  email: false
-after_success:
-  - ./scripts/codecov
+  - ./scripts/branch
+  - bundle exec pod install --repo-update
+  - ./scripts/lint 
+  - bundle exec fastlane test  
