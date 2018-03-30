@@ -1,3 +1,4 @@
+### Swift ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -26,7 +27,9 @@ xcuserdata/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
-.DS_Store
+*.dSYM.zip
+*.dSYM
+
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
@@ -35,6 +38,7 @@ playground.xcworkspace
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
+# Package.pins
 .build/
 
 # CocoaPods
@@ -58,8 +62,15 @@ Carthage/Build
 # https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
 
 fastlane/report.xml
+fastlane/Preview.html
 fastlane/screenshots
+fastlane/README.md
+fastlane/test_output
 
 # Bundler
 vendor
+.bundle.bundle
 .bundle
+vendor/bundle
+*.coverage.txt
+swiftlint-report.json

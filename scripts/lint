@@ -1,11 +1,12 @@
 #!/bin/bash
 
-echo "REPO_SLUG = $REPO_SLUG"
-echo "PR_NUMBER = $PR_NUMBER"
+./Pods/SwiftLint/swiftlint lint --reporter json > swiftlint-report.json || false
 
-if [[ -z "$PR_NUMBER" ]]; then
-    echo 'Not in a Pull Request, skip Linter'
+echo "REPO_SLUG = $TRAVIS_REPO_SLUG"
+echo "PR_NUMBER = $TRAVIS_PULL_REQUEST"
+
+if [[ -z "$TRAVIS_PULL_REQUEST" ]]; then
+    echo 'Not in a Pull Request, skip report.'
 else
-    swiftlint lint --reporter json > swiftlint-report.json || false
-    bundle exec linterbot $REPO_SLUG $PR_NUMBER < swiftlint-report.json
+    bundle exec linterbot "$TRAVIS_REPO_SLUG" "$TRAVIS_PULL_REQUEST" < swiftlint-report.json
 fi
