@@ -33,7 +33,7 @@ extension Int {
 
     public var digits: [Int] {
         var result = [Int]()
-        for char in String(self).characters {
+        for char in String(self) {
             let string = String(char)
             if let toInt = Int(string) {
                 result.append(toInt)

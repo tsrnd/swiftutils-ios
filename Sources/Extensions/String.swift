@@ -11,12 +11,12 @@ import UIKit
 extension String {
 
    public subscript(idx: Int) -> String? {
-        guard idx >= 0 && idx < characters.count else { return nil }
+        guard idx >= 0 && idx < count else { return nil }
         return String(self[index(startIndex, offsetBy: idx)])
     }
     
     public subscript(idx: Int) -> Character? {
-        guard idx >= 0 && idx < characters.count else { return nil }
+        guard idx >= 0 && idx < count else { return nil }
         return self[index(startIndex, offsetBy: idx)]
     }
     
@@ -31,7 +31,7 @@ extension String {
     }
     
     public var length: Int {
-        return self.characters.count
+        return self.count
     }
 
     public var capitalized: String {
@@ -52,13 +52,13 @@ extension String {
         guard let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) else {
             return false
         }
-        let range = NSRange(location: 0, length: self.characters.count)
+        let range = NSRange(location: 0, length: self.count)
         return regex.firstMatch(in: self, options: [], range: range) != nil
     }
 
     public func replace(_ pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
         if let regex = NSRegularExpression.regex(pattern, ignoreCase: ignoreCase) {
-            let range = NSRange(location: 0, length: self.characters.count)
+            let range = NSRange(location: 0, length: self.count)
             return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replacementString)
         }
         return nil
@@ -93,16 +93,16 @@ extension String {
 
     public func trimmedLeftCJK() -> String {
         var text = self
-        while text.characters.first == Character("\n") || text.characters.first == Character(" ") {
-            text = text.substring(from: text.characters.index(text.startIndex, offsetBy: 1))
+        while text.first == Character("\n") || text.first == Character(" ") {
+            text = text.substring(from: text.index(text.startIndex, offsetBy: 1))
         }
         return text
     }
 
     public func trimmedRightCJK() -> String {
         var text = self
-        while text.characters.last == Character("\n") || text.characters.last == Character(" ") {
-            text = text.substring(to: text.characters.index(text.endIndex, offsetBy: -1))
+        while text.last == Character("\n") || text.last == Character(" ") {
+            text = text.substring(to: text.index(text.endIndex, offsetBy: -1))
         }
         return text
     }
