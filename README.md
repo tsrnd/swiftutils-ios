@@ -9,7 +9,7 @@
 ## Requirements
 
 - iOS 8.0+
-- Xcode 9.3 (Swift 3.2)
+- Xcode 9.2 (Swift 3.2)
 
 ## Installation
 
