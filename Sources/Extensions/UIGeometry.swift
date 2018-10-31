@@ -18,7 +18,7 @@ extension UIEdgeInsets {
     }
 
     public func inset(_ rect: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(rect, self)
+        return rect.inset(by: self)
     }
 
     public var isZero: Bool {
