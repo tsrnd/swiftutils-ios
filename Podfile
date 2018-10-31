@@ -8,7 +8,7 @@ target 'PodTest' do
 end
 
 target 'SwiftUtils' do
-    pod 'SwiftLint', '0.16.1'
+    pod 'SwiftLint', '0.27.0'
     target 'Tests' do
         inherit! :search_paths
     end

@@ -12,7 +12,7 @@ import XCTest
 class ArrayTests: XCTestCase {
     let origin: [Int] = {
         var numbers = [Int]()
-        for i in 0 ... 100000 {
+        for i in 0 ... 100_000 {
             numbers.append(i)
         }
         return numbers
@@ -31,9 +31,7 @@ class ArrayTests: XCTestCase {
 
     func test_map() {
         let nilInts: [Int?] = [0, 1, nil, 3]
-        let ints: [Int] = nilInts.flatMap { (int) -> Int? in
-            return int
-        }
+        let ints: [Int] = nilInts.compactMap { $0 }
         let exp: [Int] = [0, 1, 3]
         XCTAssertEqual(ints, exp)
     }

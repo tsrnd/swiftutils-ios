@@ -1,19 +1,23 @@
 PODS:
-  - SwiftLint (0.16.1)
-  - SwiftUtils (4.0.2)
+  - SwiftLint (0.27.0)
+  - SwiftUtils (4.2)
 
 DEPENDENCIES:
-  - SwiftLint (= 0.16.1)
+  - SwiftLint (= 0.27.0)
   - SwiftUtils (from `./`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftLint
 
 EXTERNAL SOURCES:
   SwiftUtils:
-    :path: ./
+    :path: "./"
 
 SPEC CHECKSUMS:
-  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
-  SwiftUtils: 21388b904875a5dad966bce66a5640f4debc26de
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  SwiftUtils: 53c2d3af84be01705cef1adcd26d1b2185877ff2
 
-PODFILE CHECKSUM: 5243912a9aed68a72134b40ebd799dbd98cb5845
+PODFILE CHECKSUM: 14b3e43ac110b759f33cdbe473a6925738ff4645
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
