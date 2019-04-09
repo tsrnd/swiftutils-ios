@@ -12,4 +12,3 @@ script:
   - bundle exec pod install --repo-update
   - ./scripts/lint 
   - bundle exec fastlane test
-  
