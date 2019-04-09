@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode10.0
+osx_image: xcode10.2
 cache:
   - bundler
   - cocoapods
@@ -11,4 +11,6 @@ script:
   - ./scripts/branch
   - bundle exec pod install --repo-update
   - ./scripts/lint 
-  - bundle exec fastlane test  
+  - bundle exec fastlane test
+  after_failure:
+  - cat $TMPDIR/carthage-*.log
