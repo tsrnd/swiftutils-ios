@@ -12,5 +12,4 @@ script:
   - bundle exec pod install --repo-update
   - ./scripts/lint 
   - bundle exec fastlane test
-  after_failure:
-  - cat $TMPDIR/carthage-*.log
+  
