@@ -17,14 +17,14 @@ extension UIColor {
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 
-    public func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+    public func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         let ctx = UIGraphicsGetCurrentContext()
         setFill()
         ctx?.fillPath()
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return img!
+        return img
     }
 }
 

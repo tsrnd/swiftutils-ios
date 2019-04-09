@@ -126,10 +126,14 @@ extension UIView {
                 let first = constraint.firstItem as? UIView
                 let second = constraint.secondItem as? UIView
                 if first == self || second == self {
-                    parent!.removeConstraint(constraint)
+                    if let par = parent {
+                        par.removeConstraint(constraint)
+                    }
                 }
             }
-            parent = parent!.superview
+            if let par = parent {
+                parent = par.superview
+            }
         }
         removeConstraints(constraints)
         let subviews = self.subviews
