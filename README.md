@@ -11,6 +11,7 @@
 - iOS 8.0+
 Version 4.0.2: - Xcode 9 ~ Swift 4.0+
 Version 4.2: - Xcode 10 ~ Swift 4.2+
+Version 5.0: - Xcode 10.2 ~ Swift 5.0+
 
 ## Installation
 
@@ -31,7 +32,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SwiftUtils', '4.2'
+pod 'SwiftUtils', '4.2.1'
 ```
 
 Then, run the following command:
